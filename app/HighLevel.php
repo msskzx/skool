@@ -12,4 +12,8 @@ class HighLevel extends Model
    * @var array
    */
   protected $guarded = [];
+
+  public function school() {
+     return $this->belongsTo('App\School');
+  }
 }

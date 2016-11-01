@@ -12,4 +12,18 @@ class School extends Model
     * @var array
     */
    protected $guarded = [];
+
+   public function elementaryLevel() {
+      return $this->hasOne('App\ElementaryLevel');
+   }
+
+   public function middleLevel() {
+      return $this->hasOne('App\MiddleLevel');
+   }
+
+   public function highLevel() {
+      return $this->hasOne('App\HighLevel');
+   }
+
+
 }
