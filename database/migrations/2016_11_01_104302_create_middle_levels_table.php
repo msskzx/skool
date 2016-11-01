@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHighLevelsTable extends Migration
+class CreateMiddleLevelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateHighLevelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('high_levels', function (Blueprint $table) {
+        Schema::create('middle_levels', function (Blueprint $table) {
            $table->increments('id');
-           $table->integer('school_id')->unsigned();
+           $table->integer('school_id')->unsigned()->index();
            $table->timestamps();
 
            $table->foreign('school_id')
@@ -31,6 +31,6 @@ class CreateHighLevelsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('high_levels');
+        Schema::drop('middle_levels');
     }
 }

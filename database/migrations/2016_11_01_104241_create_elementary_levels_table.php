@@ -1,9 +1,9 @@
-<?php
+->index()<?php
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateChildSchoolTable extends Migration
+class CreateElementaryLevelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,22 +12,14 @@ class CreateChildSchoolTable extends Migration
      */
     public function up()
     {
-        Schema::create('child_school', function (Blueprint $table) {
+        Schema::create('elementary_levels', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('school_id')->unsigned()->index();
             $table->timestamps();
-            $table->integer('school_id')->unsigned();
-            $table->integer('child_SSN');
-            $table->boolean('accepted');
-
-            $table->primary(['school_id','child_SSN']);
 
             $table->foreign('school_id')
                ->references('id')
                ->on('schools')
-               ->onDelete('cascade');
-
-            $table->foreign('child_SSN')
-               ->references('SSN')
-               ->on('children')
                ->onDelete('cascade');
         });
     }
@@ -39,6 +31,6 @@ class CreateChildSchoolTable extends Migration
      */
     public function down()
     {
-        Schema::drop('child_school');
+        Schema::drop('elementary_levels');
     }
 }
