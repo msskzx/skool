@@ -13,11 +13,16 @@ class CreateClubsTable extends Migration
     public function up()
     {
         Schema::create('clubs', function (Blueprint $table) {
-            $table->timestamps();
+            $table->increments('id');
             $table->string('name');
             $table->mediumtext('purpose');
+            $table->integer('high_level_id')->unsigned()->index();
+            $table->timestamps();
 
-            $table->primary('name');
+            $table->foreign('high_level_id')
+                  ->references('id')
+                  ->on('high_levels')
+                  ->onDelete('cascade');
         });
     }
 

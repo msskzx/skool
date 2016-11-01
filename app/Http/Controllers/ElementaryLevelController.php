@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\School;
 
-class SchoolController extends Controller
+use App\Http\Requests;
+
+use App\ElementaryLevel;
+
+class ElementaryLevelController extends Controller
 {
+
     public function index() {
-       return School::all();
+       return ElementaryLevel::all();
     }
 
 }
