@@ -14,7 +14,7 @@ class CreateMiddleLevelsTable extends Migration
     {
         Schema::create('middle_levels', function (Blueprint $table) {
            $table->increments('id');
-           $table->integer('school_id')->unsigned()->index();
+           $table->integer('school_id')->unique()->unsigned()->index();
            $table->timestamps();
 
            $table->foreign('school_id')

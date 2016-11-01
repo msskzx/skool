@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
+// Route::group(['middleware' => ['web']], function () {
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +21,6 @@ Route::group(['middleware' => ['web']], function () {
 */
 Route::auth();
 
-
 /*
 |--------------------------------------------------------------------------
 | homepage
@@ -30,25 +29,37 @@ Route::auth();
 */
 Route::get('/', 'HomeController@index');
 
-
 /*
 |--------------------------------------------------------------------------
 | school
 |--------------------------------------------------------------------------
 |
 */
-Route::get('/school', 'SchoolController@index');
-
+Route::resource('/school', 'SchoolController');
 
 /*
 |--------------------------------------------------------------------------
-| levels
+| elementary level
 |--------------------------------------------------------------------------
 |
 */
-Route::get('elementarylevel', 'ElementaryLevelController@index');
-Route::get('middlelevel', 'MiddleLevelController@index');
-Route::get('highlevel', 'HighLevelController@index');
+Route::resource('elementarylevel', 'ElementaryLevelController');
+
+/*
+|--------------------------------------------------------------------------
+| middle level
+|--------------------------------------------------------------------------
+|
+*/
+Route::resource('middlelevel', 'MiddleLevelController');
+
+/*
+|--------------------------------------------------------------------------
+| elementary level
+|--------------------------------------------------------------------------
+|
+*/
+Route::resource('highlevel', 'HighLevelController');
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +67,6 @@ Route::get('highlevel', 'HighLevelController@index');
 |--------------------------------------------------------------------------
 |
 */
-Route::get('/club', 'ClubController@index');
+Route::resource('/club', 'ClubController');
 
-});
+// });
