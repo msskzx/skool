@@ -17,8 +17,4 @@ class ElementaryLevel extends Model
      return $this->belongsTo('App\School');
   }
 
-  public function supplies() {
-     // select * from supplies where id = $this->id
-     return null;
-  }
 }
