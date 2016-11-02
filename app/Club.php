@@ -12,4 +12,8 @@ class Club extends Model
    * @var array
    */
   protected $guarded = [];
+
+  public function highLevel() {
+     return $this->belongsTo('App\HighLevel');
+  }
 }

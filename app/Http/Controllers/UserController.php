@@ -10,11 +10,15 @@ use App\User;
 
 use Auth;
 
-class UsersController extends Controller
+class UserController extends Controller
 {
 
-  public function __construct() {
-    $this->middleware('auth', ['except'=> ['show']]);
+  // public function __construct() {
+  // $this->middleware('auth', ['except' => ['show']]);
+  // }
+
+  public function index() {
+     return User::all();
   }
 
   public function show(User $user) {
@@ -25,7 +29,7 @@ class UsersController extends Controller
     if(Auth::user()->id === $user->id) {
         $user->delete();
     }
-    return back();
+    return view('/');
   }
 
 }

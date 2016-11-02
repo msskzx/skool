@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\MiddleLevel;
 
+use App\School;
+
 class MiddleLevelController extends Controller
 {
     public function index() {
@@ -29,8 +31,7 @@ class MiddleLevelController extends Controller
       $school = School::findOrFail($request['school_id']);
       $school->middleLevel()->create($request->all());
 
-      flash()->warning('The middle level has been created successfully!');
-
+      flash()->success('The middle level has been created successfully!');
 
       return $this->index();
     }
@@ -40,12 +41,13 @@ class MiddleLevelController extends Controller
     }
 
     public function update(Request $request, MiddleLevel $middlelevel) {
-      $this->validate($request, ['school_id' => 'required|unique:middle_levels']);
+      $this->validate($request, [
+         'school_id' => 'unique:middle_levels,school_id,' . $middlelevel->id
+      ]);
 
-      $school = School::findOrFail($request['school_id']);
-      $school->middleLevel()->create($request->all());
+      $middlelevel->update($request->all());
 
-      flash()->warning('The middle level has been updated successfully!');
+      flash()->success('The middle level has been edited successfully!');
 
       return $this->index();
     }
@@ -53,7 +55,7 @@ class MiddleLevelController extends Controller
     public function destroy(MiddleLevel $middlelevel) {
       $middlelevel->delete();
 
-      flash()->warning('The middle level has been deleted successfully!');
+      flash()->success('The middle level has been deleted successfully!');
 
       return $this->index();
     }

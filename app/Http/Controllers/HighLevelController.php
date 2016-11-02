@@ -8,6 +8,9 @@ use App\Http\Requests;
 
 use App\HighLevel;
 
+use App\School;
+
+
 class HighLevelController extends Controller
 {
     public function index() {
@@ -23,14 +26,12 @@ class HighLevelController extends Controller
     }
 
     public function store(Request $request) {
-
       $this->validate($request, ['school_id' => 'required|unique:high_levels']);
 
       $school = School::findOrFail($request['school_id']);
       $school->highLevel()->create($request->all());
 
-      flash()->warning('The high level has been created successfully!');
-
+      flash()->success('The high level has been created successfully!');
 
       return $this->index();
     }
@@ -40,12 +41,13 @@ class HighLevelController extends Controller
     }
 
     public function update(Request $request, HighLevel $highlevel) {
-      $this->validate($request, ['school_id' => 'required|unique:high_levels']);
+      $this->validate($request, [
+         'school_id' => 'unique:high_levels,school_id,' . $highlevel->id
+      ]);
 
-      $school = School::findOrFail($request['school_id']);
-      $school->highLevel()->create($request->all());
+      $highlevel->update($request->all());
 
-      flash()->warning('The high level has been updated successfully!');
+      flash()->success('The high level has been edited successfully!');
 
       return $this->index();
     }
@@ -53,7 +55,7 @@ class HighLevelController extends Controller
     public function destroy(HighLevel $highlevel) {
       $highlevel->delete();
 
-      flash()->warning('The high level has been deleted successfully!');
+      flash()->success('The high level has been deleted successfully!');
 
       return $this->index();
     }

@@ -9,7 +9,7 @@
 
     {!! Form::open(['url' => 'elementarylevel']) !!}
 
-    @include('levels.form',['submitButtonText' => 'Create'])
+      @include('levels.elementary.form',['submitButtonText' => 'Create'])
 
     {!! Form::close() !!}
 

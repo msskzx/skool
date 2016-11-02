@@ -15,11 +15,12 @@
 
 /*
 |--------------------------------------------------------------------------
-| auth
+| users
 |--------------------------------------------------------------------------
 |
 */
 Route::auth();
+Route::resource('/user', 'UserController');
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +44,7 @@ Route::resource('/school', 'SchoolController');
 |--------------------------------------------------------------------------
 |
 */
-Route::resource('elementarylevel', 'ElementaryLevelController');
+Route::resource('/elementarylevel', 'ElementaryLevelController');
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +52,7 @@ Route::resource('elementarylevel', 'ElementaryLevelController');
 |--------------------------------------------------------------------------
 |
 */
-Route::resource('middlelevel', 'MiddleLevelController');
+Route::resource('/middlelevel', 'MiddleLevelController');
 
 /*
 |--------------------------------------------------------------------------
@@ -59,7 +60,7 @@ Route::resource('middlelevel', 'MiddleLevelController');
 |--------------------------------------------------------------------------
 |
 */
-Route::resource('highlevel', 'HighLevelController');
+Route::resource('/highlevel', 'HighLevelController');
 
 /*
 |--------------------------------------------------------------------------

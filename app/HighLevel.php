@@ -16,4 +16,9 @@ class HighLevel extends Model
   public function school() {
      return $this->belongsTo('App\School');
   }
+
+  public function clubs() {
+     return $this->hasMany('App\Club');
+  }
+
 }

@@ -33,7 +33,7 @@ class ElementaryLevelController extends Controller
       $school = School::findOrFail($request['school_id']);
       $school->elementaryLevel()->create($request->all());
 
-      flash()->warning('The elementary level has been created successfully!');
+      flash()->success('The elementary level has been created successfully!');
 
       return $this->index();
     }
@@ -43,12 +43,13 @@ class ElementaryLevelController extends Controller
     }
 
     public function update(Request $request, ElementaryLevel $elementarylevel) {
-      $this->validate($request, ['school_id' => 'required|unique:elementary_levels']);
+      $this->validate($request, [
+         'school_id' => 'unique:elementary_levels,school_id,' . $elementarylevel->id
+      ]);
 
-      $school = School::findOrFail($request['school_id']);
-      $school->elementaryLevel()->create($request->all());
+      $elementarylevel->update($request->all());
 
-      flash()->warning('The elementary level has been edited successfully!');
+      flash()->success('The elementary level has been edited successfully!');
 
       return $this->index();
     }
@@ -56,7 +57,7 @@ class ElementaryLevelController extends Controller
     public function destroy(ElementaryLevel $elementarylevel) {
       $elementarylevel->delete();
 
-      flash()->warning('The elementary level has been deleted successfully!');
+      flash()->success('The elementary level has been deleted successfully!');
 
       return $this->index();
     }
