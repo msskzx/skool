@@ -52,15 +52,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">Type</label>
 
                             <div class="col-md-6">
-                                {!! Form::select('type', ['Student' => 'Student', 'Employee' => 'Employee', 'Parent' => 'Parent'], null, ['class' => 'form-control', 'placeholder' => 'pick a type...', 'required']) !!}
+                                {!! Form::select('role', ['Student' => 'Student', 'Employee' => 'Employee', 'Parent' => 'Parent'], null, ['class' => 'form-control', 'placeholder' => 'pick a role...', 'required']) !!}
 
-                                @if ($errors->has('type'))
+                                @if ($errors->has('role'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('role') }}</strong>
                                     </span>
                                 @endif
                             </div>

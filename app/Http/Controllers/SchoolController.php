@@ -11,7 +11,7 @@ use App\School;
 class SchoolController extends Controller
 {
     public function index() {
-       return School::all();
+       return School::with('elementaryLevel','middleLevel', 'highLevel')->get();
     }
 
     public function show(School $school) {
@@ -23,6 +23,10 @@ class SchoolController extends Controller
     }
 
     public function store(Request $request) {
+      $this->validate($request, [
+         'name' => 'required'
+      ]);
+
       School::create($request->all());
 
       flash()->success('School has been created successfully!');
@@ -35,7 +39,13 @@ class SchoolController extends Controller
     }
 
     public function update(Request $request, School $school) {
-      $this->validate($request, ['email' => 'unique:schools,email,'.$school->id]);
+      $this->validate($request, [
+         'email' => 'unique:schools,email,'.$school->id,
+         'name' => 'required',
+         'phone_number' => 'numeric',
+         'fees' => 'numeric'
+      ]);
+
       $school->update($request->all());
 
       return $this->index();

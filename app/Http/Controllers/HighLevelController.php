@@ -26,7 +26,9 @@ class HighLevelController extends Controller
     }
 
     public function store(Request $request) {
-      $this->validate($request, ['school_id' => 'required|unique:high_levels']);
+      $this->validate($request, [
+         'school_id' => 'exists:schools,id|required|unique:high_levels'
+      ]);
 
       $school = School::findOrFail($request['school_id']);
       $school->highLevel()->create($request->all());
@@ -42,7 +44,7 @@ class HighLevelController extends Controller
 
     public function update(Request $request, HighLevel $highlevel) {
       $this->validate($request, [
-         'school_id' => 'unique:high_levels,school_id,' . $highlevel->id
+         'school_id' => 'exists:schools,id|required|unique:high_levels,school_id,' . $highlevel->id
       ]);
 
       $highlevel->update($request->all());

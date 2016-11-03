@@ -28,7 +28,7 @@ class ElementaryLevelController extends Controller
 
     public function store(Request $request) {
 
-      $this->validate($request, ['school_id' => 'required|unique:elementary_levels']);
+      $this->validate($request, ['school_id' => 'exists:schools,id|required|unique:elementary_levels']);
 
       $school = School::findOrFail($request['school_id']);
       $school->elementaryLevel()->create($request->all());
@@ -44,7 +44,7 @@ class ElementaryLevelController extends Controller
 
     public function update(Request $request, ElementaryLevel $elementarylevel) {
       $this->validate($request, [
-         'school_id' => 'unique:elementary_levels,school_id,' . $elementarylevel->id
+         'school_id' => 'exists:schools,id|required|unique:elementary_levels,school_id,' . $elementarylevel->id
       ]);
 
       $elementarylevel->update($request->all());

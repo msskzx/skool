@@ -11,9 +11,12 @@ class ElementaryLevelsTableSeeder extends Seeder
      */
     public function run()
     {
+      DB::table('elementary_levels')->truncate();
+
       DB::table('elementary_levels')->insert([
           'school_id' => '1'
       ]);
+      
       DB::table('elementary_levels')->insert([
           'school_id' => '3'
       ]);

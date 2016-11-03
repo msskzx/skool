@@ -27,7 +27,10 @@ class ClubController extends Controller
 
     public function store(Request $request) {
 
-      $this->validate($request, ['high_level_id' => 'required']);
+      $this->validate($request, [
+         'high_level_id' => 'required',
+         'name' => 'required'
+      ]);
 
       $high = HighLevel::findOrFail($request['high_level_id']);
       $high->clubs()->create($request->all());
@@ -42,7 +45,10 @@ class ClubController extends Controller
     }
 
     public function update(Request $request, Club $club) {
-      $this->validate($request, ['high_level_id' => 'required']);
+      $this->validate($request, [
+         'high_level_id' => 'required',
+         'name' => 'required'
+      ]);
 
       $club->update($request->all());
 

@@ -26,7 +26,9 @@ class MiddleLevelController extends Controller
 
     public function store(Request $request) {
 
-      $this->validate($request, ['school_id' => 'required|unique:middle_levels']);
+      $this->validate($request, [
+         'school_id' => 'exists:schools,id|required|unique:middle_levels'
+      ]);
 
       $school = School::findOrFail($request['school_id']);
       $school->middleLevel()->create($request->all());
@@ -42,7 +44,7 @@ class MiddleLevelController extends Controller
 
     public function update(Request $request, MiddleLevel $middlelevel) {
       $this->validate($request, [
-         'school_id' => 'unique:middle_levels,school_id,' . $middlelevel->id
+         'school_id' => 'exists:schools,id|required|unique:middle_levels,school_id,' . $middlelevel->id
       ]);
 
       $middlelevel->update($request->all());
