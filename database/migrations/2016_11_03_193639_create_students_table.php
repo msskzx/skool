@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateParentsTable extends Migration
+class CreateStudentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,24 +12,32 @@ class CreateParentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('parents', function (Blueprint $table) {
+        Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
             $table->string('first_name');
             $table->string('middle_name');
             $table->string('last_name');
+            $table->string('email')->unique();
+            $table->integer('SSN')->unique();
             $table->string('username')->unique()
                                       ->index();
-            $table->string('email')->unique();
-            $table->string('address');
-            $table->integer('phone_number');
-            $table->integer('mobile_number1');
-            $table->integer('mobile_number2');
+            $table->integer('school_id')->unsigned()
+                                        ->index()
+                                        ->nullable();
+            $table->integer('grade');
+            $table->boolean('gender');
+            $table->date('birth_date');
             $table->timestamps();
 
             $table->foreign('username')
                   ->references('username')
                   ->on('users')
                   ->onDelete('cascade');
+
+            $table->foreign('school_id')
+                  ->references('id')
+                  ->on('schools')
+                  ->onDelete('set null');
         });
     }
 
@@ -40,6 +48,6 @@ class CreateParentsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('parents');
+        Schema::drop('students');
     }
 }

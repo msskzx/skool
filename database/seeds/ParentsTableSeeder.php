@@ -13,12 +13,6 @@ class ParentsTableSeeder extends Seeder
     {
       DB::table('parents')->insert([
           'first_name' => 'Bear',
-          'email' => 'mssk@mssk.com',
-          'username' => 'mssk'
-      ]);
-
-      DB::table('parents')->insert([
-          'first_name' => 'Turtul',
           'email' => 'msskzx@msskzx.com',
           'username' => 'msskzx'
       ]);

@@ -13,7 +13,7 @@ use App\User;
 class ParentController extends Controller
 {
    public function index() {
-      return Parentt::with('user')->get();
+      return Parentt::all();
    }
 
    public function show(Parentt $parent) {
