@@ -14,7 +14,7 @@ use App\School;
 class HighLevelController extends Controller
 {
     public function index() {
-       return HighLevel::all();
+       return HighLevel::with('clubs')->get();
     }
 
     public function show(HighLevel $highlevel) {

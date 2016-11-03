@@ -11,12 +11,10 @@ class HighLevelsTableSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('high_levels')->truncate();
-
       DB::table('high_levels')->insert([
           'school_id' => '2'
       ]);
-      
+
       DB::table('high_levels')->insert([
           'school_id' => '3'
       ]);

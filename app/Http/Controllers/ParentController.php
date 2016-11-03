@@ -6,15 +6,15 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Parent;
+use App\Parentt;
 
 class ParentController extends Controller
 {
    public function index() {
-      return Parent::all();
+      return Parentt::with('user')->get();
    }
 
-   public function show(Parent $parent) {
+   public function show(Parentt $parent) {
       return $parent;
    }
 
@@ -22,7 +22,7 @@ class ParentController extends Controller
       return view('parent.create');
    }
 
-   public function store(Requrest $request, Parent $parent) {
+   public function store(Requrest $request, Parentt $parent) {
       $this->validate($request, [
         'username' => 'unique:users'
       ]);
@@ -36,7 +36,7 @@ class ParentController extends Controller
       return view('parent.edit');
    }
 
-   public function update(Request $request, Parent $parent) {
+   public function update(Request $request, Parentt $parent) {
       $this->validate($request, [
         'username' => 'unique:users,username,'.$parent->id
       ]);
@@ -46,7 +46,7 @@ class ParentController extends Controller
       return $this->index();
    }
 
-   public function destroy(Parent $parent) {
+   public function destroy(Parentt $parent) {
      $user = User::find($parent->username);
      $user->delete();
 

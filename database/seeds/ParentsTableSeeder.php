@@ -11,8 +11,6 @@ class ParentsTableSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('parents')->truncate();
-      
       DB::table('parents')->insert([
           'first_name' => 'Bear',
           'email' => 'mssk@mssk.com',

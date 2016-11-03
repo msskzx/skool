@@ -21,4 +21,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * parent associated with this user
+     *
+     * @return Parent
+     */
+    public function parent() {
+       return $this->hasOne('App\Parentt', 'username', 'username');
+    }
 }

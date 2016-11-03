@@ -11,12 +11,10 @@ class MiddleLevelsTableSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('middle_levels')->truncate();
-
       DB::table('middle_levels')->insert([
           'school_id' => '2'
       ]);
-      
+
       DB::table('middle_levels')->insert([
           'school_id' => '3'
       ]);

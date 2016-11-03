@@ -11,8 +11,6 @@ class SchoolsTableSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('schools')->truncate();
-
       DB::table('schools')->insert([
           'name' => 'First School',
           'email' => 'first@shool.com'
