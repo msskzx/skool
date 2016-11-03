@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Parentt;
 
+use App\User;
+
 class ParentController extends Controller
 {
    public function index() {
@@ -22,23 +24,28 @@ class ParentController extends Controller
       return view('parent.create');
    }
 
-   public function store(Requrest $request, Parentt $parent) {
+   public function store(Request $request) {
+      $id = User::where('username', $request['username']);
+      if($id = null)
+         return back();
+
       $this->validate($request, [
-        'username' => 'unique:users'
+        'username' => 'exists:users|required|unique:parents|unique:users,username'.$id
       ]);
 
-      $parent->update($request->all());
+      Parentt::create($request->all());
 
       return $this->index();
    }
 
-   public function edit() {
-      return view('parent.edit');
+   public function edit(Parentt $parent) {
+      return view('parent.edit', compact('parent'));
    }
 
    public function update(Request $request, Parentt $parent) {
       $this->validate($request, [
-        'username' => 'unique:users,username,'.$parent->id
+         'username' => 'exists:users|required|unique:users,username,'
+                        .$parent->id.'|unique:parents,username,'.$parent->id
       ]);
 
       $parent->update($request->all());

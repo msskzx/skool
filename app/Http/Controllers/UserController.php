@@ -33,7 +33,7 @@ class UserController extends Controller
      return $this->index();
   }
 
-  public function edit() {
+  public function edit(User $user) {
      return $this->index();
   }
 
