@@ -24,7 +24,11 @@ class SchoolController extends Controller
 
     public function store(Request $request) {
       $this->validate($request, [
-         'name' => 'required'
+         'email' => 'required|unique:schools',
+         'name' => 'required',
+         'phone_number1' => 'numeric',
+         'phone_number2' => 'numeric',
+         'fees' => 'numeric'
       ]);
 
       School::create($request->all());
@@ -40,15 +44,22 @@ class SchoolController extends Controller
 
     public function update(Request $request, School $school) {
       $this->validate($request, [
-         'email' => 'unique:schools,email,'.$school->id,
+         'email' => 'required|unique:schools,email,'.$school->id,
          'name' => 'required',
-         'phone_number' => 'numeric',
+         'phone_number1' => 'numeric',
+         'phone_number2' => 'numeric',
          'fees' => 'numeric'
       ]);
 
       $school->update($request->all());
 
       return $this->index();
+    }
+
+    public function destroy(School $school) {
+       $school->delete();
+
+       return $this->index();
     }
 
 }

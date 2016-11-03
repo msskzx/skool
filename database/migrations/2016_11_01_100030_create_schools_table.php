@@ -18,7 +18,8 @@ class CreateSchoolsTable extends Migration
             $table->mediumtext('vision');
             $table->mediumtext('mission');
             $table->mediumtext('general_info');
-            $table->integer('phone_number');
+            $table->integer('phone_number1');
+            $table->integer('phone_number2');
             $table->integer('fees');
             $table->string('address');
             $table->string('type');

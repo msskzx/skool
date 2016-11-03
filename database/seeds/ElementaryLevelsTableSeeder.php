@@ -14,11 +14,13 @@ class ElementaryLevelsTableSeeder extends Seeder
       DB::table('elementary_levels')->truncate();
 
       DB::table('elementary_levels')->insert([
-          'school_id' => '1'
+          'school_id' => '1',
+          'supplies' => 'this is so kool'
       ]);
-      
+
       DB::table('elementary_levels')->insert([
-          'school_id' => '3'
+          'school_id' => '3',
+          'supplies' => 'this is even kooler'
       ]);
     }
 }

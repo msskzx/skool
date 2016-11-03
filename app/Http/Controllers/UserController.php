@@ -25,11 +25,37 @@ class UserController extends Controller
      return $user;
   }
 
+  public function create() {
+     return $this->index();
+  }
+
+  public function store(Request $request, User $user) {
+     return $this->index();
+  }
+
+  public function edit() {
+     return $this->index();
+  }
+
+  public function update(Request $request, User $user) {
+     /*
+     | username is unique on users table in the column username
+     | ignoring the username of $user
+     */
+     $this->validate($request, [
+       'username' => 'unique:users,username,'.$user->id
+     ]);
+
+     $user->update($request->all());
+
+     return $this->index();
+  }
+
   public function destroy(User $user) {
     if(Auth::user()->id === $user->id) {
         $user->delete();
     }
-    return view('/');
+    return $this->index();
   }
 
 }

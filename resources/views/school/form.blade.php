@@ -56,15 +56,29 @@
     </div>
   </div>
 
-  <div class="form-group{{ $errors->has('phone_number') ? ' has-error' : '' }}">
+  <div class="form-group{{ $errors->has('phone_number1') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
-      {!! Form::label('phone_number','Phone Number:') !!}
+      {!! Form::label('phone_number1','Phone Number 1:') !!}
     </div>
    <div class = "col-md-10">
-     {!! Form::number('phone_number', null, ['class' => 'form-control', 'placeholder' => 'Enter phone number', 'required']) !!}
-     @if ($errors->has('phone_number'))
+     {!! Form::number('phone_number1', null, ['class' => 'form-control', 'placeholder' => 'Enter your phone number', 'required']) !!}
+     @if ($errors->has('phone_number1'))
          <span class="help-block">
-             <strong>{{ $errors->first('phone_number') }}</strong>
+             <strong>{{ $errors->first('phone_number1') }}</strong>
+         </span>
+     @endif
+    </div>
+  </div>
+
+  <div class="form-group{{ $errors->has('phone_number2') ? ' has-error' : '' }}">
+    <div class = "control-label col-md-2">
+      {!! Form::label('phone_number2','Phone Number 2:') !!}
+    </div>
+   <div class = "col-md-10">
+     {!! Form::number('phone_number2', null, ['class' => 'form-control', 'placeholder' => 'Enter your phone number', 'required']) !!}
+     @if ($errors->has('phone_number2'))
+         <span class="help-block">
+             <strong>{{ $errors->first('phone_number2') }}</strong>
          </span>
      @endif
     </div>

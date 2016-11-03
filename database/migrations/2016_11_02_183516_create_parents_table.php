@@ -21,7 +21,7 @@ class CreateParentsTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('address');
-            $table->integer('phone');
+            $table->integer('phone_number');
             $table->integer('mobile_number1');
             $table->integer('mobile_number2');
             $table->timestamps();
