@@ -6,21 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Parentt extends Model
 {
-
-
    /**
     * The attributes that are not mass assignable.
     *
     * @var array
     */
    protected $guarded = [];
-
-   /**
-    * The attributes that should be hidden for arrays.
-    *
-    * @var array
-    */
-   protected $hidden = ['password'];
 
    /**
     * this model corresponding table name
@@ -46,4 +37,13 @@ class Parentt extends Model
     public function students() {
       return $this->belongsToMany('App\Student');;
     }
+
+   /**
+    * Schools reviewed by this parent.
+    *
+    * @return School array
+    */
+   public function schools() {
+      return $this->belongsToMany('App\School');
+   }
 }

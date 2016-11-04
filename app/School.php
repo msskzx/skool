@@ -58,4 +58,12 @@ class School extends Model
       return $this->hasMany('App\Employee');
    }
 
+   /**
+    * Parents who reviewed this school.
+    *
+    * @return Parentt array
+    */
+   public function parents() {
+      return $this->belongsToMany('App\Parentt');
+   }
 }

@@ -14,7 +14,7 @@ class Course extends Model
   protected $guarded = [];
 
   /**
-   * Teacher associated with this course.
+   * Teacher teaching this course.
    *
    * @return Teacher
    */
@@ -23,11 +23,11 @@ class Course extends Model
   }
 
   /**
-   * Students associated with this course.
+   * Students studying this course.
    *
    * @return Student array
    */
   public function students() {
-     return $this->hasMany('App\Student');
+     return $this->belongsToMany('App\Student');
   }
 }

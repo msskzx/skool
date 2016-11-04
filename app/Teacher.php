@@ -23,13 +23,11 @@ class Teacher extends Model
    }
 
    /**
-    * Courses associated with this teacher.
+    * Courses taught by this teacher.
     *
     * @return Course array
     */
    public function courses() {
       return $this->hasMany('App\Course');
    }
-
-
 }

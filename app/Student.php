@@ -50,14 +50,11 @@ class Student extends Model
   }
 
   /**
-   * Courses associated with this student.
+   * Courses studied by this student.
    *
    * @return Course array
    */
   public function courses() {
-     return $this->hasMany('App\Course');
+     return $this->belongsToMany('App\Course');
   }
-
-
-
 }
