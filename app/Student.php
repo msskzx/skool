@@ -14,8 +14,8 @@ class Student extends Model
   protected $guarded = [];
 
   /**
-   * school of this student
-   * 
+   * School associated with this student.
+   *
    * @return School
    */
   public function school() {
@@ -23,10 +23,22 @@ class Student extends Model
   }
 
   /**
-   * user associated with this student
+   * User associated with this student.
+   * 
    * @return User
    */
   public function user() {
      return $this->belongsTo('App\User', 'username', 'username');
   }
+
+  /**
+   * Clubs associated with this student.
+   *
+   * @return User
+   */
+  public function clubs() {
+     return $this->belongsToMany('App\Club');;
+  }
+
+
 }

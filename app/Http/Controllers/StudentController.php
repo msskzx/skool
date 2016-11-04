@@ -8,8 +8,16 @@ use App\Http\Requests;
 
 use App\Student;
 
+use Auth;
+
+
 class StudentController extends Controller
 {
+
+   public function __construct() {
+     $this->middleware('auth');
+   }
+
    public function index() {
      return Student::all();
   }
@@ -19,7 +27,8 @@ class StudentController extends Controller
   }
 
   public function create() {
-     return view('student.create');
+     $student =Auth::user();
+     return view('student.create', compact('student'));
   }
 
   public function store(Request $request) {

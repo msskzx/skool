@@ -13,7 +13,19 @@ class Club extends Model
    */
   protected $guarded = [];
 
+  /**
+   * High level associated with this club
+   * @return User
+   */
   public function highLevel() {
      return $this->belongsTo('App\HighLevel');
+  }
+
+  /**
+   * Clubs associated with this student
+   * @return User
+   */
+  public function students() {
+     return $this->belongsToMany('App\Student');
   }
 }

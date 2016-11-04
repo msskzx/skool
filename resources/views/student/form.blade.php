@@ -61,7 +61,7 @@
       {!! Form::label('username','Username') !!}
     </div>
    <div class = "col-md-10">
-     {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'if you already have a username use it otherwise register first', 'required']) !!}
+     {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Enter your registered username', 'required']) !!}
      @if ($errors->has('username'))
          <span class="help-block">
              <strong>{{ $errors->first('username') }}</strong>
@@ -131,7 +131,7 @@
       {!! Form::label('birth_date','Birth Date') !!}
     </div>
   <div class = "col-md-10">
-     {!! Form::date('birth_date', '1990-02-12', ['class' => 'form-control', 'placeholder' => 'birth_date']) !!}
+     {!! Form::date('birth_date', '2000-02-12', ['class' => 'form-control', 'placeholder' => 'birth_date']) !!}
      @if ($errors->has('birth_date'))
          <span class="help-block">
              <strong>{{ $errors->first('birth_date') }}</strong>

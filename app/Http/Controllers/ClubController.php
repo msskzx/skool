@@ -10,15 +10,24 @@ use App\Club;
 
 use App\HighLevel;
 
+use Auth;
+
+use App\Student;
+
 class ClubController extends Controller
 {
 
+   public function __construct() {
+     $this->middleware('auth');
+   }
+
     public function index() {
-       return Club::all();
+       $clubs = Club::all();
+       return view('club.index', compact('clubs'));
     }
 
     public function show(Club $club) {
-       return $club;
+       return view('club.show', compact('club'));
     }
 
     public function create() {
@@ -52,7 +61,7 @@ class ClubController extends Controller
 
       $club->update($request->all());
 
-      flash()->success('The elementary level has been edited successfully!');
+      flash()->success('The club has been edited successfully!');
 
       return $this->index();
     }
@@ -60,9 +69,17 @@ class ClubController extends Controller
     public function destroy(Club $club) {
       $club->delete();
 
-      flash()->success('The elementary level has been deleted successfully!');
+      flash()->success('The club has been deleted successfully!');
 
       return $this->index();
+    }
+
+    public function join(Club $club) {
+      $student = Student::where('username', Auth::user()->username)->first();
+
+      $club->students()->attach($student->id);
+
+      return $this->show($club);
     }
 
 }
