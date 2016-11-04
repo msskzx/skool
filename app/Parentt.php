@@ -13,13 +13,6 @@ class Parentt extends Model
     */
    protected $guarded = [];
 
-   /**
-    * this model corresponding table name
-    *
-    * @var string
-    */
-   protected $table = 'parents';
-
     /**
      * get the user associated with this parent
      *
@@ -35,7 +28,7 @@ class Parentt extends Model
      * @return Student array
      */
     public function students() {
-      return $this->belongsToMany('App\Student');;
+      return $this->belongsToMany('App\Student');
     }
 
    /**

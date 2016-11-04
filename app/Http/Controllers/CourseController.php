@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Course;
+
 class CourseController extends Controller
 {
    public function index() {
-      return Course::all();
+      return Course::with('students')->get();
    }
 
    public function show(Course $course) {

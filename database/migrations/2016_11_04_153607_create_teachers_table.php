@@ -16,6 +16,9 @@ class CreateTeachersTable extends Migration
             $table->increments('id');
             $table->string('username')->index()
                                       ->unique();
+            $table->integer('supervisor_id')->index()
+                                            ->unsigned()
+                                            ->nullable();
             $table->integer('years_of_exp');
             $table->timestamps();
 

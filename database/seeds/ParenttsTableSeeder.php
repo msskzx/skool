@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ParentsTableSeeder extends Seeder
+class ParenttsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class ParentsTableSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('parents')->insert([
+      DB::table('parentts')->insert([
           'first_name' => 'Bear',
           'email' => 'msskzx@msskzx.com',
           'username' => 'msskzx'

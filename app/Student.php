@@ -46,7 +46,7 @@ class Student extends Model
    * @return Parentt array
    */
   public function parents() {
-     return $this->belongsToMany('App\Parentt');;
+     return $this->belongsToMany('App\Parentt');
   }
 
   /**

@@ -12,22 +12,22 @@ class CreateParentSchoolTable extends Migration
      */
     public function up()
     {
-        Schema::create('parent_school', function (Blueprint $table) {
-           $table->integer('parent_id')->unsigned();
+        Schema::create('parentt_school', function (Blueprint $table) {
+           $table->integer('parentt_id')->unsigned();
            $table->integer('school_id')->unsigned();
            $table->mediumtext('review');
            $table->timestamps();
 
-           $table->primary(['school_id', 'parent_id']);
+           $table->primary(['school_id', 'parentt_id']);
 
            $table->foreign('school_id')
                  ->references('id')
                  ->on('schools')
                  ->onDelete('cascade');
 
-           $table->foreign('parent_id')
+           $table->foreign('parentt_id')
                  ->references('id')
-                 ->on('parents')
+                 ->on('parentts')
                  ->onDelete('cascade');
         });
     }
@@ -39,6 +39,6 @@ class CreateParentSchoolTable extends Migration
      */
     public function down()
     {
-        Schema::drop('parent_school');
+        Schema::drop('parentt_school');
     }
 }

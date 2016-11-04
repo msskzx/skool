@@ -11,10 +11,22 @@ class EmployeesTableSeeder extends Seeder
      */
     public function run()
     {
+      // DB::table('employees')->insert([
+      //     'username' => 'msskz',
+      //     'first_name' => 'Dragonk',
+      //     'email' => 'msskz@msskz.com'
+      // ]);
+
       DB::table('employees')->insert([
-          'username' => 'msskz',
+          'username' => 'empl',
           'first_name' => 'Dgak',
-          'email' => 'msskz@msskz.com'
+          'email' => 'empl@empl.com'
+      ]);
+
+      DB::table('employees')->insert([
+          'username' => 'boss',
+          'first_name' => 'Bossisio',
+          'email' => 'boss@boss.com'
       ]);
     }
 }

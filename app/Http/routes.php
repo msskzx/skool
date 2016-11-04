@@ -112,4 +112,12 @@ Route::resource('/teacher', 'TeacherController');
 */
 Route::resource('/admin', 'AdminController');
 
+/*
+|--------------------------------------------------------------------------
+| course routes
+|--------------------------------------------------------------------------
+|
+*/
+Route::resource('/course', 'CourseController');
+
 // });

@@ -18,7 +18,7 @@ class StudentController extends Controller
    }
 
    public function index() {
-     return Student::all();
+     return Student::with('courses')->get();
   }
 
   public function show(Student $student) {

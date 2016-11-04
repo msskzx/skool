@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use Auth;
 
+use App\Admin;
+
 class AdminController extends Controller
 {
    public function __construct() {
@@ -15,7 +17,7 @@ class AdminController extends Controller
    }
 
    public function index() {
-      return Admin::all();
+      return Admin::with('employee')->get();
    }
 
    public function show(Admin $admin) {

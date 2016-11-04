@@ -30,4 +30,22 @@ class Teacher extends Model
    public function courses() {
       return $this->hasMany('App\Course');
    }
+
+   /**
+    * Teacher supervising this teacher.
+    *
+    * @return Teacher
+    */
+   public function supervisor() {
+      return $this->belongsTo('App\Teacher', 'supervisor_id');
+   }
+
+   /**
+    * Teachers supervised ny this teacher.
+    *
+    * @return Teacher array
+    */
+   public function teachers() {
+      return $this->hasMany('App\Teacher','id');
+   }
 }

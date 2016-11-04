@@ -15,7 +15,7 @@ use Auth;
 class ParentController extends Controller
 {
    public function index() {
-      return Parentt::all();
+      return Parentt::with('students')->get();
    }
 
    public function show(Parentt $parent) {

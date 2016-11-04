@@ -17,7 +17,7 @@ class TeacherController extends Controller
   }
 
   public function index() {
-    return Teacher::all();
+    return Teacher::with('courses')->get();
  }
 
  public function show(Teacher $teacher) {

@@ -12,7 +12,7 @@ class CreateParentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('parents', function (Blueprint $table) {
+        Schema::create('parentts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('first_name');
             $table->string('middle_name');
