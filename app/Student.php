@@ -15,6 +15,7 @@ class Student extends Model
 
   /**
    * school of this student
+   * 
    * @return School
    */
   public function school() {

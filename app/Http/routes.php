@@ -86,5 +86,13 @@ Route::resource('/parent', 'ParentController');
 */
 Route::resource('/student', 'StudentController');
 
+/*
+|--------------------------------------------------------------------------
+| employee routes
+|--------------------------------------------------------------------------
+|
+*/
+Route::resource('/employee', 'EmployeeController');
+
 
 // });

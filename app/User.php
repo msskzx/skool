@@ -23,20 +23,29 @@ class User extends Authenticatable
     ];
 
     /**
-     * parent associated with this user
+     * Parent associated with this user.
      *
-     * @return Parent
+     * @return Parentt
      */
     public function parent() {
        return $this->hasOne('App\Parentt', 'username', 'username');
     }
 
     /**
-     * student associated with this user
+     * Student associated with this user.
      *
-     * @return Parent
+     * @return Student
      */
     public function student() {
       return $this->hasOne('App\Student', 'username', 'username');
+    }
+
+    /**
+     * Student associated with this user.
+     *
+     * @return Student
+     */
+    public function employee() {
+      return $this->hasOne('App\Employee', 'username', 'username');
     }
 }

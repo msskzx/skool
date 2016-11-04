@@ -13,6 +13,11 @@ class MiddleLevel extends Model
    */
   protected $guarded = [];
 
+  /**
+   * school associated with this elementary level
+   *
+   * @return ElementaryLevel
+   */
   public function school() {
      return $this->belongsTo('App\School');
   }
