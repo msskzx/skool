@@ -21,4 +21,15 @@ class Teacher extends Model
    public function employee() {
       return $this->belongsTo('App\Employee', 'username', 'username');
    }
+
+   /**
+    * Courses associated with this teacher.
+    *
+    * @return Course array
+    */
+   public function courses() {
+      return $this->hasMany('App\Course');
+   }
+
+
 }

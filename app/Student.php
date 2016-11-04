@@ -41,13 +41,23 @@ class Student extends Model
   }
 
   /**
-  * Parents of this student.
-  *
-  * @return Parentt array
-  */
+   * Parents of this student.
+   *
+   * @return Parentt array
+   */
   public function parents() {
      return $this->belongsToMany('App\Parentt');;
   }
+
+  /**
+   * Courses associated with this student.
+   *
+   * @return Course array
+   */
+  public function courses() {
+     return $this->hasMany('App\Course');
+  }
+
 
 
 }
