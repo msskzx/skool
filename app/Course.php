@@ -28,6 +28,6 @@ class Course extends Model
    * @return Student array
    */
   public function students() {
-     return $this->belongsToMany('App\Student');
+     return $this->belongsToMany('App\Student')->withTimestamps();
   }
 }

@@ -28,7 +28,7 @@ class Parentt extends Model
      * @return Student array
      */
     public function students() {
-      return $this->belongsToMany('App\Student');
+      return $this->belongsToMany('App\Student')->withTimestamps();
     }
 
    /**
@@ -37,6 +37,6 @@ class Parentt extends Model
     * @return School array
     */
    public function schools() {
-      return $this->belongsToMany('App\School');
+      return $this->belongsToMany('App\School')->withPivot('review')->withTimestamps();
    }
 }

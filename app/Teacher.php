@@ -41,11 +41,11 @@ class Teacher extends Model
    }
 
    /**
-    * Teachers supervised ny this teacher.
+    * Teachers supervised by this teacher.
     *
     * @return Teacher array
     */
    public function teachers() {
-      return $this->hasMany('App\Teacher','id');
+      return $this->hasMany('App\Teacher','supervisor_id');
    }
 }

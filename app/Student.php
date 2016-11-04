@@ -37,7 +37,7 @@ class Student extends Model
    * @return User
    */
   public function clubs() {
-     return $this->belongsToMany('App\Club');;
+     return $this->belongsToMany('App\Club')->withTimestamps();
   }
 
   /**
@@ -46,7 +46,7 @@ class Student extends Model
    * @return Parentt array
    */
   public function parents() {
-     return $this->belongsToMany('App\Parentt');
+     return $this->belongsToMany('App\Parentt')->withTimestamps();
   }
 
   /**
@@ -55,6 +55,6 @@ class Student extends Model
    * @return Course array
    */
   public function courses() {
-     return $this->belongsToMany('App\Course');
+     return $this->belongsToMany('App\Course')->withTimestamps();
   }
 }

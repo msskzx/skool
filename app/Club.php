@@ -28,7 +28,7 @@ class Club extends Model
    * @return User
    */
   public function students() {
-     return $this->belongsToMany('App\Student');
+     return $this->belongsToMany('App\Student')->withTimestamps();
   }
 
   /**

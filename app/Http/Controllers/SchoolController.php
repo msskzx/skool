@@ -11,7 +11,7 @@ use App\School;
 class SchoolController extends Controller
 {
     public function index() {
-       return School::with('elementaryLevel','middleLevel', 'highLevel')->get();
+       return School::all();
     }
 
     public function show(School $school) {
