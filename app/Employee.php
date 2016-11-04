@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
-   /**
+ /**
   * The attributes that are not mass assignable.
   *
   * @var array
@@ -30,4 +30,24 @@ class Employee extends Model
  public function user() {
     return $this->belongsTo('App\User', 'username', 'username');
  }
+
+ /**
+  * User associated with this employee.
+  *
+  * @return User
+  */
+ public function teacher() {
+    return $this->belongsTo('App\User', 'username', 'username');
+ }
+
+ /**
+  * User associated with this employee.
+  *
+  * @return Teacher
+  */
+ public function teacher() {
+    return $this->hasOne('App\Teacher', 'username', 'username');
+ }
+
+
 }

@@ -10,7 +10,6 @@ use App\Student;
 
 use Auth;
 
-
 class StudentController extends Controller
 {
 

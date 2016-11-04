@@ -95,5 +95,13 @@ Route::resource('/student', 'StudentController');
 */
 Route::resource('/employee', 'EmployeeController');
 
+/*
+|--------------------------------------------------------------------------
+| teacher routes
+|--------------------------------------------------------------------------
+|
+*/
+Route::resource('/teacher', 'TeacherController');
+
 
 // });

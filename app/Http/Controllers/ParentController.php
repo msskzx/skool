@@ -10,6 +10,8 @@ use App\Parentt;
 
 use App\User;
 
+use Auth;
+
 class ParentController extends Controller
 {
    public function index() {
@@ -21,7 +23,8 @@ class ParentController extends Controller
    }
 
    public function create() {
-      return view('parent.create');
+      $parent =Auth::user();
+      return view('parent.create', compact('parent'));
    }
 
    public function store(Request $request) {

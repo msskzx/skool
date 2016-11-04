@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Employee;
 
+use Auth;
+
 class EmployeeController extends Controller
 {
    public function index() {
@@ -19,7 +21,8 @@ class EmployeeController extends Controller
  }
 
  public function create() {
-    return view('employee.create');
+    $employee =Auth::user();
+    return view('employee.create', compact('employee'));
  }
 
  public function store(Request $request) {
