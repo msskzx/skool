@@ -2,7 +2,7 @@
 
   <div class="form-group{{ $errors->has('school_id') ? ' has-error' : '' }}">
     <div class = "control-label col-md-1">
-      {!! Form::label('school_id','School ID:') !!}
+      {!! Form::label('school_id','School ID') !!}
     </div>
    <div class = "col-md-11">
      {!! Form::number('school_id', null, ['class' => 'form-control', 'placeholder' => 'Enter school ID', 'required']) !!}

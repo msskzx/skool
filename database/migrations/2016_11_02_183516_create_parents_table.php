@@ -23,7 +23,7 @@ class CreateParentsTable extends Migration
             $table->string('address');
             $table->integer('phone_number');
             $table->integer('mobile_number1');
-            $table->integer('mobile_number2');
+            $table->integer('mobile_number2')->nullable();
             $table->timestamps();
 
             $table->foreign('username')

@@ -24,8 +24,8 @@ class CreateStudentsTable extends Migration
             $table->integer('school_id')->unsigned()
                                         ->index()
                                         ->nullable();
-            $table->integer('grade');
-            $table->boolean('gender');
+            $table->integer('grade')->nullable();
+            $table->enum('gender', ['Male', 'Female']);
             $table->date('birth_date');
             $table->timestamps();
 
@@ -37,7 +37,8 @@ class CreateStudentsTable extends Migration
             $table->foreign('school_id')
                   ->references('id')
                   ->on('schools')
-                  ->onDelete('set null');
+                  ->onDelete('set null')
+                  ->onUpdate('cascade');
         });
     }
 

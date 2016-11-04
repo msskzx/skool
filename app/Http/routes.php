@@ -78,5 +78,13 @@ Route::resource('/club', 'ClubController');
 */
 Route::resource('/parent', 'ParentController');
 
+/*
+|--------------------------------------------------------------------------
+| student routes
+|--------------------------------------------------------------------------
+|
+*/
+Route::resource('/student', 'StudentController');
+
 
 // });

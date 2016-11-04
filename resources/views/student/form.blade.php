@@ -70,57 +70,71 @@
     </div>
   </div>
 
-  <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+  <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
-      {!! Form::label('address','Address') !!}
+      {!! Form::label('gender','Gender') !!}
     </div>
    <div class = "col-md-10">
-     {!! Form::text('address', null, ['class' => 'form-control', 'placeholder' => 'Enter address', 'required']) !!}
-     @if ($errors->has('address'))
+     {!! Form::select('gender',['Male' => 'Male', 'Female' => 'Female'], null, ['class' => 'form-control', 'placeholder' => 'gender', 'required']) !!}
+     @if ($errors->has('gender'))
          <span class="help-block">
-             <strong>{{ $errors->first('address') }}</strong>
+             <strong>{{ $errors->first('gender') }}</strong>
          </span>
      @endif
     </div>
   </div>
 
-  <div class="form-group{{ $errors->has('phone_number1') ? ' has-error' : '' }}">
+  <div class="form-group{{ $errors->has('SSN') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
-      {!! Form::label('phone_number','Phone Number') !!}
+      {!! Form::label('SSN','SSN') !!}
     </div>
    <div class = "col-md-10">
-     {!! Form::number('phone_number', null, ['class' => 'form-control', 'placeholder' => 'Enter your phone number']) !!}
-     @if ($errors->has('phone_number'))
+     {!! Form::number('SSN', null, ['class' => 'form-control', 'placeholder' => 'social security number', 'required']) !!}
+     @if ($errors->has('SSN'))
          <span class="help-block">
-             <strong>{{ $errors->first('phone_number') }}</strong>
+             <strong>{{ $errors->first('SSN') }}</strong>
          </span>
      @endif
     </div>
   </div>
 
-  <div class="form-group{{ $errors->has('mobile_number1') ? ' has-error' : '' }}">
+  <div class="form-group{{ $errors->has('school_id') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
-      {!! Form::label('mobile_number1','Mobile Number 1') !!}
+      {!! Form::label('school_id','School ID') !!}
     </div>
    <div class = "col-md-10">
-     {!! Form::number('mobile_number1', null, ['class' => 'form-control', 'placeholder' => 'Enter your mobile number', 'required']) !!}
-     @if ($errors->has('mobile_number1'))
+     {!! Form::number('school_id', 1, ['class' => 'form-control', 'placeholder' => 'school ID... if not yet enrolled keep it 1', 'required']) !!}
+     @if ($errors->has('school_id'))
          <span class="help-block">
-             <strong>{{ $errors->first('mobile_number1') }}</strong>
+             <strong>{{ $errors->first('school_id') }}</strong>
          </span>
      @endif
     </div>
   </div>
 
-  <div class="form-group{{ $errors->has('mobile_number2') ? ' has-error' : '' }}">
+  <div class="form-group{{ $errors->has('grade') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
-      {!! Form::label('mobile_number2','Mobile Number 2') !!}
+      {!! Form::label('grade','Grade') !!}
     </div>
    <div class = "col-md-10">
-     {!! Form::number('mobile_number2', null, ['class' => 'form-control', 'placeholder' => 'Enter your mobile number']) !!}
-     @if ($errors->has('mobile_number2'))
+     {!! Form::selectRange('grade', 1, 12, null, ['class' => 'form-control', 'placeholder' => 'grade']) !!}
+     @if ($errors->has('grade'))
          <span class="help-block">
-             <strong>{{ $errors->first('mobile_number2') }}</strong>
+             <strong>{{ $errors->first('grade') }}</strong>
+         </span>
+     @endif
+    </div>
+  </div>
+
+  <div class="form-group{{ $errors->has('birth_date') ? ' has-error' : '' }}">
+    <div class = "control-label col-md-2">
+      {!! Form::label('birth_date','Birth Date') !!}
+    </div>
+  <div class = "col-md-10">
+     {!! Form::date('birth_date', \Carbon\Carbon::now(), ['class' => 'form-control', 'placeholder' => 'birth_date']) !!}
+     @if ($errors->has('birth_date'))
+         <span class="help-block">
+             <strong>{{ $errors->first('birth_date') }}</strong>
          </span>
      @endif
     </div>

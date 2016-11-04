@@ -8,6 +8,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
+use Illuminate\Http\Request;
+
+use Auth;
+
 class AuthController extends Controller
 {
     /*
@@ -54,6 +58,30 @@ class AuthController extends Controller
             'role' => 'in:Student,Parent,Employee|required'
         ]);
     }
+
+    /**
+     * handle login post request
+     * @param  Request $request
+     * @return view
+     */
+    public function login(Request $request) {
+      $this->validate($request, [
+         'username' => 'required',
+         'password' => 'required'
+      ]);
+
+      $credentials = $request->only('username', 'password');
+
+      if (Auth::attempt($credentials, $request->has('remember'))) {
+         return redirect()->intended($this->redirectPath());
+      }
+
+      return redirect('login')
+                ->withInput($request->only('username', 'remember'))
+                ->withErrors([
+                   'username' => $this->getFailedLoginMessage()]
+                );;
+  }
 
     /**
      * Create a new user instance after a valid registration.

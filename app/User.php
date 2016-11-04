@@ -30,4 +30,13 @@ class User extends Authenticatable
     public function parent() {
        return $this->hasOne('App\Parentt', 'username', 'username');
     }
+
+    /**
+     * student associated with this user
+     *
+     * @return Parent
+     */
+    public function student() {
+      return $this->hasOne('App\Student', 'username', 'username');
+    }
 }

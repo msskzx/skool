@@ -25,5 +25,13 @@ class School extends Model
       return $this->hasOne('App\HighLevel');
    }
 
+   /**
+    * get all students in this school
+    * 
+    * @return Student array
+    */
+   public function students() {
+      return $this->hasMany('App\Student');
+   }
 
 }

@@ -25,12 +25,8 @@ class ParentController extends Controller
    }
 
    public function store(Request $request) {
-      $id = User::where('username', $request['username']);
-      if($id = null)
-         return back();
-
       $this->validate($request, [
-        'username' => 'exists:users|required|unique:parents|unique:users,username'.$id
+        'username' => 'exists:users|required|unique:parents'
       ]);
 
       Parentt::create($request->all());
@@ -44,8 +40,7 @@ class ParentController extends Controller
 
    public function update(Request $request, Parentt $parent) {
       $this->validate($request, [
-         'username' => 'exists:users|required|unique:users,username,'
-                        .$parent->id.'|unique:parents,username,'.$parent->id
+         'username' => 'exists:users|required|unique:users,username,'.$parent->id
       ]);
 
       $parent->update($request->all());
@@ -54,7 +49,7 @@ class ParentController extends Controller
    }
 
    public function destroy(Parentt $parent) {
-     $user = User::find($parent->username);
+     $user = User::findOrFail($parent->username);
      $user->delete();
 
      return $this->index();

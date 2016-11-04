@@ -2,7 +2,7 @@
 
   <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
-      {!! Form::label('name','Name:') !!}
+      {!! Form::label('name','Name') !!}
     </div>
    <div class = "col-md-10">
      {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter name', 'required']) !!}
@@ -16,7 +16,7 @@
 
   <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
-      {!! Form::label('email','E-mail:') !!}
+      {!! Form::label('email','E-mail') !!}
     </div>
    <div class = "col-md-10">
      {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Enter email', 'required']) !!}
@@ -30,7 +30,7 @@
 
   <div class="form-group{{ $errors->has('main_language') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
-      {!! Form::label('main_language','Main Language:') !!}
+      {!! Form::label('main_language','Main Language') !!}
     </div>
    <div class = "col-md-10">
      {!! Form::text('main_language', null, ['class' => 'form-control', 'placeholder' => 'Enter main language', 'required']) !!}
@@ -44,7 +44,7 @@
 
   <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
-      {!! Form::label('address','Address:') !!}
+      {!! Form::label('address','Address') !!}
     </div>
    <div class = "col-md-10">
      {!! Form::text('address', null, ['class' => 'form-control', 'placeholder' => 'Enter address', 'required']) !!}
@@ -58,7 +58,7 @@
 
   <div class="form-group{{ $errors->has('phone_number1') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
-      {!! Form::label('phone_number1','Phone Number 1:') !!}
+      {!! Form::label('phone_number1','Phone Number 1') !!}
     </div>
    <div class = "col-md-10">
      {!! Form::number('phone_number1', null, ['class' => 'form-control', 'placeholder' => 'Enter your phone number', 'required']) !!}
@@ -72,7 +72,7 @@
 
   <div class="form-group{{ $errors->has('phone_number2') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
-      {!! Form::label('phone_number2','Phone Number 2:') !!}
+      {!! Form::label('phone_number2','Phone Number 2') !!}
     </div>
    <div class = "col-md-10">
      {!! Form::number('phone_number2', null, ['class' => 'form-control', 'placeholder' => 'Enter your phone number', 'required']) !!}
@@ -86,7 +86,7 @@
 
   <div class="form-group{{ $errors->has('fees') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
-      {!! Form::label('fees','Fees:') !!}
+      {!! Form::label('fees','Fees') !!}
     </div>
    <div class = "col-md-10">
      {!! Form::number('fees', null, ['class' => 'form-control', 'placeholder' => 'Enter fees', 'required']) !!}
@@ -100,7 +100,7 @@
 
   <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
-      {!! Form::label('type','Type:') !!}
+      {!! Form::label('type','Type') !!}
     </div>
    <div class = "col-md-10">
      {!! Form::text('type', null, ['class' => 'form-control', 'placeholder' => 'Enter school\'s type', 'required']) !!}
@@ -114,7 +114,7 @@
 
   <div class="form-group{{ $errors->has('general_info') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
-      {!! Form::label('general_info','General Info:') !!}
+      {!! Form::label('general_info','General Info') !!}
     </div>
    <div class = "col-md-10">
      {!! Form::text('general_info', null, ['class' => 'form-control', 'placeholder' => 'Enter general info', 'required']) !!}
@@ -128,7 +128,7 @@
 
   <div class="form-group{{ $errors->has('mission') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
-      {!! Form::label('mission','Mission:') !!}
+      {!! Form::label('mission','Mission') !!}
     </div>
    <div class = "col-md-10">
      {!! Form::text('mission', null, ['class' => 'form-control', 'placeholder' => 'Enter school\'s mission', 'required']) !!}
@@ -142,7 +142,7 @@
 
   <div class="form-group{{ $errors->has('vision') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
-      {!! Form::label('vision','Vision:') !!}
+      {!! Form::label('vision','Vision') !!}
     </div>
    <div class = "col-md-10">
      {!! Form::text('vision', null, ['class' => 'form-control', 'placeholder' => 'Enter school\'s vision', 'required']) !!}
