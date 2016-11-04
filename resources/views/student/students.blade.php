@@ -1,4 +1,5 @@
 <div class="jumbotron">
+   <h2>Members</h2>
    <ul>
       @foreach ($students as $student)
       <li>

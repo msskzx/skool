@@ -14,7 +14,8 @@ class Club extends Model
   protected $guarded = [];
 
   /**
-   * High level associated with this club
+   * High level associated with this club.
+   *
    * @return User
    */
   public function highLevel() {
@@ -22,10 +23,22 @@ class Club extends Model
   }
 
   /**
-   * Clubs associated with this student
+   * Clubs associated with this club.
+   *
    * @return User
    */
   public function students() {
      return $this->belongsToMany('App\Student');
   }
+
+  /**
+   * School associated with this club.
+   *
+   * @return School
+   */
+  public function school(Club $club) {
+     $high_level = HighLevel::find($club->high_level_id);
+     return $high_level->school;
+  }
+
 }

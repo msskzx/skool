@@ -27,7 +27,8 @@ class ClubController extends Controller
     }
 
     public function show(Club $club) {
-       return view('club.show', compact('club'));
+       $school = $club->school($club);
+       return view('club.show', compact('club','school'));
     }
 
     public function create() {
@@ -75,7 +76,9 @@ class ClubController extends Controller
     }
 
     public function join(Club $club) {
-      $student = Student::where('username', Auth::user()->username)->first();
+      $user = Auth::user();
+      
+      $student = Student::where('username', $user->username)->first();
 
       $club->students()->attach($student->id);
 

@@ -15,7 +15,10 @@
                <i class="fa fa-plus" aria-hidden="true"></i>Join</button>
             {!! Form::close() !!}
          </div>
-    </div>
+     </div>
+
+     <hr>
+     <h2><a href = {{ url('school', $school->id)}}>{{ $school->name }}</h2>
     </div>
 
     @unless(count($club->students) === 0)

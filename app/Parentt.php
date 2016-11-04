@@ -37,4 +37,13 @@ class Parentt extends Model
     public function user() {
        return $this->belongsTo('App\User', 'username', 'username');
     }
+
+    /**
+     * Students of this parent.
+     *
+     * @return Student array
+     */
+    public function students() {
+      return $this->belongsToMany('App\Student');;
+    }
 }

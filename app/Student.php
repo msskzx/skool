@@ -24,7 +24,7 @@ class Student extends Model
 
   /**
    * User associated with this student.
-   * 
+   *
    * @return User
    */
   public function user() {
@@ -38,6 +38,15 @@ class Student extends Model
    */
   public function clubs() {
      return $this->belongsToMany('App\Club');;
+  }
+
+  /**
+  * Parents of this student.
+  *
+  * @return Parentt array
+  */
+  public function parents() {
+     return $this->belongsToMany('App\Parentt');;
   }
 
 
