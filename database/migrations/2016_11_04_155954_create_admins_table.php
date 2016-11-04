@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTeachersTable extends Migration
+class CreateAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,17 +12,16 @@ class CreateTeachersTable extends Migration
      */
     public function up()
     {
-        Schema::create('teachers', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->increments('id');
             $table->string('username')->index()
                                       ->unique();
-            $table->integer('years_of_exp');
             $table->timestamps();
 
             $table->foreign('username')
-               ->references('username')
-               ->on('employees')
-               ->onDelete('cascade');
+                  ->references('username')
+                  ->on('employees')
+                  ->onDelete('cascade');
         });
     }
 
@@ -33,6 +32,6 @@ class CreateTeachersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('teachers');
+        Schema::drop('admins');
     }
 }

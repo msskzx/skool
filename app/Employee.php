@@ -32,16 +32,7 @@ class Employee extends Model
  }
 
  /**
-  * User associated with this employee.
-  *
-  * @return User
-  */
- public function teacher() {
-    return $this->belongsTo('App\User', 'username', 'username');
- }
-
- /**
-  * User associated with this employee.
+  * Teacher associated with this employee.
   *
   * @return Teacher
   */
@@ -49,5 +40,12 @@ class Employee extends Model
     return $this->hasOne('App\Teacher', 'username', 'username');
  }
 
-
+ /**
+  * Admin associated with this employee.
+  *
+  * @return Admin
+  */
+ public function admin() {
+    return $this->hasOne('App\Admin', 'username', 'username');
+ }
 }

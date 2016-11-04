@@ -104,4 +104,12 @@ Route::resource('/employee', 'EmployeeController');
 Route::resource('/teacher', 'TeacherController');
 
 
+/*
+|--------------------------------------------------------------------------
+| admin routes
+|--------------------------------------------------------------------------
+|
+*/
+Route::resource('/admin', 'AdminController');
+
 // });
