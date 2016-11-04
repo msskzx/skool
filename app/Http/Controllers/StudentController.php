@@ -23,9 +23,14 @@ class StudentController extends Controller
   }
 
   public function store(Request $request) {
+     if($request['school_id'] == null) {
+        $request['school_id'] = 1;
+     }
+
      $this->validate($request, [
-      'username' => 'exists:users|required|unique:students',
-      'SSN' => 'required|unique:students'
+        'username' => 'exists:users|required|unique:students',
+        'SSN' => 'required|unique:students',
+        'school_id' => 'exists:schools,id'
      ]);
 
      Student::create($request->all());
@@ -38,9 +43,14 @@ class StudentController extends Controller
   }
 
   public function update(Request $request, Student $student) {
+     if($request['school_id'] == null) {
+        $request['school_id'] = 1;
+     }
+
      $this->validate($request, [
-        'username' => 'exists:users|required|unique:users,username,'.$student->id,
-        'SSN' => 'required|unique:students,SSN,'.$student->id
+        'username' => 'exists:users|required|unique:students,username,'.$student->id,
+        'SSN' => 'required|unique:students,SSN,'.$student->id,
+        'school_id' => 'exists:schools,id'
      ]);
 
      $student->update($request->all());

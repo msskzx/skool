@@ -40,7 +40,7 @@ class ParentController extends Controller
 
    public function update(Request $request, Parentt $parent) {
       $this->validate($request, [
-         'username' => 'exists:users|required|unique:users,username,'.$parent->id
+         'username' => 'exists:users|required|unique:parents,username,'.$parent->id
       ]);
 
       $parent->update($request->all());
