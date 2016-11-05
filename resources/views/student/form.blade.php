@@ -131,7 +131,7 @@
       {!! Form::label('birth_date','Birth Date') !!}
     </div>
   <div class = "col-md-10">
-     {!! Form::date('birth_date', '2000-02-12', ['class' => 'form-control', 'placeholder' => 'birth_date']) !!}
+     {!! Form::date('birth_date', null, ['class' => 'form-control', 'placeholder' => 'birth_date']) !!}
      @if ($errors->has('birth_date'))
          <span class="help-block">
              <strong>{{ $errors->first('birth_date') }}</strong>

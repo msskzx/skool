@@ -16,5 +16,16 @@ class ParenttsTableSeeder extends Seeder
           'email' => 'msskzx@msskzx.com',
           'username' => 'msskzx'
       ]);
+
+      DB::table('parentt_school')->insert([
+          'school_id' => '2',
+          'parentt_id' => '1',
+          'review' => 'nice'
+      ]);
+
+      DB::table('parentt_student')->insert([
+          'student_id' => '1',
+          'parentt_id' => '1'
+      ]);
     }
 }

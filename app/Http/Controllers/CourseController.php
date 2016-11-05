@@ -11,7 +11,7 @@ use App\Course;
 class CourseController extends Controller
 {
    public function index() {
-      return Course::with('students')->get();
+      return Course::with('coursesRequiring')->get();
    }
 
    public function show(Course $course) {

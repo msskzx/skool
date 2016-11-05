@@ -48,4 +48,31 @@ class Course extends Model
   public function assignments() {
      return $this->hasMany('App\Assignment');
   }
+
+  /**
+   * Prerequisites for this course.
+   *
+   * @return Student array
+   */
+  public function prerequisites() {
+     return $this->belongsToMany('App\Course', 'course_course', 'course_id', 'req_course_id')->withTimestamps();
+  }
+
+  /**
+   * Courses requiring this course.
+   *
+   * @return Student array
+   */
+  public function coursesRequiring() {
+     return $this->belongsToMany('App\Course', 'course_course', 'req_course_id', 'course_id')->withTimestamps();
+  }
+
+  /**
+   * School offering this course.
+   *
+   * @return School
+   */
+  public function school() {
+     return $this->belongsTo('App\School');
+  }
 }

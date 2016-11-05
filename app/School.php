@@ -85,4 +85,12 @@ class School extends Model
       return $this->belongsToMany('App\Parentt','school_student')->withPivot('accepted', 'student_id')->withTimestamps();
    }
 
+   /**
+    * Courses offered by this school.
+    *
+    * @return Courses array
+    */
+   public function courses() {
+      return $this->hasMany('App\Course');
+   }
 }

@@ -16,15 +16,23 @@ class CreateCoursesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('code');
+            $table->string('grade');
             $table->mediumtext('description');
             $table->integer('teacher_id')->unsigned()
                                          ->index();
+            $table->integer('school_id')->unsigned()
+                                        ->index();
             $table->timestamps();
 
             $table->foreign('teacher_id')
-               ->references('id')
-               ->on('teachers')
-               ->onDelete('cascade');
+                  ->references('id')
+                  ->on('teachers')
+                  ->onDelete('cascade');
+
+            $table->foreign('school_id')
+                  ->references('id')
+                  ->on('schools')
+                  ->onDelete('cascade');
         });
     }
 

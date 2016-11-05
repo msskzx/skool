@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Carbon\Carbon;
+
 class Student extends Model
 {
  /**
@@ -101,5 +103,15 @@ class Student extends Model
    */
   public function reports() {
      return $this->hasMany('App\Report');
+  }
+
+  /**
+   * Get the age of a student.
+   *
+   * @param  Student $student
+   * @return int
+   */
+  public function getAgeAttribute() {
+      return Carbon::parse($this->birth_date)->age;
   }
 }
