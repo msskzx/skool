@@ -14,8 +14,13 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
            $table->increments('id');
-           $table->integer('student_id')->unsigned();
-           $table->integer('course_id')->unsigned();
+           $table->integer('student_id')->unsigned()
+                                        ->index();
+           $table->integer('course_id')->unsigned()
+                                       ->index();
+           $table->integer('teacher_id')->unsigned()
+                                        ->index()
+                                        ->nullable();
            $table->string('title');
            $table->mediumtext('question');
            $table->mediumtext('answer');
@@ -25,6 +30,11 @@ class CreateQuestionsTable extends Migration
              ->references('id')
              ->on('courses')
              ->onDelete('cascade');
+
+          $table->foreign('teacher_id')
+           ->references('id')
+           ->on('teachers')
+           ->onDelete('set null');
 
            $table->foreign('student_id')
              ->references('id')

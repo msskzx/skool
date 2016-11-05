@@ -21,4 +21,13 @@ class Admin extends Model
   public function employee() {
      return $this->belongsTo('App\Employee', 'username', 'username');
   }
+
+  /**
+   * Activties posted and assigned by this admin.
+   *
+   * @return Activitie array
+   */
+  public function activities() {
+     return $this->hasMany('App\Activite');
+  }
 }

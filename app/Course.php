@@ -30,4 +30,22 @@ class Course extends Model
   public function students() {
      return $this->belongsToMany('App\Student')->withTimestamps();
   }
+
+  /**
+   * Questions associated with this course.
+   *
+   * @return Question array
+   */
+  public function questions() {
+     return $this->hasMany('App\Question');
+  }
+
+  /**
+  * Assignments associated with this course.
+  *
+  * @return Assignment array
+  */
+  public function assignments() {
+     return $this->hasMany('App\Assignment');
+  }
 }

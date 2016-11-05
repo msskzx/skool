@@ -48,4 +48,40 @@ class Teacher extends Model
    public function teachers() {
       return $this->hasMany('App\Teacher','supervisor_id');
    }
+
+   /**
+    * Activties assigned to this teacher.
+    *
+    * @return Activitie array
+    */
+   public function activities() {
+      return $this->hasMany('App\Activite');
+   }
+
+   /**
+    * Parents who rated this teacher.
+    *
+    * @return Parentt array
+    */
+   public function parents() {
+      return $this->belongsToMany('App\Parentt')->withPivot('rate')->withTimestamps();
+   }
+
+   /**
+    * Questions answered by this teacher.
+    *
+    * @return Question array
+    */
+   public function questions() {
+      return $this->hasMany('App\Question');
+   }
+
+   /**
+    * Assignments posted by this teacher.
+    *
+    * @return Assignment array
+    */
+   public function assignments() {
+      return $this->hasMany('App\Assignment');
+   }
 }

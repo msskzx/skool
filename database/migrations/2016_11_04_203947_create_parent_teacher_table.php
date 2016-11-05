@@ -13,8 +13,10 @@ class CreateParentTeacherTable extends Migration
     public function up()
     {
         Schema::create('parentt_teacher', function (Blueprint $table) {
-           $table->integer('parentt_id')->unsigned();
-           $table->integer('teacher_id')->unsigned();
+           $table->integer('parentt_id')->unsigned()
+                                        ->index();
+           $table->integer('teacher_id')->unsigned()
+                                        ->index();
            $table->integer('rate');
            $table->timestamps();
 

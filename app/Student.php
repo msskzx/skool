@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-   /**
+ /**
    * The attributes that are not mass assignable.
    *
    * @var array
@@ -56,5 +56,32 @@ class Student extends Model
    */
   public function courses() {
      return $this->belongsToMany('App\Course')->withTimestamps();
+  }
+
+ /**
+  * Activties joined by this student.
+  *
+  * @return Activitie array
+  */
+  public function activities() {
+     return $this->belongsToMany('App\Activite')->withPivot('accepted')->withTimestamps();
+  }
+
+  /**
+   * Questions asked by this student.
+   *
+   * @return Question array
+   */
+  public function questions() {
+     return $this->hasMany('App\Question');
+  }
+
+  /**
+   * Assignments solved by this student.
+   *
+   * @return Assignment array
+   */
+  public function assignments() {
+     return $this->belongsToMany('App\Assignment')->withPivot('grade', 'solution')->withTimestamps();
   }
 }
