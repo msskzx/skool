@@ -66,4 +66,23 @@ class School extends Model
    public function parents() {
       return $this->belongsToMany('App\Parentt')->withPivot('review')->withTimestamps();
    }
+
+   /**
+    * Students who applied for this school.
+    *
+    * @return Student array
+    */
+   public function students() {
+      return $this->belongsToMany('App\Student')->withPivot('accepted', 'parent_id')->withTimestamps();
+   }
+
+   /**
+    * Parents who applied for their children to join this school.
+    *
+    * @return Parentt array
+    */
+   public function parentsApplied() {
+      return $this->belongsToMany('App\Parentt','school_student')->withPivot('accepted', 'student_id')->withTimestamps();
+   }
+
 }

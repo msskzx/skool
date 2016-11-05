@@ -43,9 +43,18 @@ class Parentt extends Model
    /**
     * Teachers reviewed by this parentt.
     *
-    * @return Parentt array
+    * @return Teacher array
     */
-   public function parents() {
-      return $this->belongsToMany('App\Parentt')->withPivot('rate')->withTimestamps();
+   public function teachers() {
+      return $this->belongsToMany('App\Teacher')->withPivot('rate')->withTimestamps();
+   }
+
+   /**
+    * Schools which this parent applied for his children to join.
+    *
+    * @return School array
+    */
+   public function schoolsApplied() {
+      return $this->belongsToMany('App\School','school_student')->withPivot('accepted', 'student_id')->withTimestamps();
    }
 }

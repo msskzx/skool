@@ -14,7 +14,7 @@ class Student extends Model
   protected $guarded = [];
 
   /**
-   * School associated with this student.
+   * School which accepted this student.
    *
    * @return School
    */
@@ -83,5 +83,14 @@ class Student extends Model
    */
   public function assignments() {
      return $this->belongsToMany('App\Assignment')->withPivot('grade', 'solution')->withTimestamps();
+  }
+
+  /**
+   * Schools which this student applied to join.
+   *
+   * @return School
+   */
+  public function schools() {
+     return $this->belongsToMany('App\School')->withPivot('accepted', 'parent_id')->withTimestamps();
   }
 }
