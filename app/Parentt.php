@@ -36,7 +36,7 @@ class Parentt extends Model
     *
     * @return School array
     */
-   public function schools() {
+   public function schoolsReviewed() {
       return $this->belongsToMany('App\School')->withPivot('review')->withTimestamps();
    }
 
@@ -56,5 +56,14 @@ class Parentt extends Model
     */
    public function schoolsApplied() {
       return $this->belongsToMany('App\School','school_student')->withPivot('accepted', 'student_id')->withTimestamps();
+   }
+
+   /**
+    * Reports commented on by this parent.
+    *
+    * @return Report array
+    */
+   public function reports() {
+      return $this->belongsToMany('App\Report')->withPivot('teacher_comment', 'parent_comment')->withTimestamps();
    }
 }

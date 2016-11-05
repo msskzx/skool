@@ -17,7 +17,7 @@ class CreateSchoolStudentTable extends Migration
                                         ->index();
             $table->integer('student_id')->unsigned()
                                          ->index();
-            $table->integer('parent_id')->unsigned()
+            $table->integer('parentt_id')->unsigned()
                                          ->index()
                                          ->nullable();
             $table->boolean('accepted');
@@ -35,9 +35,9 @@ class CreateSchoolStudentTable extends Migration
                   ->on('students')
                   ->onDelete('cascade');
 
-            $table->foreign('parent_id')
+            $table->foreign('parentt_id')
                   ->references('id')
-                  ->on('parents')
+                  ->on('parentts')
                   ->onDelete('set null');
         });
     }

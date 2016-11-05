@@ -91,6 +91,15 @@ class Student extends Model
    * @return School
    */
   public function schools() {
-     return $this->belongsToMany('App\School')->withPivot('accepted', 'parent_id')->withTimestamps();
+     return $this->belongsToMany('App\School')->withPivot('accepted', 'parentt_id')->withTimestamps();
+  }
+
+  /**
+   * Reports associated with this student.
+   *
+   * @return Report array
+   */
+  public function reports() {
+     return $this->hasMany('App\Report');
   }
 }

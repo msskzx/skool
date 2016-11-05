@@ -41,7 +41,7 @@ class School extends Model
    }
 
    /**
-    * Students associated with this school.
+    * Students attending this school.
     *
     * @return Student array
     */
@@ -72,8 +72,8 @@ class School extends Model
     *
     * @return Student array
     */
-   public function students() {
-      return $this->belongsToMany('App\Student')->withPivot('accepted', 'parent_id')->withTimestamps();
+   public function studentsApplied() {
+      return $this->belongsToMany('App\Student')->withPivot('accepted', 'parentt_id')->withTimestamps();
    }
 
    /**
