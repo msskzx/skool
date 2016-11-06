@@ -30,4 +30,13 @@ class Admin extends Model
   public function activities() {
      return $this->hasMany('App\Activite');
   }
+
+  /**
+   * Announcements posted and assigned by this admin.
+   *
+   * @return Announcement array
+   */
+  public function announcements() {
+     return $this->hasMany('App\Announcement');
+  }
 }

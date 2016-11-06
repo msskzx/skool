@@ -12,18 +12,21 @@ class ClubsTableSeeder extends Seeder
     public function run()
     {
       DB::table('clubs')->insert([
-          'name' => 'first club',
-          'high_level_id' => '1'
+          'name' => 'First club',
+          'high_level_id' => '1',
+          'purpose' => 'IDK yet'
       ]);
 
       DB::table('clubs')->insert([
-          'name' => 'second club',
-          'high_level_id' => '1'
+          'name' => 'Second club',
+          'high_level_id' => '1',
+          'purpose' => 'IDK yet'
       ]);
 
       DB::table('clubs')->insert([
-          'name' => 'third club',
-          'high_level_id' => '1'
+          'name' => 'Third club',
+          'high_level_id' => '1',
+          'purpose' => 'IDK yet'
       ]);
     }
 }

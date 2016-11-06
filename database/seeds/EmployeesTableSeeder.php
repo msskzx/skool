@@ -11,11 +11,11 @@ class EmployeesTableSeeder extends Seeder
      */
     public function run()
     {
-      // DB::table('employees')->insert([
-      //     'username' => 'msskz',
-      //     'first_name' => 'Dragonk',
-      //     'email' => 'msskz@msskz.com'
-      // ]);
+      DB::table('employees')->insert([
+          'username' => 'msskz',
+          'first_name' => 'Dragonk',
+          'email' => 'msskz@msskz.com'
+      ]);
 
       DB::table('employees')->insert([
           'username' => 'empl',

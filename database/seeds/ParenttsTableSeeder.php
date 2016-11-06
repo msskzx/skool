@@ -22,10 +22,5 @@ class ParenttsTableSeeder extends Seeder
           'parentt_id' => '1',
           'review' => 'nice'
       ]);
-
-      DB::table('parentt_student')->insert([
-          'student_id' => '1',
-          'parentt_id' => '1'
-      ]);
     }
 }

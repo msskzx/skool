@@ -84,4 +84,13 @@ class Teacher extends Model
    public function assignments() {
       return $this->hasMany('App\Assignment');
    }
+
+   /**
+    * Reports written by this teacher.
+    *
+    * @return Report array
+    */
+   public function reports() {
+      return $this->hasMany('App\Report');
+   }
 }

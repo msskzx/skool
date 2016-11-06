@@ -30,4 +30,13 @@ class Report extends Model
     public function parents() {
        return $this->belongsToMany('App\Parentt')->withPivot('teacher_comment', 'parent_comment')->withTimestamps();
     }
+
+    /**
+     * Teacher associated with this report.
+     *
+     * @return Teacher
+     */
+    public function teacher() {
+       return $this->belongsTo('App\Teacher');
+    }
 }

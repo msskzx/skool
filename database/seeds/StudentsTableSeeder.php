@@ -15,5 +15,10 @@ class StudentsTableSeeder extends Seeder
          'first_name' => 'Muhammad',
           'username' => 'mssk'
       ]);
+
+      DB::table('parentt_student')->insert([
+          'student_id' => '1',
+          'parentt_id' => '1'
+      ]);
     }
 }

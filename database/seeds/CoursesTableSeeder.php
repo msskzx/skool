@@ -13,12 +13,14 @@ class CoursesTableSeeder extends Seeder
     {
       DB::table('courses')->insert([
           'name' => 'DPS101',
-          'teacher_id' => '1'
+          'teacher_id' => '1',
+          'school_id' => '1'
       ]);
 
       DB::table('courses')->insert([
           'name' => 'DPS301',
-          'teacher_id' => '2'
+          'teacher_id' => '2',
+          'school_id' => '1'
       ]);
 
       DB::table('course_course')->insert([

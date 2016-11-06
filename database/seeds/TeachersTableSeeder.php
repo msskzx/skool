@@ -11,21 +11,15 @@ class TeachersTableSeeder extends Seeder
      */
     public function run()
     {
-      // DB::table('teachers')->insert([
-      //     'years_of_exp' => '1',
-      //     'username' => 'msskz'
-      // ]);
-      //
-      // DB::table('teachers')->insert([
-      //     'years_of_exp' => '16',
-      //     'username' => 'boss'
-      // ]);
-
-      DB::table('teachers')
-           ->where('id', 1)
-           ->update([
-             'supervisor_id' => 2
+      DB::table('teachers')->insert([
+         'years_of_exp' => '16',
+         'username' => 'boss'
       ]);
 
+      DB::table('teachers')->insert([
+          'years_of_exp' => '1',
+          'username' => 'msskz',
+          'supervisor_id' => '2'
+      ]);
     }
 }
