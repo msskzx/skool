@@ -14,6 +14,10 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
            $table->increments('id');
+           $table->string('title');
+           $table->mediumtext('question');
+           $table->mediumtext('answer');
+           $table->timestamps();
            $table->integer('student_id')->unsigned()
                                         ->index();
            $table->integer('course_id')->unsigned()
@@ -21,10 +25,6 @@ class CreateQuestionsTable extends Migration
            $table->integer('teacher_id')->unsigned()
                                         ->index()
                                         ->nullable();
-           $table->string('title');
-           $table->mediumtext('question');
-           $table->mediumtext('answer');
-           $table->timestamps();
 
            $table->foreign('course_id')
              ->references('id')

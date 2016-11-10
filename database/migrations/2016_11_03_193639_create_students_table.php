@@ -19,21 +19,21 @@ class CreateStudentsTable extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->integer('SSN')->unique();
-            $table->string('username')->unique()
-                                      ->index();
-            $table->integer('school_id')->unsigned()
-                                        ->index()
-                                        ->nullable();
             $table->integer('grade')->nullable();
             $table->enum('gender', ['Male', 'Female']);
             $table->date('birth_date');
             $table->timestamps();
+            $table->integer('school_id')->unsigned()
+                                        ->index()
+                                        ->nullable();
+            $table->string('username')->unique()
+                                      ->index()
+                                      ->nullable();
 
             $table->foreign('username')
                   ->references('username')
                   ->on('users')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
+                  ->onDelete('set null');
 
             $table->foreign('school_id')
                   ->references('id')

@@ -28,7 +28,7 @@ class Admin extends Model
    * @return Activitie array
    */
   public function activities() {
-     return $this->hasMany('App\Activite');
+     return $this->hasMany('App\Activity');
   }
 
   /**
@@ -38,5 +38,13 @@ class Admin extends Model
    */
   public function announcements() {
      return $this->hasMany('App\Announcement');
+  }
+
+  // TODO
+  public function getSalaryAttribute() {
+     if(strcmp($this->employee->school->type, 'National')===0) {
+       return $this->salary = 3000;
+     }
+     return $this->salary = 5000;
   }
 }

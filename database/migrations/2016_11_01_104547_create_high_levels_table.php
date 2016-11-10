@@ -14,10 +14,10 @@ class CreateHighLevelsTable extends Migration
     {
         Schema::create('high_levels', function (Blueprint $table) {
            $table->increments('id');
+           $table->timestamps();
            $table->integer('school_id')->unsigned()
                                        ->unique()
                                        ->index();
-           $table->timestamps();
 
            $table->foreign('school_id')
                  ->references('id')

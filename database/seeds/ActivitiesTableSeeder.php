@@ -17,8 +17,8 @@ class ActivitiesTableSeeder extends Seeder
           'description' => 'a very fabulous day at the lab - ft. lab coat'
       ]);
 
-      DB::table('activitie_student')->insert([
-          'activitie_id' =>'1',
+      DB::table('activity_joinedBy_student')->insert([
+          'activity_id' =>'1',
           'student_id' => '1',
           'accepted' => 'true'
       ]);

@@ -12,16 +12,16 @@ class CreateSchoolStudentTable extends Migration
      */
     public function up()
     {
-        Schema::create('school_student', function (Blueprint $table) {
+        Schema::create('school_appliedBy_student', function (Blueprint $table) {
             $table->integer('school_id')->unsigned()
                                         ->index();
             $table->integer('student_id')->unsigned()
                                          ->index();
-            $table->integer('parentt_id')->unsigned()
-                                         ->index()
-                                         ->nullable();
             $table->boolean('accepted');
             $table->timestamps();
+            $table->integer('parent_id')->unsigned()
+                                         ->index()
+                                         ->nullable();
 
             $table->primary(['school_id','student_id']);
 
@@ -35,9 +35,9 @@ class CreateSchoolStudentTable extends Migration
                   ->on('students')
                   ->onDelete('cascade');
 
-            $table->foreign('parentt_id')
+            $table->foreign('parent_id')
                   ->references('id')
-                  ->on('parentts')
+                  ->on('parents')
                   ->onDelete('set null');
         });
     }
@@ -49,6 +49,6 @@ class CreateSchoolStudentTable extends Migration
      */
     public function down()
     {
-        Schema::drop('school_student');
+        Schema::drop('school_appliedBy_student');
     }
 }

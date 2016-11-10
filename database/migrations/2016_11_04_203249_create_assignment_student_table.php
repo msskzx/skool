@@ -12,7 +12,7 @@ class CreateAssignmentStudentTable extends Migration
      */
     public function up()
     {
-        Schema::create('assignment_student', function (Blueprint $table) {
+        Schema::create('assignment_solvedBy_student', function (Blueprint $table) {
            $table->integer('assignment_id')->unsigned()
                                            ->index();
            $table->integer('student_id')->unsigned()
@@ -42,6 +42,6 @@ class CreateAssignmentStudentTable extends Migration
      */
     public function down()
     {
-        Schema::drop('assignment_student');
+        Schema::drop('assignment_solvedBy_student');
     }
 }

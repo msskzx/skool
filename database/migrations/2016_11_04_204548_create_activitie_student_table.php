@@ -12,17 +12,17 @@ class CreateActivitieStudentTable extends Migration
      */
     public function up()
     {
-        Schema::create('activitie_student', function (Blueprint $table) {
-               $table->integer('activitie_id')->unsigned()
+        Schema::create('activity_joinedBy_student', function (Blueprint $table) {
+               $table->integer('activity_id')->unsigned()
                                               ->index();
                $table->integer('student_id')->unsigned()
                                               ->index();
                $table->boolean('accepted');
                $table->timestamps();
 
-               $table->primary(['activitie_id', 'student_id']);
+               $table->primary(['activity_id', 'student_id']);
 
-               $table->foreign('activitie_id')
+               $table->foreign('activity_id')
                   ->references('id')
                   ->on('activities')
                   ->onDelete('cascade');
@@ -41,6 +41,6 @@ class CreateActivitieStudentTable extends Migration
      */
     public function down()
     {
-        Schema::drop('activitie_student');
+        Schema::drop('activity_joinedBy_student');
     }
 }

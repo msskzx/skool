@@ -11,6 +11,8 @@ use App\School;
 class SchoolController extends Controller
 {
     public function index() {
+       // TODO
+       // ->groupBy('level')
        return School::all();
     }
 
@@ -58,8 +60,14 @@ class SchoolController extends Controller
 
     public function destroy(School $school) {
        $school->delete();
+       //TODO
+       //when you delete a school delete all its users(employees,students)
 
        return $this->index();
     }
 
+    public function search(Request $request) {
+      // TODO
+      // name, address or type
+    }
 }

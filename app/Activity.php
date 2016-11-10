@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Activitie extends Model
+class Activity extends Model
 {
    /**
     * The attributes that are not mass assignable.
@@ -37,6 +37,6 @@ class Activitie extends Model
     * @return Student array
     */
    public function students() {
-      return $this->belongsToMany('App\student')->withPivot('accepted')->withTimestamps();
+      return $this->belongsToMany('App\student','activity_has_student')->withPivot('accepted')->withTimestamps();
    }
 }

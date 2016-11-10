@@ -39,7 +39,7 @@ class Student extends Model
    * @return User
    */
   public function clubs() {
-     return $this->belongsToMany('App\Club')->withTimestamps();
+     return $this->belongsToMany('App\Club', 'club_joinedBy_student')->withTimestamps();
   }
 
   /**
@@ -48,7 +48,7 @@ class Student extends Model
    * @return Parentt array
    */
   public function parents() {
-     return $this->belongsToMany('App\Parentt')->withTimestamps();
+     return $this->belongsToMany('App\Parentt', 'parent_has_student')->withTimestamps();
   }
 
   /**
@@ -57,7 +57,7 @@ class Student extends Model
    * @return Course array
    */
   public function courses() {
-     return $this->belongsToMany('App\Course')->withTimestamps();
+     return $this->belongsToMany('App\Course', 'course_has_student')->withTimestamps();
   }
 
  /**
@@ -66,7 +66,7 @@ class Student extends Model
   * @return Activitie array
   */
   public function activities() {
-     return $this->belongsToMany('App\Activite')->withPivot('accepted')->withTimestamps();
+     return $this->belongsToMany('App\Activity', 'activity_joinedBy_student')->withPivot('accepted')->withTimestamps();
   }
 
   /**
@@ -84,7 +84,7 @@ class Student extends Model
    * @return Assignment array
    */
   public function assignments() {
-     return $this->belongsToMany('App\Assignment')->withPivot('grade', 'solution')->withTimestamps();
+     return $this->belongsToMany('App\Assignment', 'assignment_solvedBy_student')->withPivot('grade', 'solution')->withTimestamps();
   }
 
   /**
@@ -93,7 +93,7 @@ class Student extends Model
    * @return School
    */
   public function schools() {
-     return $this->belongsToMany('App\School')->withPivot('accepted', 'parentt_id')->withTimestamps();
+     return $this->belongsToMany('App\School', 'school_appliedBy_student')->withPivot('accepted', 'parentt_id')->withTimestamps();
   }
 
   /**

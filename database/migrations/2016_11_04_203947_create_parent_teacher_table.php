@@ -12,24 +12,24 @@ class CreateParentTeacherTable extends Migration
      */
     public function up()
     {
-        Schema::create('parentt_teacher', function (Blueprint $table) {
-           $table->integer('parentt_id')->unsigned()
+        Schema::create('parent_rates_teacher', function (Blueprint $table) {
+           $table->integer('parent_id')->unsigned()
                                         ->index();
            $table->integer('teacher_id')->unsigned()
                                         ->index();
            $table->integer('rate');
            $table->timestamps();
 
-           $table->primary(['parentt_id', 'teacher_id']);
+           $table->primary(['parent_id', 'teacher_id']);
 
            $table->foreign('teacher_id')
              ->references('id')
              ->on('teachers')
              ->onDelete('cascade');
 
-           $table->foreign('parentt_id')
+           $table->foreign('parent_id')
              ->references('id')
-             ->on('parentts')
+             ->on('parents')
              ->onDelete('cascade');
         });
     }
@@ -41,6 +41,6 @@ class CreateParentTeacherTable extends Migration
      */
     public function down()
     {
-        Schema::drop('parentt_teacher');
+        Schema::drop('parent_rates_teacher');
     }
 }

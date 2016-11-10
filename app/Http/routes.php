@@ -126,7 +126,7 @@ Route::resource('/question', 'QuestionController');
 | activitie routes
 |--------------------------------------------------------------------------
 */
-Route::resource('/activity', 'ActivitieController');
+Route::resource('/activity', 'ActivityController');
 
 /*
 |--------------------------------------------------------------------------

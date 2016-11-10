@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Parentt extends Model
 {
    /**
+    * Table associated with this model.
+    *
+    * @var string
+    */
+   protected $table = 'parents';
+
+   /**
     * The attributes that are not mass assignable.
     *
     * @var array
@@ -28,7 +35,7 @@ class Parentt extends Model
      * @return Student array
      */
     public function students() {
-      return $this->belongsToMany('App\Student')->withTimestamps();
+      return $this->belongsToMany('App\Student', 'parent_has_student')->withTimestamps();
     }
 
    /**
@@ -37,16 +44,16 @@ class Parentt extends Model
     * @return School array
     */
    public function schoolsReviewed() {
-      return $this->belongsToMany('App\School')->withPivot('review')->withTimestamps();
+      return $this->belongsToMany('App\School', 'parent_reviews_school')->withPivot('review')->withTimestamps();
    }
 
    /**
-    * Teachers reviewed by this parentt.
+    * Teachers reviewed by this parent.
     *
     * @return Teacher array
     */
    public function teachers() {
-      return $this->belongsToMany('App\Teacher')->withPivot('rate')->withTimestamps();
+      return $this->belongsToMany('App\Teacher', 'parent_rates_teacher')->withPivot('rate')->withTimestamps();
    }
 
    /**
@@ -55,7 +62,7 @@ class Parentt extends Model
     * @return School array
     */
    public function schoolsApplied() {
-      return $this->belongsToMany('App\School','school_student')->withPivot('accepted', 'student_id')->withTimestamps();
+      return $this->belongsToMany('App\School','school_appliedBy_student')->withPivot('accepted', 'student_id')->withTimestamps();
    }
 
    /**
@@ -64,6 +71,6 @@ class Parentt extends Model
     * @return Report array
     */
    public function reports() {
-      return $this->belongsToMany('App\Report')->withPivot('teacher_comment', 'parent_comment')->withTimestamps();
+      return $this->belongsToMany('App\Report', 'parent_writes_report')->withPivot('teacher_comment', 'parent_comment')->withTimestamps();
    }
 }

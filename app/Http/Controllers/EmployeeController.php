@@ -50,7 +50,6 @@ class EmployeeController extends Controller
     }
 
     $this->validate($request, [
-      'username' => 'exists:users|required|unique:employees,username,'.$employee->id,
       'school_id' => 'exists:schools,id'
     ]);
 

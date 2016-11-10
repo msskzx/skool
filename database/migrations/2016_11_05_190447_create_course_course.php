@@ -12,7 +12,7 @@ class CreateCourseCourse extends Migration
      */
     public function up()
     {
-        Schema::create('course_course', function (Blueprint $table) {
+        Schema::create('course_requires_course', function (Blueprint $table) {
             $table->integer('course_id')->unsigned();
             $table->integer('req_course_id')->unsigned();
             $table->timestamps();
@@ -38,6 +38,6 @@ class CreateCourseCourse extends Migration
      */
     public function down()
     {
-        Schema::drop('course_course');
+        Schema::drop('course_requires_course');
     }
 }

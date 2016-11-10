@@ -14,14 +14,14 @@ class CreateAssignmentssTable extends Migration
     {
         Schema::create('assignments', function (Blueprint $table) {
            $table->increments('id');
-           $table->integer('teacher_id')->unsigned()
-                                        ->index();
-           $table->integer('course_id')->unsigned()
-                                       ->index();
            $table->datetime('post_date');
            $table->datetime('due_date');
            $table->mediumtext('content');
            $table->timestamps();
+           $table->integer('teacher_id')->unsigned()
+                                        ->index();
+           $table->integer('course_id')->unsigned()
+                                       ->index();
 
            $table->foreign('teacher_id')
              ->references('id')

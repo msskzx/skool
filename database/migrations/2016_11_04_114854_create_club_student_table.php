@@ -12,7 +12,7 @@ class CreateClubStudentTable extends Migration
      */
     public function up()
     {
-        Schema::create('club_student', function (Blueprint $table) {
+        Schema::create('club_joinedBy_student', function (Blueprint $table) {
             $table->integer('student_id')->unsigned()
                                          ->index();
             $table->integer('club_id')->unsigned()
@@ -41,6 +41,6 @@ class CreateClubStudentTable extends Migration
      */
     public function down()
     {
-        Schema::drop('club_student');
+        Schema::drop('club_joinedBy_student');
     }
 }

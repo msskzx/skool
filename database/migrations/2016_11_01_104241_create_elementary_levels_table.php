@@ -14,11 +14,11 @@ class CreateElementaryLevelsTable extends Migration
     {
         Schema::create('elementary_levels', function (Blueprint $table) {
             $table->increments('id');
+            $table->mediumtext('supplies');
+            $table->timestamps();
             $table->integer('school_id')->unsigned()
                                         ->unique()
                                         ->index();
-            $table->mediumtext('supplies');
-            $table->timestamps();
 
             $table->foreign('school_id')
                   ->references('id')

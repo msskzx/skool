@@ -18,7 +18,7 @@ class UserController extends Controller
   }
 
   public function index() {
-     return User::all();
+     return User::all()->groupBy('role');
   }
 
   public function show(User $user) {
@@ -57,5 +57,4 @@ class UserController extends Controller
     }
     return $this->index();
   }
-
 }

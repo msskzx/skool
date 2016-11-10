@@ -14,13 +14,15 @@ class CreateTeachersTable extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('years_of_exp');
+            $table->integer('salary');
+            $table->timestamps();
             $table->string('username')->index()
-                                      ->unique();
+                                      ->unique()
+                                      ->nullable();
             $table->integer('supervisor_id')->index()
                                             ->unsigned()
                                             ->nullable();
-            $table->integer('years_of_exp');
-            $table->timestamps();
 
             $table->foreign('username')
                ->references('username')

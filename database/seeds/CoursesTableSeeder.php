@@ -23,17 +23,17 @@ class CoursesTableSeeder extends Seeder
           'school_id' => '1'
       ]);
 
-      DB::table('course_course')->insert([
+      DB::table('course_requires_course')->insert([
          'course_id' => '2',
          'req_course_id' => '1'
       ]);
 
-      DB::table('course_student')->insert([
+      DB::table('course_has_student')->insert([
           'course_id' => '1',
           'student_id' => '1'
       ]);
 
-      DB::table('course_student')->insert([
+      DB::table('course_has_student')->insert([
           'course_id' => '2',
           'student_id' => '1'
       ]);

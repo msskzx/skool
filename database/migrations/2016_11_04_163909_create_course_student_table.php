@@ -12,7 +12,7 @@ class CreateCourseStudentTable extends Migration
      */
     public function up()
     {
-        Schema::create('course_student', function (Blueprint $table) {
+        Schema::create('course_has_student', function (Blueprint $table) {
            $table->integer('course_id')->unsigned()
                                        ->index();
            $table->integer('student_id')->unsigned()
@@ -40,6 +40,6 @@ class CreateCourseStudentTable extends Migration
      */
     public function down()
     {
-        Schema::drop('course_student');
+        Schema::drop('course_has_student');
     }
 }

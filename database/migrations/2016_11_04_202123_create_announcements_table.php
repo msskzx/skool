@@ -14,13 +14,13 @@ class CreateAnnouncementsTable extends Migration
     {
         Schema::create('announcements', function (Blueprint $table) {
            $table->increments('id');
-           $table->integer('admin_id')->index()
-                                     ->unsigned();
            $table->date('date');
            $table->mediumtext('description');
            $table->string('title');
            $table->string('type');
            $table->timestamps();
+           $table->integer('admin_id')->index()
+                                     ->unsigned();
 
            $table->foreign('admin_id')
              ->references('id')

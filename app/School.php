@@ -64,7 +64,7 @@ class School extends Model
     * @return Parentt array
     */
    public function parents() {
-      return $this->belongsToMany('App\Parentt')->withPivot('review')->withTimestamps();
+      return $this->belongsToMany('App\Parentt', 'parent_reviews_school')->withPivot('review')->withTimestamps();
    }
 
    /**
@@ -73,7 +73,7 @@ class School extends Model
     * @return Student array
     */
    public function studentsApplied() {
-      return $this->belongsToMany('App\Student')->withPivot('accepted', 'parentt_id')->withTimestamps();
+      return $this->belongsToMany('App\Student', 'school_appliedBy_student')->withPivot('accepted', 'parent_id')->withTimestamps();
    }
 
    /**
@@ -82,7 +82,16 @@ class School extends Model
     * @return Parentt array
     */
    public function parentsApplied() {
-      return $this->belongsToMany('App\Parentt','school_student')->withPivot('accepted', 'student_id')->withTimestamps();
+      return $this->belongsToMany('App\Parentt','school_appliedBy_student')->withPivot('accepted', 'student_id')->withTimestamps();
+   }
+
+   /**
+    * Schools reviewed by this parent.
+    *
+    * @return School array
+    */
+   public function parentsReviewed() {
+      return $this->belongsToMany('App\Parentt')->withPivot('review')->withTimestamps();
    }
 
    /**

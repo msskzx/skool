@@ -14,6 +14,7 @@ class CreateSchoolsTable extends Migration
     {
         Schema::create('schools', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->string('email')->unique();
             $table->mediumtext('vision');
             $table->mediumtext('mission');
@@ -22,9 +23,8 @@ class CreateSchoolsTable extends Migration
             $table->integer('phone_number2')->nullable();
             $table->integer('fees');
             $table->string('address');
-            $table->string('type');
-            $table->string('name');
             $table->string('main_language');
+            $table->enum('type', ['national', 'international']);
             $table->timestamps();
         });
     }

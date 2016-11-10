@@ -56,7 +56,6 @@ class StudentController extends Controller
      }
 
      $this->validate($request, [
-        'username' => 'exists:users|required|unique:students,username,'.$student->id,
         'SSN' => 'required|unique:students,SSN,'.$student->id,
         'school_id' => 'exists:schools,id'
      ]);

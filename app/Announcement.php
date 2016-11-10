@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Announcements extends Model
+class Announcement extends Model
 {
    /**
    * The attributes that are not mass assignable.

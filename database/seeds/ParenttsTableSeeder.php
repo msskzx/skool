@@ -11,15 +11,15 @@ class ParenttsTableSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('parentts')->insert([
+      DB::table('parents')->insert([
           'first_name' => 'Bear',
           'email' => 'msskzx@msskzx.com',
           'username' => 'msskzx'
       ]);
 
-      DB::table('parentt_school')->insert([
+      DB::table('parent_reviews_school')->insert([
           'school_id' => '2',
-          'parentt_id' => '1',
+          'parent_id' => '1',
           'review' => 'nice'
       ]);
     }

@@ -28,7 +28,7 @@ class Course extends Model
    * @return Student array
    */
   public function students() {
-     return $this->belongsToMany('App\Student')->withTimestamps();
+     return $this->belongsToMany('App\Student', 'course_has_student')->withTimestamps();
   }
 
   /**
@@ -55,7 +55,7 @@ class Course extends Model
    * @return Student array
    */
   public function prerequisites() {
-     return $this->belongsToMany('App\Course', 'course_course', 'course_id', 'req_course_id')->withTimestamps();
+     return $this->belongsToMany('App\Course', 'course_requires_course', 'course_id', 'req_course_id')->withTimestamps();
   }
 
   /**
@@ -64,7 +64,7 @@ class Course extends Model
    * @return Student array
    */
   public function coursesRequiring() {
-     return $this->belongsToMany('App\Course', 'course_course', 'req_course_id', 'course_id')->withTimestamps();
+     return $this->belongsToMany('App\Course', 'course_requires_course', 'req_course_id', 'course_id')->withTimestamps();
   }
 
   /**

@@ -14,16 +14,16 @@ class CreateActivitiesTable extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
            $table->increments('id');
-           $table->integer('teacher_id')->index()
-                                        ->unsigned();
-           $table->integer('admin_id')->index()
-                                      ->unsigned();
            $table->date('date');
            $table->string('location');
            $table->string('type');
            $table->text('equipment');
            $table->mediumtext('description');
            $table->timestamps();
+           $table->integer('teacher_id')->index()
+                                        ->unsigned();
+           $table->integer('admin_id')->index()
+                                      ->unsigned();
 
            $table->foreign('teacher_id')
                  ->references('id')

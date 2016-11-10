@@ -37,6 +37,6 @@ class Assignment extends Model
     * @return Student array
     */
    public function students() {
-      return $this->belongsToMany('App\Student')->withPivot('grade', 'solution')->withTimestamps();
+      return $this->belongsToMany('App\Student', 'assignment_solvedBy_student')->withPivot('grade', 'solution')->withTimestamps();
    }
 }

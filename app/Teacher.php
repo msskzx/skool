@@ -55,7 +55,7 @@ class Teacher extends Model
     * @return Activitie array
     */
    public function activities() {
-      return $this->hasMany('App\Activite');
+      return $this->hasMany('App\Activity');
    }
 
    /**
@@ -64,7 +64,7 @@ class Teacher extends Model
     * @return Parentt array
     */
    public function parents() {
-      return $this->belongsToMany('App\Parentt')->withPivot('rate')->withTimestamps();
+      return $this->belongsToMany('App\Parentt', 'parent_rates_teacher')->withPivot('rate')->withTimestamps();
    }
 
    /**

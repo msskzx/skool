@@ -17,25 +17,26 @@ class CreateEmployeesTable extends Migration
             $table->string('first_name');
             $table->string('middle_name');
             $table->string('last_name');
-            $table->string('username')->unique()
-                                      ->index();
             $table->string('email')->unique();
             $table->integer('phone_number');
             $table->integer('mobile_number1');
             $table->integer('mobile_number2');
             $table->string('address');
-            $table->integer('school_id')->unsigned()
-                                        ->index()
-                                        ->nullable();
+            $table->enum('role', ['Admin', 'Teacher']);
             $table->enum('gender', ['Male', 'Female']);
             $table->date('birth_date');
             $table->timestamps();
+            $table->string('username')->unique()
+                                      ->index()
+                                      ->nullable();
+            $table->integer('school_id')->unsigned()
+                                        ->index()
+                                        ->nullable();
 
             $table->foreign('username')
                   ->references('username')
                   ->on('users')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
+                  ->onDelete('set null');
 
             $table->foreign('school_id')
                   ->references('id')

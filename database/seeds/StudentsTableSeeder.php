@@ -16,9 +16,9 @@ class StudentsTableSeeder extends Seeder
           'username' => 'mssk'
       ]);
 
-      DB::table('parentt_student')->insert([
+      DB::table('parent_has_student')->insert([
           'student_id' => '1',
-          'parentt_id' => '1'
+          'parent_id' => '1'
       ]);
     }
 }
