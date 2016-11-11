@@ -17,15 +17,15 @@ class CreateTeachersTable extends Migration
             $table->integer('years_of_exp');
             $table->integer('salary');
             $table->timestamps();
-            $table->string('username')->index()
-                                      ->unique()
-                                      ->nullable();
+            $table->integer('employee_id')->index()
+                                          ->unique()
+                                          ->unsigned();
             $table->integer('supervisor_id')->index()
                                             ->unsigned()
                                             ->nullable();
 
-            $table->foreign('username')
-               ->references('username')
+            $table->foreign('employee_id')
+               ->references('id')
                ->on('employees')
                ->onDelete('cascade');
         });

@@ -1,0 +1,41 @@
+use skool;
+
+-- “As a system user (registered, or not registered), I should be able to ...”
+--
+-- Search for any school by its name, address or its type (national/international).
+--
+-- select * from schools
+-- where name = 'name' or address = 'address' or type = 'type';
+--
+--
+--
+--  View a list of all available schools on the system categorized by their level.
+--
+-- select *
+-- from schools inner join elementary_levels
+-- on schools.id = school_id;
+--
+-- select *
+-- from schools inner join middle_levels
+-- on schools.id = school_id;
+--
+-- select *
+-- from schools inner join high_levels
+-- on schools.id = school_id;
+--
+--
+--
+-- View the information of a certain school along with the reviews written about it and teachers
+-- teaching in this school
+--
+-- select *
+-- from schools inner join parent_reviews_school
+-- on schools.id = parent_reviews_school.school_id
+-- where schools.id = 1;
+--
+-- select *
+-- from schools inner join employees
+-- on schools.id = employees.school_id
+-- inner join teachers
+-- on employees.id = teachers.employee_id
+-- where schools.id = 1;

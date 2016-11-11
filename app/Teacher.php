@@ -19,7 +19,7 @@ class Teacher extends Model
     * @return Employee
     */
    public function employee() {
-      return $this->belongsTo('App\Employee', 'username', 'username');
+      return $this->belongsTo('App\Employee');
    }
 
    /**

@@ -37,7 +37,7 @@ class Employee extends Model
   * @return Teacher
   */
  public function teacher() {
-    return $this->hasOne('App\Teacher', 'username', 'username');
+    return $this->hasOne('App\Teacher');
  }
 
  /**
@@ -46,6 +46,6 @@ class Employee extends Model
   * @return Admin
   */
  public function admin() {
-    return $this->hasOne('App\Admin', 'username', 'username');
+    return $this->hasOne('App\Admin');
  }
 }

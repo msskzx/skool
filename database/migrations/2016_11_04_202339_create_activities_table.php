@@ -17,7 +17,7 @@ class CreateActivitiesTable extends Migration
            $table->date('date');
            $table->string('location');
            $table->string('type');
-           $table->text('equipment');
+           $table->text('equipment')->nullable();
            $table->mediumtext('description');
            $table->timestamps();
            $table->integer('teacher_id')->index()

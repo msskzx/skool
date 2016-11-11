@@ -1,4 +1,5 @@
-create table schools (`id` int unsigned not null auto_increment primary key, `name` varchar(255) not null, `email` varchar(255) not null, `vision` mediumtext not null, `mission` mediumtext not null, `general_info` mediumtext not null, `phone_number1` int not null, `phone_number2` int null, `fees` int not null, `address` varchar(255) not null, `main_language` varchar(255) not null, `type` enum('national', 'international') not null, `created_at` timestamp null, `updated_at` timestamp null);
+use trial;
+create table schools (`id` int unsigned not null auto_increment primary key, `name` varchar(255) not null, `email` varchar(255) not null, `vision` mediumtext not null, `mission` mediumtext not null, `general_info` mediumtext not null, `phone_number1` varchar(255) not null, `phone_number2` varchar(255) null, `fees` int not null, `address` varchar(255) not null, `main_language` varchar(255) not null, `type` enum('National', 'International') not null, `created_at` timestamp null, `updated_at` timestamp null);
 alter table schools add unique `schools_email_unique`(`email`);
 create table elementary_levels (`id` int unsigned not null auto_increment primary key, `supplies` mediumtext not null, `created_at` timestamp null, `updated_at` timestamp null, `school_id` int unsigned not null);
 alter table elementary_levels add constraint `elementary_levels_school_id_foreign` foreign key (`school_id`) references `schools` (`id`) on delete cascade;
@@ -14,7 +15,7 @@ alter table clubs add constraint `clubs_high_level_id_foreign` foreign key (`hig
 alter table clubs add index `clubs_high_level_id_index`(`high_level_id`);
 create table users (`id` int unsigned not null auto_increment primary key, `username` varchar(255) not null, `password` varchar(255) not null, `role` enum('Parent', 'Student', 'Employee') not null, `created_at` timestamp null, `updated_at` timestamp null);
 alter table users add unique `users_username_unique`(`username`);
-create table parents (`id` int unsigned not null auto_increment primary key, `first_name` varchar(255) not null, `middle_name` varchar(255) not null, `last_name` varchar(255) not null, `email` varchar(255) not null, `address` varchar(255) not null, `phone_number` int not null, `mobile_number1` int not null, `mobile_number2` int null, `created_at` timestamp null, `updated_at` timestamp null, `username` varchar(255) not null);
+create table parents (`id` int unsigned not null auto_increment primary key, `first_name` varchar(255) not null, `middle_name` varchar(255) not null, `last_name` varchar(255) not null, `email` varchar(255) not null, `address` varchar(255) not null, `phone_number` varchar(255) not null, `mobile_number1` varchar(255) not null, `mobile_number2` varchar(255) null, `created_at` timestamp null, `updated_at` timestamp null, `username` varchar(255) not null);
 alter table parents add constraint `parents_username_foreign` foreign key (`username`) references `users` (`username`) on delete cascade;
 alter table parents add unique `parents_email_unique`(`email`);
 alter table parents add unique `parents_username_unique`(`username`);
@@ -25,7 +26,7 @@ alter table students add unique `students_email_unique`(`email`);
 alter table students add unique `students_ssn_unique`(`SSN`);
 alter table students add index `students_school_id_index`(`school_id`);
 alter table students add unique `students_username_unique`(`username`);
-create table employees (`id` int unsigned not null auto_increment primary key, `first_name` varchar(255) not null, `middle_name` varchar(255) not null, `last_name` varchar(255) not null, `email` varchar(255) not null, `phone_number` int not null, `mobile_number1` int not null, `mobile_number2` int not null, `address` varchar(255) not null, `role` enum('Admin', 'Teacher') not null, `gender` enum('Male', 'Female') not null, `birth_date` date not null, `created_at` timestamp null, `updated_at` timestamp null, `username` varchar(255) null, `school_id` int unsigned null);
+create table employees (`id` int unsigned not null auto_increment primary key, `first_name` varchar(255) not null, `middle_name` varchar(255) not null, `last_name` varchar(255) not null, `email` varchar(255) not null, `phone_number` varchar(255) not null, `mobile_number1` varchar(255) not null, `mobile_number2` varchar(255) not null, `address` varchar(255) not null, `role` enum('Admin', 'Teacher') not null, `gender` enum('Male', 'Female') not null, `birth_date` date not null, `created_at` timestamp null, `updated_at` timestamp null, `username` varchar(255) null, `school_id` int unsigned null);
 alter table employees add constraint `employees_username_foreign` foreign key (`username`) references `users` (`username`) on delete set null;
 alter table employees add constraint `employees_school_id_foreign` foreign key (`school_id`) references `schools` (`id`) on delete set null;
 alter table employees add unique `employees_email_unique`(`email`);
@@ -48,9 +49,9 @@ alter table teachers add constraint `teachers_username_foreign` foreign key (`us
 alter table teachers add unique `teachers_username_unique`(`username`);
 alter table teachers add index `teachers_supervisor_id_index`(`supervisor_id`);
 create table admins (`id` int unsigned not null auto_increment primary key, `salary` int not null, `username` varchar(255) null, `created_at` timestamp null, `updated_at` timestamp null);
-alter table admins add constraint `admins_username_foreign` foreign key (`username`) references `employees` (`username`) on delete cascade;
+alter table admins add constraint `admins_username_foreign` foreign key (`username`) references `employees` (`username`) on delete set null;
 alter table admins add unique `admins_username_unique`(`username`);
-create table courses (`id` int unsigned not null auto_increment primary key, `name` varchar(255) not null, `code` varchar(255) not null, `level` varchar(255) not null, `grade` int not null, `description` mediumtext not null, `created_at` timestamp null, `updated_at` timestamp null, `teacher_id` int unsigned not null, `school_id` int unsigned not null);
+create table courses (`id` int unsigned not null auto_increment primary key, `name` varchar(255) not null, `code` varchar(255) not null, `level` enum('Elementary Level', 'Middle Level', 'High Level') not null, `grade` int not null, `description` mediumtext not null, `created_at` timestamp null, `updated_at` timestamp null, `teacher_id` int unsigned not null, `school_id` int unsigned not null);
 alter table courses add constraint `courses_teacher_id_foreign` foreign key (`teacher_id`) references `teachers` (`id`) on delete cascade;
 alter table courses add constraint `courses_school_id_foreign` foreign key (`school_id`) references `schools` (`id`) on delete cascade;
 alter table courses add index `courses_teacher_id_index`(`teacher_id`);

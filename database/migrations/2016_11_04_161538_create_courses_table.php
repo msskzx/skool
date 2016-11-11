@@ -16,7 +16,7 @@ class CreateCoursesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('code');
-            $table->string('level');
+            $table->enum('level', ['Elementary Level', 'Middle Level', 'High Level']);
             $table->integer('grade');
             $table->mediumtext('description');
             $table->timestamps();

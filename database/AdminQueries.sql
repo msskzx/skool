@@ -1,0 +1,94 @@
+-- “As an administrator, I should be able to ...”
+--
+-- View and verify teachers who signed up as employees of the school I am responsible of, and assign
+-- to them a unique username and password. The salary of a teacher is calculated as follows: years of
+-- experience * 500 EGP.
+--
+-- insert into users(username, password, role)
+-- values("teacher1", "secret", "Employee");
+--
+--
+--
+-- View and verify students who enrolled to the school I am responsible of, and assign to them a
+-- unique username and password.
+--
+-- insert into users(username, password, role)
+-- values("student1", "secret", "Student");
+--
+--
+--
+-- Add other admins to the school I am working in. An admin has first name, middle name, last name,
+-- birthdate, address, email, username, password, and gender. Note that the salary of the admin
+-- depends on the type of the school.
+--
+-- insert into users(username,password,role)
+-- values("mcadmin","secret","Employee");
+--
+-- insert into employees(first_name, middle_name, last_name, role, birth_date, address, email, username, gender, school_id)
+-- values("John", "Doe" , "McAdmin", "Admin", '1990-12-12', "Du, st, ft 1", "mcadmin@mcadmin.com", "mcadmin", "Male", 1);
+--
+-- insert into admins(salary, employee_id);
+-- values(5000, 1);
+--
+--
+--
+-- Delete employees and students from the system.
+--
+-- delete from employees
+-- where id = 1;
+--
+-- delete from students
+-- where id = 1;
+--
+--
+--
+-- 5 Edit the information of the school I am working in.
+--
+-- update schools
+-- set name = "New Modern School"
+-- where id = 1;
+--
+--
+--
+-- 6 Post announcements with the following information: date, title, description and type
+--
+-- insert into announcements(date, title, description, type, admin_id)
+-- values('2016-03-03', "Party", "Lorem ipsum dolor sit amet, consectetur adipisicing elit...", "Trip", 1);
+--
+--
+--
+-- Create activities and assign every activity to a certain teacher. An activity has its own date, location
+-- in school, type, equipment(if any), and description.
+--
+-- insert into activities(date, location, description, type, admin_id, teacher_id)
+-- values('2016-03-03', "H12", "Lorem ipsum dolor sit amet, consectetur adipisicing elit...", "Chess Tournament", 1, 1);
+--
+--
+--
+-- Change the teacher assigned to an activity.
+--
+-- update activities
+-- set teacher_id = 2;
+-- where id = 1;
+--
+--
+--
+-- 9 Assign teachers to courses that are taught in my school based on the levels it offers.
+--
+-- update courses
+-- set teacher_id = 1;
+-- where id = 1;
+--
+--
+--
+-- 10 Assign teachers to be supervisors to other teachers.
+--
+-- update teachers
+-- set supervisor_id = 2;
+-- where id = 1;
+--
+-- 11 Accept or reject the application submitted by parents to their children.
+--
+-- update school_appliedBy_student
+-- set accepted = 1;
+-- where student_id = 1 and school_id = 1;

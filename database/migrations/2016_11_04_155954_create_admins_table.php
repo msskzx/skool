@@ -15,13 +15,13 @@ class CreateAdminsTable extends Migration
         Schema::create('admins', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('salary');
-            $table->string('username')->index()
-                                      ->unique()
-                                      ->nullable();
             $table->timestamps();
+            $table->integer('employee_id')->index()
+                                          ->unique()
+                                          ->unsigned();
 
-            $table->foreign('username')
-                  ->references('username')
+            $table->foreign('employee_id')
+                  ->references('id')
                   ->on('employees')
                   ->onDelete('cascade');
         });

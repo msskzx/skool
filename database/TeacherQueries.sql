@@ -1,0 +1,105 @@
+-- “As a teacher, I should be able to ...”
+--
+-- 1 Sign up by providing my first name, middle name, last name, birthdate, address, email, and gender.
+--
+-- insert into employees(first_name, middle_name, last_name, role, birth_date, address, email, gender, school_id)
+-- values("Ali", "Doe" , "Mug", "Teacher", '1990-12-12', "Kairo, middle st.", "mug@mug.com", "Male", 1);
+--
+-- insert into teachers(years_of_exp, employee_id)
+-- values(16, 1);
+--
+--
+--
+-- 2 View a list of courses’ names I teach categorized by level and grade.
+--
+-- select * from courses
+-- where teacher_id = 1
+-- order by level, grade;
+--
+--
+--
+-- 3 Post assignments for the course(s) I teach. Every assignment has a posting date, due date and
+-- content.
+--
+-- insert into assignments(post_date, due_date, content, teacher_id, course_id)
+-- values('2010-12-12', '2011-01-12', 1, 1);
+--
+--
+--
+-- 4 View the students’ solutions for the assignments I posted ordered by students’ ids.
+--
+-- select * from assignment_solvedBy_student
+-- where teacher_id = 1
+-- order by student_id;
+--
+--
+--
+-- 5 Grade the students’ solutions for the assignments I posted.
+--
+-- update assignment_solvedBy_student
+-- set grade = 10
+-- where student_id = 1 and assignment_id = 1;
+--
+--
+--
+-- 6 Delete assignments.
+--
+-- delete from assignments
+-- where id = 1;
+--
+--
+--
+-- 7 Write monthly reports about every student I teach. A report is issued on a specific date to a specific
+-- student and contains my comment.
+--
+-- insert into reports(report, teacher_id, student_id)
+-- values("This is a very long report implies that you my dear little student do not study", 1, 1);
+--
+--
+--
+-- 8 View the questions asked by the students for each course I teach.
+--
+-- select * from questions
+-- where course_id = 1;
+--
+--
+--
+-- 9 Answer the questions asked by the students for each course I teach.
+--
+-- update questions
+-- set answer = "Textbook page 120."
+-- where id = 1;
+--
+--
+--
+-- 10 View a list of students that i teach categorized by the grade and ordered by their name (first name
+-- and last name).
+--
+-- select * from students s
+-- inner join course_has_student chs
+-- on s.id = chs.student_id
+-- inner join courses c
+-- on c.id = shs.course_id
+-- where c.teacher_id = 1
+-- order by s.grade, s.first_name, s.last_name;
+--
+--
+--
+-- 11 View a list of students that did not join any activity.
+--
+-- select *
+-- from students s1
+-- where s1.id not in(
+-- select s2.id
+-- from students s2
+-- inner join activity_joinedBy_student ajbs
+-- on ajbs.student_id = s2.id);
+--
+--
+--
+-- 12 Display the name of the high school student who is currently a member of the greatest number of
+-- clubs.
+select s.first_name
+from students s
+inner join club_joinedby_student cjbs
+on s.id = cjbs.student_id;

@@ -8,12 +8,29 @@ use App\Http\Requests;
 
 use App\School;
 
+use DB;
+
 class SchoolController extends Controller
 {
     public function index() {
-       // TODO
-       // ->groupBy('level')
-       return School::all();
+      $el = DB::select(
+         "select *
+          from schools inner join elementary_levels
+          on schools.id = school_id
+          ");
+      $m = DB::select(
+         "select *
+          from schools inner join middle_levels
+          on schools.id = school_id
+          ");
+      $h = DB::select(
+         "select *
+          from schools inner join high_levels
+          on schools.id = school_id
+          ");
+
+      return [$el, $m, $h];
+      //  return School::all();
     }
 
     public function show(School $school) {
