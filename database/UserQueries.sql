@@ -1,11 +1,9 @@
-use skool;
-
 -- “As a system user (registered, or not registered), I should be able to ...”
 --
 -- Search for any school by its name, address or its type (national/international).
 --
 -- select * from schools
--- where name = 'name' or address = 'address' or type = 'type';
+-- where name like 'name' or address like 'address' or type like 'international';
 --
 --
 --

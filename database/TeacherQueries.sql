@@ -2,17 +2,22 @@
 --
 -- 1 Sign up by providing my first name, middle name, last name, birthdate, address, email, and gender.
 --
--- insert into employees(first_name, middle_name, last_name, role, birth_date, address, email, gender, school_id)
--- values("Ali", "Doe" , "Mug", "Teacher", '1990-12-12', "Kairo, middle st.", "mug@mug.com", "Male", 1);
+-- insert into employees
+-- (first_name, middle_name, last_name, role, birth_date, address, email, gender, school_id)
+-- values
+-- ("Ali", "Doe" , "Mug", "Teacher", '1990-12-12', "Kairo, middle st.", "mug@mug.com", "Male", 1);
 --
--- insert into teachers(years_of_exp, employee_id)
--- values(16, 1);
+-- insert into teachers
+-- (years_of_exp, employee_id)
+-- values
+-- (16, 1);
 --
 --
 --
 -- 2 View a list of courses’ names I teach categorized by level and grade.
 --
--- select * from courses
+-- select *
+-- from courses
 -- where teacher_id = 1
 -- order by level, grade;
 --
@@ -21,8 +26,10 @@
 -- 3 Post assignments for the course(s) I teach. Every assignment has a posting date, due date and
 -- content.
 --
--- insert into assignments(post_date, due_date, content, teacher_id, course_id)
--- values('2010-12-12', '2011-01-12', 1, 1);
+-- insert into assignments
+-- (post_date, due_date, content, teacher_id, course_id)
+-- values
+-- ('2010-12-12', '2011-01-12', "Problem 1: define dps.", 1, 1);
 --
 --
 --
@@ -97,9 +104,6 @@
 --
 --
 --
--- 12 Display the name of the high school student who is currently a member of the greatest number of
--- clubs.
-select s.first_name
-from students s
-inner join club_joinedby_student cjbs
-on s.id = cjbs.student_id;
+12 Display the name of the high school student who is currently a member of the greatest number of
+clubs.
+--

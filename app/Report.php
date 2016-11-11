@@ -28,7 +28,7 @@ class Report extends Model
      * @return Parentt
      */
     public function parents() {
-       return $this->belongsToMany('App\Parentt', 'parent_writes_report')->withPivot('teacher_comment', 'parent_comment')->withTimestamps();
+       return $this->belongsToMany('App\Parentt', 'parent_repliesOn_report')->withPivot('teacher_comment', 'parent_comment')->withTimestamps();
     }
 
     /**

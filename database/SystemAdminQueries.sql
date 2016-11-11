@@ -1,23 +1,27 @@
-use skool;
-
 -- “As a system administrator, I should be able to ...”
 --
 -- Create a school with its information: school name, address, phone number, email, general information,
 -- vision, mission, main language, type(national, international) and fees.
 --
--- insert into schools(name, email, vision, mission, general_info, phone_number1 ,phone_number2, fees, address, main_language, type)
--- values("text", "hogdoor@hogdoor.com", "vision", "mission", "general_info", "012" ,"011", 5000, "right there", "English", "International");
+-- insert into schools
+-- (name, email, vision, mission, general_info, phone_number1 ,phone_number2, fees, address, main_language, type)
+-- values
+-- ("text", "hogdoor@hogdoor.com", "vision", "mission", "general_info", "012" ,"011", 5000, "right there", "English", "International");
 --
 --
 --
 -- Add courses to the system with all of its information: course code, course name, course level (elementary,
 -- middle, high), grade, description and prerequisite course(s).
 --
--- insert into courses(name, code, description, grade, level, teacher_id, school_id)
--- values("text", "code", "desc", 1, "Elementary Level", "012" ,"011", 5000, "right there", "English", "International");
+-- insert into courses
+-- (name, code, description, grade, level, teacher_id, school_id)
+-- values
+-- ("text", "code", "desc", 1, "Elementary Level", "012" ,"011", 5000, "right there", "English", "International");
 --
--- insert into course_requires_course(course_id, req_course_id)
--- values(1,2);
+-- insert into course_requires_course
+-- (course_id, req_course_id)
+-- values
+-- (1,2);
 --
 --
 --
@@ -27,14 +31,20 @@ use skool;
 -- salary of an admin working in a national school is 3000 EGP, and that working in an international
 -- school is 5000 EGP.
 --
--- insert into users(username,password,role)
--- values("mcadmin","secret","Employee");
+-- insert into users
+-- (username,password,role)
+-- values
+-- ("mcadmin","secret","Employee");
 --
--- insert into employees(first_name, middle_name, last_name, role, birth_date, address, email, username, gender, school_id)
--- values("John", "Doe" , "McAdmin", "Admin", '1990-12-12', "Du, st, ft 1", "mcadmin@mcadmin.com", "mcadmin", "Male", 1);
+-- insert into employees
+-- (first_name, middle_name, last_name, role, birth_date, address, email, username, gender, school_id)
+-- values
+-- ("John", "Doe" , "McAdmin", "Admin", '1990-12-12', "Du, st, ft 1", "mcadmin@mcadmin.com", "mcadmin", "Male", 1);
 --
--- insert into admins(salary, employee_id)
--- values(5000, 1);
+-- insert into admins
+-- (salary, employee_id)
+-- values
+-- (5000, 1);
 --
 --
 --

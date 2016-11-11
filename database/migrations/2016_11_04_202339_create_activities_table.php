@@ -24,6 +24,13 @@ class CreateActivitiesTable extends Migration
                                         ->unsigned();
            $table->integer('admin_id')->index()
                                       ->unsigned();
+           $table->integer('school_id')->index()
+                                      ->unsigned();
+
+           $table->foreign('school_id')
+                 ->references('id')
+                 ->on('schools')
+                 ->onDelete('cascade');
 
            $table->foreign('teacher_id')
                  ->references('id')

@@ -14,17 +14,25 @@ class CreateAnnouncementsTable extends Migration
     {
         Schema::create('announcements', function (Blueprint $table) {
            $table->increments('id');
-           $table->date('date');
-           $table->mediumtext('description');
            $table->string('title');
            $table->string('type');
+           $table->date('date');
+           $table->mediumtext('description');
            $table->timestamps();
            $table->integer('admin_id')->index()
-                                     ->unsigned();
+                                      ->unsigned();
+           $table->integer('school_id')->index()
+                                       ->unsigned();
 
            $table->foreign('admin_id')
-             ->references('id')
-             ->on('admins');
+                 ->references('id')
+                 ->on('admins')
+                 ->onDelete('cascade');
+
+           $table->foreign('school_id')
+                 ->references('id')
+                 ->on('schools')
+                 ->onDelete('cascade');
         });
     }
 

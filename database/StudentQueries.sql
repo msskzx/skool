@@ -1,0 +1,103 @@
+-- “As an enrolled student, I should be able to ...”
+--
+-- 1 Update my account information except for the username.
+--
+-- update students
+-- set first_name = "Corleone"
+-- where id = 1;
+--
+--
+--
+-- 2 View a list of courses’ names assigned to me based on my grade ordered by name.
+-- select *
+-- from courses c
+-- inner join course_has_student chs
+-- on c.id = chs.course_id and chs.student_id = 1
+-- order by c.name;
+
+-- 3 Post questions I have about a certain course.
+--
+-- insert into questions
+-- (title, question, student_id, course_id)
+-- values
+-- ("Apple pie exception", "I was making an apple pie when this error came out tried to pour some milk but it did not get solved", 1, 1);
+--
+--
+--
+-- 4 View all questions asked by other students on a certain course along with their answers.
+--
+-- select *
+-- from questions
+-- where student_id <> 1 and course_id = 1;
+--
+--
+--
+-- 5 View the assignments posted for the courses I take.
+--
+-- select *
+-- from assignments a
+-- inner join course_has_student chs
+-- on a.course_id = chs.course_id and chs.student_id = 1;
+--
+--
+--
+-- 6 Solve assignments posted for courses I take.
+--
+-- insert into assignment_solvedBy_student
+-- (assignment_id, student_id, solution)
+-- values
+-- (1, 1, "Donuts Per Second...");
+--
+--
+--
+-- 7 View the grade of the assignments I solved per course.
+--
+-- select asbs.grade
+-- from assignment_solvedBy_student asbs
+-- inner join assignments a
+-- on asbs.assignment_id = a.id
+-- where student_id = 1 and course_id = 1;
+--
+--
+--
+-- 8 View the announcements posted within the past 10 days about the school I am enrolled in.
+--
+-- select a.*
+-- from announcements a
+-- inner join students st
+-- on a.school_id = st.school_id
+-- where st.id = 1 and datediff(curdate(), a.date) < 10;
+--
+--
+--
+-- 9 View all the information about activities offered by my school, as well as the teacher responsible
+-- for it.
+--
+-- select a.*, t.*
+-- from activities a
+-- inner join teachers t
+-- on a.teacher_id = t.id
+-- inner join students s
+-- on s.school_id = a.school_id and s.id = 1;
+--
+--
+-- 
+10 Apply for activities in my school on the condition that I can not join two activities of the same
+type on the same date.
+--
+
+--
+--
+--
+11 Join clubs offered by my school, if I am a highschool student.
+--
+
+--
+--
+--
+-- 12 Search in a list of courses that i take by its name or code.
+--
+-- select c.*
+-- from courses c
+-- inner join course_has_student chs
+-- on c.id = chs.course_id and chs.course_id = 1 and c.name like "%Donuts%" or c.code like "%dps101%";

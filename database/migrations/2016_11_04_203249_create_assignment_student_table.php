@@ -17,7 +17,7 @@ class CreateAssignmentStudentTable extends Migration
                                            ->index();
            $table->integer('student_id')->unsigned()
                                         ->index();
-           $table->integer('grade');
+           $table->integer('grade')->nullable();
            $table->mediumtext('solution');
            $table->timestamps();
 

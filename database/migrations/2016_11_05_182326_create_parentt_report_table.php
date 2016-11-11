@@ -12,13 +12,13 @@ class CreateParenttReportTable extends Migration
      */
     public function up()
     {
-        Schema::create('parent_writes_report', function (Blueprint $table) {
+        Schema::create('parent_repliesOn_report', function (Blueprint $table) {
            $table->integer('parent_id')->unsigned()
                                         ->index();
            $table->integer('report_id')->unsigned()
                                         ->index();
             $table->text('teacher_comment');
-            $table->text('parent_comment');
+            $table->text('parent_comment')->nullable();
             $table->timestamps();
 
             $table->primary(['report_id','parent_id']);
@@ -42,6 +42,6 @@ class CreateParenttReportTable extends Migration
      */
     public function down()
     {
-        Schema::drop('parent_writes_report');
+        Schema::drop('parent_repliesOn_report');
     }
 }
