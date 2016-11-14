@@ -3,7 +3,10 @@ use skool;
 insert into schools
 (name, email, vision, mission, general_info, phone_number1 ,phone_number2, fees, address, main_language, type)
 values
-("Modern New Neu Nouvle", "hogdoor@hogdoor.com", "vision", "mission", "general_info", "012" ,"011", 5000, "right there", "English", "International");
+("Modern New Neu Nouvle", "hogdoor@hogdoor.com", "vision", "mission", "general_info", "012" ,"011", 5000, "right there", "English", "International"),
+("Most Reviewed School Ever", "ever@ever.com", "vision", "mission", "general_info", "0125465" ,"012331", 5000, "Umnottelling you", "English", "International"),
+("Deadpool & Joker Skool", "skool@skool.com", "vision", "mission", "general_info", "012" ,"011", 5000, "First let me show you a magic trick", "English", "National"),
+("Arkham", "arkham@arkham.com", "vision", "mission", "general_info", "0121431" ,"0114311", 5000, "arkham asylum", "English", "National");
 
 insert into elementary_levels
 (supplies, school_id)
@@ -26,7 +29,10 @@ values
 ("normalteacher","secret","Employee"),
 ('one', 'secret', 'Student'),
 ('maxm', 'secret', 'Student'),
-('vader', 'secret', 'Parent');
+('vader', 'secret', 'Parent'),
+('deadpool', 'secret', 'Parent'),
+('batman', 'secret', 'Parent'),
+('corleone', 'secret', 'Student');
 
 insert into employees
 (first_name, middle_name, last_name, role, birth_date, address, email, username, gender, school_id, phone_number, mobile_number1, mobile_number2)
@@ -64,8 +70,9 @@ values
 insert into students
 (first_name, middle_name, last_name, email, SSN, grade, gender, birth_date, school_id, username)
 values
-('One', 'Two', 'Three', 'one@one.com', 1, 1, 'Male', '2010-09-11', 1 ,'one'),
-('Maxm', 'Twain', 'DeV', 'maxm@maxm.com', 1, 1, 'Female', '2010-09-04', 1 ,'maxm');
+('One', 'Two', 'Three', 'one@one.com', 134134, 1, 'Male', '2010-09-11', 1 ,'one'),
+('Maxm', 'Twain', 'DeV', 'maxm@maxm.com', 112, 1, 'Female', '2010-09-04', 1 ,'maxm'),
+('Corleone', 'I', 'V', 'corleone@corleone.com', 8, 'Male', '2005-09-04', 2, 'corleone');
 
 insert into course_has_student
 (course_id, student_id)
@@ -91,17 +98,25 @@ values
 insert into clubs
 (name, high_level_id, purpose)
 values
-('Koolerz', 1, 'We kool');
+('Koolerz', 1, 'We kool'),
+('Klubzinza', 1, 'SUP'),
+('Akkump', 1, 'One more club for my list of accomplishments');
 
 insert into club_joinedby_student
 (student_id, club_id)
 values
-(1, 1);
+(1, 1),
+(1, 2),
+(1, 3),
+(2, 1),
+(3, 2);
 
 insert into parents
 (first_name, middle_name, last_name, email, address, phone_number, mobile_number1, mobile_number2, username)
 values
-('Dark', 'Darth', 'Vader', 'vader@vader.com', 'milky way st.', '09999', '09990','09991','vader');
+('Dark', 'Darth', 'Vader', 'vader@vader.com', 'milky way st.', '09999', '09990','09991','vader'),
+('Deadpool', 'X', 'L', 'deadpool@deadpool.com', 'R way st.', '09992349', '09321990','099412391','deadpool'),
+('Batman', 'Bruce', 'Wayne', 'batman@batman.com', 'Bat cave st.', '0999329', '0992390','0923991','batman');
 
 insert into students
 (first_name, middle_name, last_name, SSN, gender, birth_date)
@@ -135,7 +150,13 @@ values
 insert into parent_reviews_school
 (parent_id, school_id, review)
 values
-(1, 1, "Nice play ground you have");
+(1, 1, "Nice play ground you have"),
+(1, 2, "Review you get"),
+(2, 2, "One more review"),
+(3, 2, "Shut up"),
+(1, 3, "This should be R rated skool"),
+(2, 3, "Why you do this"),
+(1, 4, "The review is in the table");
 
 insert into questions
 (title, question, student_id, course_id)

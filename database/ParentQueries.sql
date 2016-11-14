@@ -28,7 +28,7 @@
 -- 3 View a list of schools that accepted my children categorized by child.
 -- select *
 -- from schools s
--- inner join school_appliedBy_student sabs
+-- inner join school_appliedInBy_student sabs
 -- on s.id = sabs.school_id
 -- where sabs.parent_id = 1 and accepted = True
 -- order by sabs.student_id;
@@ -124,10 +124,61 @@
 13 View the top 10 schools with the highest number of reviews or highest number of enrolled students.
 This should exclude schools that my children are enrolled in.
 --
-
+select sc.*
+from schools sc
+where sc.id in (
+   select sc1.id
+   from schools sc1
+   inner join parent_reviews_school prs1
+   on sc1.id = prs1.school_id and sc1.id not in(
+      select sc.id
+      from schools sc
+      inner join students st
+      on sc.id = st.school_id
+      inner join parent_has_student phs
+      on phs.student_id = st.id and phs.parent_id = 1
+   )
+group by sc1.id
+order by count(*) desc
+limit 10)
+union
+select sc.*
+from schools sc
+where sc.id in(
+   select sc1.id
+   from schools sc1
+   inner join students st
+   on sc1.id = st.school_id and sc1.id not in (
+      select sc.id
+      from schools sc
+      inner join students st
+      on sc.id = st.school_id
+      inner join parent_has_student phs
+      on phs.student_id = st.id and phs.parent_id = 1
+   )
+group by st.school_id
+order by count(*) desc
+limit 10);
 --
 --
 --
-14 Find the international school which has a reputation higher than all national schools, i.e. has the
-highest number of reviews.
+-- 14 Find the international school which has a reputation higher than all national schools, i.e. has the
+-- highest number of reviews.
 --
+-- select sc.* from schools sc where sc.id in (
+--    select sc1.id
+--    from schools sc1
+--    inner join parent_reviews_school prs1
+--    on sc1.id = prs1.school_id
+--    where sc1.type = "International"
+--    group by sc1.id
+--    having count(sc1.id) >=
+--    all(
+--       select count(sc2.id)
+--       from schools sc2
+--       inner join parent_reviews_school prs2
+--       on sc2.id = prs2.school_id
+--       where sc2.type = "National"
+--       group by sc2.id
+--    ))
+-- limit 1;

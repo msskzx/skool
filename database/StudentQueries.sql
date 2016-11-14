@@ -81,7 +81,7 @@
 -- on s.school_id = a.school_id and s.id = 1;
 --
 --
--- 
+--
 10 Apply for activities in my school on the condition that I can not join two activities of the same
 type on the same date.
 --

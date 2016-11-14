@@ -103,6 +103,6 @@
 --
 -- 11 Accept or reject the application submitted by parents to their children.
 --
--- update school_appliedBy_student
+-- update school_appliedInBy_student
 -- set accepted = 1;
 -- where student_id = 1 and school_id = 1;

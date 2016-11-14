@@ -104,6 +104,14 @@
 --
 --
 --
-12 Display the name of the high school student who is currently a member of the greatest number of
-clubs.
+-- 12 Display the name of the high school student who is currently a member of the greatest number of
+-- clubs.
 --
+-- select first_name, middle_name, last_name from students where id = (
+-- select st.id
+-- from students st
+-- inner join club_joinedby_student cjbs
+-- on st.id = cjbs.student_id
+-- group by st.id
+-- order by count(*) desc
+-- limit 1);

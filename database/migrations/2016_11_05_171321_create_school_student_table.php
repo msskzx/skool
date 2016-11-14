@@ -12,7 +12,7 @@ class CreateSchoolStudentTable extends Migration
      */
     public function up()
     {
-        Schema::create('school_appliedBy_student', function (Blueprint $table) {
+        Schema::create('school_appliedInBy_student', function (Blueprint $table) {
             $table->integer('school_id')->unsigned()
                                         ->index();
             $table->integer('student_id')->unsigned()
@@ -49,6 +49,6 @@ class CreateSchoolStudentTable extends Migration
      */
     public function down()
     {
-        Schema::drop('school_appliedBy_student');
+        Schema::drop('school_appliedInBy_student');
     }
 }

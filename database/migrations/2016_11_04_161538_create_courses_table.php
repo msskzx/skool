@@ -16,7 +16,6 @@ class CreateCoursesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('code');
-            $table->enum('level', ['Elementary Level', 'Middle Level', 'High Level']);
             $table->integer('grade');
             $table->mediumtext('description');
             $table->timestamps();
@@ -24,7 +23,6 @@ class CreateCoursesTable extends Migration
                                          ->index();
             $table->integer('school_id')->unsigned()
                                         ->index();
-
 
             $table->foreign('teacher_id')
                   ->references('id')
