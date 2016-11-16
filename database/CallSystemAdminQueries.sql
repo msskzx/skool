@@ -1,0 +1,9 @@
+-- call insertSchool("Modern New Neu", "hogdoor@hogdoor.com", "vision", "mission", "general_info", "012" ,"011", 5000, "right there", "English", "International");
+--
+-- call insertCourse("Imaginary Numbers: Dragon Ball edidtion", "IN101", "How to dragon ball the Imaginary our of numbers", 7);
+--
+-- call insertPrerequisite(1, 2);
+--
+-- call insertAdmin("Arkham", "heisenberg", "secret", "Walter", "W", "White", '1999-09-09', 'Meth lab second floor', "heisenberg@heisenberg.com", "Male");
+--
+-- call deleteSchool(7);

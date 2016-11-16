@@ -6,12 +6,12 @@
 --
 -- delimiter //
 -- create procedure insertUser
--- (in username1 varchar(255), in password1 varchar(255), in role1 varchar(255))
+-- (in username varchar(255), in password varchar(255), in role varchar(255))
 -- BEGIN
 --    insert into users
 --    (username, password, role)
 --    values
---    (username1, password1, role1);
+--    (username, password, role);
 -- end //
 -- delimiter ;
 --
