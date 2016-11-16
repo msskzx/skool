@@ -80,9 +80,9 @@ values
 (1, 1);
 
 insert into activities
-(date, location, description, type, admin_id, teacher_id)
+(date, location, description, type, admin_id, teacher_id, school_id)
 values
-('2016-03-03', "H12", "Lorem ipsum dolor sit amet, consectetur adipisicing elit...", "Chess Tournament", 1, 1);
+('2016-03-03', "H12", "Lorem ipsum dolor sit amet, consectetur adipisicing elit...", "Chess Tournament", 1, 1, 1);
 
 insert into activity_joinedBy_student
 (activity_id, student_id)
@@ -130,12 +130,12 @@ values
 (1, 3),
 (1, 4);
 
-insert into school_appliedBy_student
+insert into school_appliedInBy_student
 (student_id, school_id, parent_id, accepted)
-values(3, 1, 1, True),
-(4, 1, 1, False),
-(1, 1, True),
-(2, 1, True);
+values(3, 1, 1, 'True'),
+(4, 1, 1, 'False'),
+(1, 1, 'True'),
+(2, 1, 'True');
 
 insert into reports
 (report, teacher_id, student_id)

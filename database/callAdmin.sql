@@ -1,0 +1,21 @@
+-- call setStudentUsername(1, "Jiglo", "secret");
+--
+-- call setEmployeeUsername(1, "Dahaka", "secret");
+--
+-- call deleteStudent(4);
+--
+-- call deleteEmployee(4);
+--
+-- call updateSchool(1, "Modern New Neu", "hogdoor@hogdoor.com", "vision", "mission", "general_info", "012" ,"011", 5000, "right there", "English", "International");
+--
+-- call insertAnnouncement('2016-03-03', "Party", "Lorem ipsum dolor sit amet, consectetur adipisicing elit...", "Trip", 1, 1);
+--
+-- call insertActivity('2016-03-03', "H12", "empty", "Lorem ipsum dolor sit amet, consectetur adipisicing elit...", "Chess Tournament", 1, 1, 1);
+--
+-- call assignTeacherActivity(4, 2, 1);
+--
+-- call updateTeacherCourse(1, 1);
+--
+-- call assignSupervisor(1, 2);
+--
+-- call acceptStudent(1, 1, 'Accepted');

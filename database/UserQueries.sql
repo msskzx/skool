@@ -2,38 +2,71 @@
 --
 -- Search for any school by its name, address or its type (national/international).
 --
--- select * from schools
--- where name like 'name' or address like 'address' or type like 'international';
+-- delimiter //
+-- create procedure searchSchools
+-- (in name varchar(255), in address varchar(255), in type varchar(255))
+-- BEGIN
+-- select sc.* from schools sc
+-- where sc.name like concat('%',name, '%') COLLATE utf8_unicode_ci or sc.address like concat('%',address,'%') COLLATE utf8_unicode_ci or sc.type = type COLLATE utf8_unicode_ci;
+-- end //
+-- delimiter ;
 --
 --
 --
 --  View a list of all available schools on the system categorized by their level.
 --
--- select *
--- from schools inner join elementary_levels
--- on schools.id = school_id;
+-- delimiter //
+-- create procedure getElementaryLevels()
+-- BEGIN
+-- select sc.*
+-- from schools sc inner join elementary_levels el
+-- on sc.id = el.school_id;
+-- end //
+-- delimiter ;
 --
--- select *
--- from schools inner join middle_levels
--- on schools.id = school_id;
+-- delimiter //
+-- create procedure getMiddleLevels()
+-- BEGIN
+-- select sc.*
+-- from schools sc inner join middle_levels ml
+-- on sc.id = ml.school_id;
+-- end //
+-- delimiter ;
 --
--- select *
--- from schools inner join high_levels
--- on schools.id = school_id;
+-- delimiter //
+-- create procedure getHighLevels()
+-- BEGIN
+-- select sc.*
+-- from schools sc inner join high_levels hl
+-- on sc.id = hl.school_id;
+-- end //
+-- delimiter ;
 --
 --
 --
 -- View the information of a certain school along with the reviews written about it and teachers
 -- teaching in this school
 --
+-- delimiter //
+-- create procedure getSchoolReviews
+-- (in id int)
+-- BEGIN
 -- select *
--- from schools inner join parent_reviews_school
--- on schools.id = parent_reviews_school.school_id
--- where schools.id = 1;
+-- from schools sc inner join parent_reviews_school prs
+-- on sc.id = prs.school_id
+-- where sc.id = id;
+-- end //
+-- delimiter ;
 --
+-- delimiter //
+-- create procedure getSchoolTeachers
+-- (in id int)
+-- BEGIN
 -- select *
--- from schools inner join employees
--- on schools.id = employees.school_id
--- inner join teachers
--- on employees.id = teachers.employee_id
--- where schools.id = 1;
+-- from schools sc inner join employees e
+-- on sc.id = e.school_id
+-- inner join teachers t
+-- on e.id = t.employee_id
+-- where sc.id = id;
+-- end //
+-- delimiter ;
