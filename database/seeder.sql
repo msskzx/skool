@@ -116,47 +116,14 @@ insert into parents
 values
 ('Dark', 'Darth', 'Vader', 'vader@vader.com', 'milky way st.', '09999', '09990','09991','vader'),
 ('Deadpool', 'X', 'L', 'deadpool@deadpool.com', 'R way st.', '09992349', '09321990','099412391','deadpool'),
-('Batman', 'Bruce', 'Wayne', 'batman@batman.com', 'Bat cave st.', '0999329', '0992390','0923991','batman');
+('Batman', 'Bruce', 'Wayne', 'batman@batman.com', 'Bat cave st.', '0999329', '0992390','0923991','batman'),
+('Talion', 'IDK', 'ISDK', 'talion@talion.com', 'Forge Tower', '095749', '0122390','06541','talion');
 
 insert into students
 (first_name, middle_name, last_name, SSN, gender, birth_date)
 values
 ('Goku', 'Dark', 'Vader', 83289, 'Male', '2005-12-12'),
 ('Darth', 'Dark', 'Vader', 555, 'Male', '2005-12-12');
-
-insert into parent_has_student
-(parent_id, student_id)
-values
-(1, 3),
-(1, 4);
-
-insert into school_appliedInBy_student
-(student_id, school_id, parent_id, accepted)
-values(3, 1, 1, 'True'),
-(4, 1, 1, 'False'),
-(1, 1, 'True'),
-(2, 1, 'True');
-
-insert into reports
-(report, teacher_id, student_id)
-values
-("This is not a very long report", 1, 3);
-
-insert into parent_rates_teacher
-(parent_id, teacher_id, rate)
-values
-(1, 2, 9);
-
-insert into parent_reviews_school
-(parent_id, school_id, review)
-values
-(1, 1, "Nice play ground you have"),
-(1, 2, "Review you get"),
-(2, 2, "One more review"),
-(3, 2, "Shut up"),
-(1, 3, "This should be R rated skool"),
-(2, 3, "Why you do this"),
-(1, 4, "The review is in the table");
 
 insert into questions
 (title, question, student_id, course_id)
@@ -174,3 +141,44 @@ insert into assignment_solvedBy_student
 (assignment_id, student_id, solution)
 values
 (1, 1, "Donuts Per Second...");
+
+
+call insertParent('gangsta', 'secret', 'TheGodFather', 'Darth', 'Vader', 'gangsta@gangsta.com', 'along this road', '09999', '09990','09991');
+call insertParent('talion', 'secret', 'Talion', 'IDK', 'ISDK', 'talion@talion.com', 'Forge Tower', '095749', '0122390','06541');
+
+call insertStudent('Lithariel', 'Talion', 'IDK', 121412, '1990-09-09', 'Female');
+
+call setParentStudent(6, 5);
+call setParentStudent(3, 1);
+call setParentStudent(4, 1);
+
+call applyStudent(6, 1, 5);
+call applyStudent(3, 1, 1);
+call applyStudent(4, 1, 1);
+
+call acceptStudent(1, 3, 'Accepted');
+
+-- (parent_id, teacher_id, rate)
+call rateTeacher(1, 1, 8);
+call rateTeacher(1, 2, 9);
+
+-- (parent_id, school_id, review)
+call reviewSchool(1, 6, "This is sehr gut");
+call reviewSchool(3, 6, "Shut sup");
+call reviewSchool(3, 1, "Tha Review");
+call reviewSchool(5, 1, "Is this school internationl?");
+call reviewSchool(5, 8, "To be an internationl skool is not that hard");
+call reviewSchool(1, 1, "Nice play ground you have");
+call reviewSchool(1, 2, "Review you get");
+call reviewSchool(2, 2, "One more review");
+call reviewSchool(3, 2, "Shut up");
+call reviewSchool(3, 8, "Ketch up");
+call reviewSchool(1, 8, "Suit up");
+call reviewSchool(1, 3, "This should be R rated skool");
+call reviewSchool(2, 3, "Why you do this");
+call reviewSchool(1, 4, "Crowded classes are cleared away... one by one...");
+
+insert into reports
+(report, teacher_id, student_id)
+values
+("This is not a very long report", 1, 3);

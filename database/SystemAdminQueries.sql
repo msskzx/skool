@@ -72,7 +72,11 @@
 -- select e.id into employee_id
 -- from employees e
 -- where e.username = username COLLATE utf8_unicode_ci;
---
+
+-- select sc.type into school_type
+-- from schools sc
+-- where sc.id = school_id;
+
 -- if(school_type = 'National') then
 -- set salary = 3000;
 -- else

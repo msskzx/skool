@@ -48,32 +48,7 @@
 -- birthdate, address, email, username, password, and gender. Note that the salary of the admin
 -- depends on the type of the school.
 --
-delimiter //
-create procedure insertAdmin
-(in username varchar(255), in password varchar(255), in first_name varchar(255), in middle_name varchar(255), in last_name varchar(255), in birth_date date, in address ,in email varchar(255),in gender varchar(255),in school_id int)
-BEGIN
-   call insertUser(username, password, "Employee");
-   call insertEmployee(first_name, middle_name, last_name, "Admin", birth_date, address, email, username, gender, school_id)
-
-   update employees e set e.username = username where id = ?;
-
-   insert into admins a
-   (salary, employee_id)
-   values
-   (salary, employee_id);
-   end //
-delimiter ;
---
--- delimiter //
--- create procedure insertEmployee
--- (in first_name varchar(255), in middle_name varchar(255), in last_name varchar(255), in role varchar(255), in birth_date date, in address varchar(255) ,in email varchar(255),in gender varchar(255),in school_id int)
--- BEGIN
---    insert into employees e
---    (first_name, middle_name, last_name, role, birth_date, address, email, gender, school_id)
---    values
---    (first_name, middle_name, last_name, role, birth_date, address, email, gender, school_id)
--- end //
--- delimiter ;
+-- call insertAdmin("Arkham", "heisenberg", "secret", "Walter", "W", "White", '1999-09-09', 'Meth lab second floor', "heisenberg@heisenberg.com", "Male");
 --
 --
 --
@@ -84,7 +59,7 @@ delimiter ;
 -- (in id int)
 -- BEGIN
 --    delete from students
---       where students.id = id;
+--    where students.id = id;
 -- end //
 -- delimiter ;
 --
@@ -93,7 +68,7 @@ delimiter ;
 -- (in id int)
 -- BEGIN
 --    delete from employees
---       where employees.id = id;
+--    where employees.id = id;
 -- end //
 -- delimiter ;
 --
@@ -105,7 +80,7 @@ delimiter ;
 -- create procedure updateSchool
 -- (in id int,in name varchar(255),in email varchar(255),in vision mediumtext,in mission mediumtext,in general_info mediumtext,in phone_number1 int ,in phone_number2 int,in fees int,in address varchar(255),in main_language varchar(255),in type varchar(255))
 -- BEGIN
--- update schools set name = name, email = email, vision = vision, mission = mission, general_info = general_info, phone_number1 = phone_number1, phone_number2 = phone_number2, fees = fees, address = address, main_language = main_language, type = type
+--    update schools set name = name, email = email, vision = vision, mission = mission, general_info = general_info, phone_number1 = phone_number1, phone_number2 = phone_number2, fees = fees, address = address, main_language = main_language, type = type
 --    where schools.id = id;
 -- end //
 -- delimiter ;

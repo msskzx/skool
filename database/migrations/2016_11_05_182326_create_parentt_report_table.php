@@ -13,12 +13,12 @@ class CreateParenttReportTable extends Migration
     public function up()
     {
         Schema::create('parent_repliesOn_report', function (Blueprint $table) {
-           $table->integer('parent_id')->unsigned()
+            $table->integer('parent_id')->unsigned()
                                         ->index();
-           $table->integer('report_id')->unsigned()
+            $table->integer('report_id')->unsigned()
                                         ->index();
-            $table->text('teacher_comment');
-            $table->text('parent_comment')->nullable();
+            $table->text('parent_comment');
+            $table->text('teacher_comment')->nullable();
             $table->timestamps();
 
             $table->primary(['report_id','parent_id']);
