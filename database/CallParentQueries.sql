@@ -91,10 +91,11 @@
 --
 --
 --
-13 View the top 10 schools with the highest number of reviews or highest number of enrolled students.
-This should exclude schools that my children are enrolled in.
+-- 13 View the top 10 schools with the highest number of reviews or highest number of enrolled students.
+-- This should exclude schools that my children are enrolled in.
 --
-
+-- (parent_id)
+-- call topSchools(0);
 --
 --
 --

@@ -214,50 +214,56 @@
 --
 --
 --
-13 View the top 10 schools with the highest number of reviews or highest number of enrolled students.
-This should exclude schools that my children are enrolled in.
+-- 13 View the top 10 schools with the highest number of reviews or highest number of enrolled students.
+-- This should exclude schools that my children are enrolled in.
 --
-delimiter //
-create procedure topSchools
-()
-BEGIN
-select sc.*
-from schools sc
-where sc.id in (
-   select sc1.id
-   from schools sc1
-   inner join parent_reviews_school prs1
-   on sc1.id = prs1.school_id and sc1.id not in(
-      select sc.id
-      from schools sc
-      inner join students st
-      on sc.id = st.school_id
-      inner join parent_has_student phs
-      on phs.student_id = st.id and phs.parent_id = 1
-   )
-group by sc1.id
-order by count(*) desc
-limit 10)
-union
-select sc.*
-from schools sc
-where sc.id in(
-   select sc1.id
-   from schools sc1
-   inner join students st
-   on sc1.id = st.school_id and sc1.id not in (
-      select sc.id
-      from schools sc
-      inner join students st
-      on sc.id = st.school_id
-      inner join parent_has_student phs
-      on phs.student_id = st.id and phs.parent_id = 1
-   )
-group by st.school_id
-order by count(*) desc
-limit 10);
-end //
-delimiter ;
+-- delimiter //
+-- create procedure topSchools
+-- (in parent_id int unsigned)
+-- BEGIN
+--
+-- select distinct id, name, email, vision, mission, general_info, phone_number1 ,phone_number2, fees, address, main_language, type
+-- from(
+-- select new_table.*
+-- from (
+--    select count(*) as countX, sc1.*
+--    from schools sc1
+--    inner join parent_reviews_school prs1
+--    on sc1.id = prs1.school_id and sc1.id not in(
+--       select sc.id
+--       from schools sc
+--       inner join students st
+--       on sc.id = st.school_id
+--       inner join parent_has_student phs
+--       on phs.student_id = st.id and phs.parent_id = parent_id
+--    )
+--    group by sc1.id
+--    order by countX desc
+--    limit 10) new_table
+--
+-- union
+--
+-- select new_table.*
+-- from (
+--    select count(*) as countX, sc1.*
+--    from schools sc1
+--    inner join students st
+--    on sc1.id = st.school_id and sc1.id not in (
+--       select sc.id
+--       from schools sc
+--       inner join students st
+--       on sc.id = st.school_id
+--       inner join parent_has_student phs
+--       on phs.student_id = st.id and phs.parent_id = parent_id
+--    )
+--    group by st.school_id
+--    order by count(*) desc
+--    limit 10) new_table
+-- ) final_table
+-- order by countX desc
+-- limit 10;
+-- end //
+-- delimiter ;
 --
 --
 --
