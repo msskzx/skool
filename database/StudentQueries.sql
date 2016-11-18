@@ -2,102 +2,216 @@
 --
 -- 1 Update my account information except for the username.
 --
+-- delimiter //
+-- create procedure updateStudent
+-- (in student_id int unsigned, in first_name varchar(255), in middle_name varchar(255), in last_name varchar(255),in SSN int, in birth_date date, in gender varchar(255))
+-- BEGIN
 -- update students
--- set first_name = "Corleone"
--- where id = 1;
+-- set first_name = first_name, middle_name = middle_name, last_name = last_name, SSN = SSN, gender = gender, birth_date = birth_date
+-- where id = student_id;
+-- end //
+-- delimiter ;
 --
 --
 --
 -- 2 View a list of courses’ names assigned to me based on my grade ordered by name.
--- select *
+--
+-- delimiter //
+-- create procedure getMyCourses
+-- (in id int unsigned)
+-- BEGIN
+--
+-- select c.name
 -- from courses c
 -- inner join course_has_student chs
--- on c.id = chs.course_id and chs.student_id = 1
+-- on c.id = chs.course_id and chs.student_id = id
 -- order by c.name;
+--
+-- end //
+-- delimiter ;
 
 -- 3 Post questions I have about a certain course.
 --
+-- delimiter //
+-- create procedure insertQuestion
+-- (in student_id int unsigned, in course_id int unsigned, in title varchar(255), in question mediumtext)
+-- BEGIN
+--
+-- declare teacher_id int unsigned;
+--
+-- select c.teacher_id into teacher_id
+-- from courses c
+-- where c.id = course_id;
+--
 -- insert into questions
--- (title, question, student_id, course_id)
+-- (title, question, student_id, course_id, teacher_id)
 -- values
--- ("Apple pie exception", "I was making an apple pie when this error came out tried to pour some milk but it did not get solved", 1, 1);
+-- (title, question, student_id, course_id, teacher_id);
+--
+-- end //
+-- delimiter ;
 --
 --
 --
 -- 4 View all questions asked by other students on a certain course along with their answers.
 --
+-- delimiter //
+-- create procedure updateStudent
+-- (in student_id int unsigned, in course_id int unsigned)
+-- BEGIN
+--
 -- select *
--- from questions
--- where student_id <> 1 and course_id = 1;
+-- from questions q
+-- where q.student_id <> student_id and q.course_id = course_id;
+--
+-- end //
+-- delimiter ;
 --
 --
 --
 -- 5 View the assignments posted for the courses I take.
 --
--- select *
+-- delimiter //
+-- create procedure getMyAssignments
+-- (in student_id int unsigned)
+-- BEGIN
+--
+-- select a.*
 -- from assignments a
 -- inner join course_has_student chs
--- on a.course_id = chs.course_id and chs.student_id = 1;
+-- on a.course_id = chs.course_id and chs.student_id = student_id;
+--
+-- end //
+-- delimiter ;
 --
 --
 --
 -- 6 Solve assignments posted for courses I take.
 --
+-- delimiter //
+-- create procedure insertSolution
+-- (in student_id int unsigned, in assignment_id int unsigned, in solution mediumtext)
+-- BEGIN
+--
 -- insert into assignment_solvedBy_student
 -- (assignment_id, student_id, solution)
 -- values
--- (1, 1, "Donuts Per Second...");
+-- (assignment_id, student_id, solution);
+--
+-- end //
+-- delimiter ;
 --
 --
 --
 -- 7 View the grade of the assignments I solved per course.
 --
--- select asbs.grade
+-- delimiter //
+-- create procedure getGrades
+-- (in student_id int unsigned, in course_id int unsigned)
+-- BEGIN
+--
+-- select a.id, asbs.grade
 -- from assignment_solvedBy_student asbs
 -- inner join assignments a
 -- on asbs.assignment_id = a.id
--- where student_id = 1 and course_id = 1;
+-- where asbs.student_id =  student_id and a.course_id = course_id;
+--
+-- end //
+-- delimiter ;
 --
 --
 --
 -- 8 View the announcements posted within the past 10 days about the school I am enrolled in.
 --
+-- delimiter //
+-- create procedure getAnnouncements
+-- (in student_id int unsigned)
+-- BEGIN
+--
 -- select a.*
 -- from announcements a
 -- inner join students st
--- on a.school_id = st.school_id
--- where st.id = 1 and datediff(curdate(), a.date) < 10;
+-- on a.school_id = st.school_id and st.id = student_id and datediff(curdate(), a.date) < 10;
+--
+-- end //
+-- delimiter ;
 --
 --
 --
 -- 9 View all the information about activities offered by my school, as well as the teacher responsible
 -- for it.
 --
+-- delimiter //
+-- create procedure getActivities
+-- (in school_id int unsigned)
+-- BEGIN
+--
 -- select a.*, t.*
 -- from activities a
 -- inner join teachers t
--- on a.teacher_id = t.id
--- inner join students s
--- on s.school_id = a.school_id and s.id = 1;
+-- on a.teacher_id = t.id and a.school_id = school_id;
+--
+-- end //
+-- delimiter ;
 --
 --
 --
-10 Apply for activities in my school on the condition that I can not join two activities of the same
-type on the same date.
+-- 10 Apply for activities in my school on the condition that I can not join two activities of the same
+-- type on the same date.
 --
+delimiter //
+create procedure joinActivity
+(in student_id int unsigned, in activity_id int unsigned)
+BEGIN
+
+insert into activity_joinedBy_student
+(student_id, activity_id)
+values
+(student_id, activity_id);
+
+end //
+delimiter ;
 
 --
 --
 --
-11 Join clubs offered by my school, if I am a highschool student.
+-- 11 Join clubs offered by my school, if I am a highschool student.
 --
-
+-- delimiter //
+-- create procedure joinClub
+-- (in student_id int unsigned, in club_id int unsigned)
+-- BEGIN
+--
+-- declare grade int;
+--
+-- select s.grade into grade
+-- from students s
+-- where s.id = student_id;
+--
+-- if(grade > 8) then
+--    insert into club_joinedBy_student
+--    (student_id, club_id)
+--    values
+--    (student_id, club_id);
+-- end if;
+--
+-- end //
+-- delimiter ;
 --
 --
 --
 -- 12 Search in a list of courses that i take by its name or code.
 --
+-- delimiter //
+-- create procedure searchCourses
+-- (in student_id int unsigned, in name varchar(255), in code varchar(255))
+-- BEGIN
+--
 -- select c.*
 -- from courses c
 -- inner join course_has_student chs
--- on c.id = chs.course_id and chs.course_id = 1 and c.name like "%Donuts%" or c.code like "%dps101%";
+-- on c.id = chs.course_id and chs.student_id = student_id and
+-- (c.name like concat('%', name, '%') COLLATE utf8_unicode_ci or c.code like concat('%', code, '%') COLLATE utf8_unicode_ci);
+--
+-- end //
+-- delimiter ;

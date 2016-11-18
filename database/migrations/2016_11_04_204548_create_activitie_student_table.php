@@ -17,7 +17,6 @@ class CreateActivitieStudentTable extends Migration
                                               ->index();
                $table->integer('student_id')->unsigned()
                                               ->index();
-               $table->enum('accepted', ['Accepted', 'Rejected', 'Pending'])->default('Pending');
                $table->timestamps();
 
                $table->primary(['activity_id', 'student_id']);
