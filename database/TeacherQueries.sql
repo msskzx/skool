@@ -2,97 +2,194 @@
 --
 -- 1 Sign up by providing my first name, middle name, last name, birthdate, address, email, and gender.
 --
+-- delimiter //
+-- create procedure insertTeacher
+-- (in first_name varchar(255), in middle_name varchar(255), in last_name varchar(255), in role varchar(255), in birth_date date, in address varchar(255), in email varchar(255), in gender varchar(255), in years_of_exp int)
+-- BEGIN
+--
+-- declare employee_id int unsigned;
+--
 -- insert into employees
--- (first_name, middle_name, last_name, role, birth_date, address, email, gender, school_id)
+-- (first_name, middle_name, last_name, role, birth_date, address, email, gender)
 -- values
--- ("Ali", "Doe" , "Mug", "Teacher", '1990-12-12', "Kairo, middle st.", "mug@mug.com", "Male", 1);
+-- (first_name, middle_name, last_name, role, birth_date, address, email, gender);
+--
+-- select e.id into employee_id
+-- from employees e
+-- where e.email = email COLLATE utf8_unicode_ci;
 --
 -- insert into teachers
--- (years_of_exp, employee_id)
+-- (employee_id, years_of_exp)
 -- values
--- (16, 1);
+-- (employee_id, years_of_exp);
+--
+-- end //
+-- delimiter ;
 --
 --
 --
 -- 2 View a list of courses’ names I teach categorized by level and grade.
 --
+-- delimiter //
+-- create procedure getCoursesITeach
+-- (in teacher_id int unsigned)
+-- BEGIN
+--
 -- select *
--- from courses
--- where teacher_id = 1
+-- from courses c
+-- where c.teacher_id = teacher_id
 -- order by level, grade;
+--
+-- end //
+-- delimiter ;
 --
 --
 --
 -- 3 Post assignments for the course(s) I teach. Every assignment has a posting date, due date and
 -- content.
 --
+-- delimiter //
+-- create procedure insertAssignment
+-- (in post_date date, in due_date date, in content mediumtext, in teacher_id int unsigned, in course_id int unsigned)
+-- BEGIN
+--
 -- insert into assignments
 -- (post_date, due_date, content, teacher_id, course_id)
 -- values
--- ('2010-12-12', '2011-01-12', "Problem 1: define dps.", 1, 1);
+-- (post_date, due_date, content, teacher_id, course_id);
+--
+-- end //
+-- delimiter ;
 --
 --
 --
 -- 4 View the students’ solutions for the assignments I posted ordered by students’ ids.
 --
--- select * from assignment_solvedBy_student
--- where teacher_id = 1
+-- delimiter //
+-- create procedure getAssignmentsSolutions
+-- (in teacher_id int unsigned)
+-- BEGIN
+--
+-- select *
+-- from assignment_solvedBy_student asbs
+-- inner join assignments a
+-- on asbs.assignment_id = a.id and a.teacher_id = teacher_id
 -- order by student_id;
+--
+-- end //
+-- delimiter ;
 --
 --
 --
 -- 5 Grade the students’ solutions for the assignments I posted.
 --
+-- delimiter //
+-- create procedure gradeAssignment
+-- (in student_id int unsigned, in assignment_id int unsigned, in grade int)
+-- BEGIN
+--
 -- update assignment_solvedBy_student
--- set grade = 10
--- where student_id = 1 and assignment_id = 1;
+-- set assignment_solvedBy_student.grade = grade
+-- where assignment_solvedBy_student.student_id = student_id and assignment_solvedBy_student.assignment_id = assignment_id;
+--
+-- end //
+-- delimiter ;
 --
 --
 --
 -- 6 Delete assignments.
 --
+-- delimiter //
+-- create procedure deleteAssignment
+-- (in assignment_id int unsigned)
+-- BEGIN
+--
 -- delete from assignments
--- where id = 1;
+-- where assignments.id = assignment_id;
+--
+-- end //
+-- delimiter ;
 --
 --
 --
 -- 7 Write monthly reports about every student I teach. A report is issued on a specific date to a specific
 -- student and contains my comment.
 --
--- insert into reports(report, teacher_id, student_id)
--- values("This is a very long report implies that you my dear little student do not study", 1, 1);
+-- delimiter //
+-- create procedure insertReport
+-- (in report mediumtext, in teacher_id int unsigned, in student_id int unsigned)
+-- BEGIN
+--
+-- insert into reports
+-- (report, teacher_id, student_id)
+-- values
+-- (report, teacher_id, student_id);
+--
+-- end //
+-- delimiter ;
 --
 --
 --
 -- 8 View the questions asked by the students for each course I teach.
 --
--- select * from questions
--- where course_id = 1;
+-- delimiter //
+-- create procedure getQuestionsOfMyCourses
+-- (in teacher_id int unsigned)
+-- BEGIN
+--
+-- select *
+-- from questions q
+-- inner join courses c
+-- on q.course_id = c.id and c.teacher_id = teacher_id;
+--
+-- end //
+-- delimiter ;
 --
 --
 --
 -- 9 Answer the questions asked by the students for each course I teach.
 --
+-- delimiter //
+-- create procedure answerQuestion
+-- (in question_id int unsigned, in answer mediumtext)
+-- BEGIN
+--
 -- update questions
--- set answer = "Textbook page 120."
--- where id = 1;
+-- set questions.answer = answer
+-- where questions.id = question_id;
+--
+-- end //
+-- delimiter ;
 --
 --
 --
 -- 10 View a list of students that i teach categorized by the grade and ordered by their name (first name
 -- and last name).
 --
--- select * from students s
+-- delimiter //
+-- create procedure getMyStudents
+-- (in teacher_id int unsigned)
+-- BEGIN
+--
+-- select s.* from students s
 -- inner join course_has_student chs
 -- on s.id = chs.student_id
 -- inner join courses c
--- on c.id = shs.course_id
--- where c.teacher_id = 1
+-- on c.id = chs.course_id
+-- where c.teacher_id = teacher_id
 -- order by s.grade, s.first_name, s.last_name;
+--
+-- end //
+-- delimiter ;
 --
 --
 --
 -- 11 View a list of students that did not join any activity.
+--
+-- delimiter //
+-- create procedure getStudentsJoinedNoActivity
+-- ()
+-- BEGIN
 --
 -- select *
 -- from students s1
@@ -102,12 +199,21 @@
 -- inner join activity_joinedBy_student ajbs
 -- on ajbs.student_id = s2.id);
 --
+-- end //
+-- delimiter ;
+--
 --
 --
 -- 12 Display the name of the high school student who is currently a member of the greatest number of
 -- clubs.
 --
--- select first_name, middle_name, last_name from students where id = (
+-- delimiter //
+-- create procedure getMostActiveStudent
+-- (out name varchar(255))
+-- BEGIN
+--
+-- select concat(first_name, ' ', middle_name, ' ', last_name) into name
+-- from students where id = (
 -- select st.id
 -- from students st
 -- inner join club_joinedby_student cjbs
@@ -115,3 +221,6 @@
 -- group by st.id
 -- order by count(*) desc
 -- limit 1);
+--
+-- end //
+-- delimiter ;

@@ -37,16 +37,10 @@
 -- (in student_id int unsigned, in course_id int unsigned, in title varchar(255), in question mediumtext)
 -- BEGIN
 --
--- declare teacher_id int unsigned;
---
--- select c.teacher_id into teacher_id
--- from courses c
--- where c.id = course_id;
---
 -- insert into questions
--- (title, question, student_id, course_id, teacher_id)
+-- (title, question, student_id, course_id)
 -- values
--- (title, question, student_id, course_id, teacher_id);
+-- (title, question, student_id, course_id);
 --
 -- end //
 -- delimiter ;
@@ -159,38 +153,38 @@
 -- 10 Apply for activities in my school on the condition that I can not join two activities of the same
 -- type on the same date.
 --
-delimiter //
-create procedure joinActivity
-(in student_id int unsigned, in activity_id int unsigned)
-BEGIN
-
-declare acount int;
-declare atype varchar(255);
-declare adate date;
-
-select a.type into atype
-from activities a
-where a.id = activity_id;
-
-select a.date into adate
-from activities a
-where a.id = activity_id;
-
-select count(*) into acount
-from activities a
-inner join activity_joinedBy_student ajbs
-on a.id = ajbs.activity_id and ajbs.student_id = student_id
-and a.type = atype COLLATE utf8_unicode_ci and a.date = adate;
-
-if(acount > 0) then
-insert into activity_joinedBy_student
-   (student_id, activity_id)
-   values
-   (student_id, activity_id);
-end if;
-
-end //
-delimiter ;
+-- delimiter //
+-- create procedure joinActivity
+-- (in student_id int unsigned, in activity_id int unsigned)
+-- BEGIN
+--
+-- declare acount int;
+-- declare atype varchar(255);
+-- declare adate date;
+--
+-- select a.type into atype
+-- from activities a
+-- where a.id = activity_id;
+--
+-- select a.date into adate
+-- from activities a
+-- where a.id = activity_id;
+--
+-- select count(*) into acount
+-- from activities a
+-- inner join activity_joinedBy_student ajbs
+-- on a.id = ajbs.activity_id and ajbs.student_id = student_id
+-- and a.type = atype COLLATE utf8_unicode_ci and a.date = adate;
+--
+-- if(acount = 0) then
+-- insert into activity_joinedBy_student
+--    (student_id, activity_id)
+--    values
+--    (student_id, activity_id);
+-- end if;
+--
+-- end //
+-- delimiter ;
 --
 --
 --

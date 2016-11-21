@@ -22,19 +22,11 @@ class CreateQuestionsTable extends Migration
                                         ->index();
            $table->integer('course_id')->unsigned()
                                        ->index();
-           $table->integer('teacher_id')->unsigned()
-                                        ->index()
-                                        ->nullable();
 
            $table->foreign('course_id')
              ->references('id')
              ->on('courses')
              ->onDelete('cascade');
-
-          $table->foreign('teacher_id')
-           ->references('id')
-           ->on('teachers')
-           ->onDelete('set null');
 
            $table->foreign('student_id')
              ->references('id')
