@@ -40,14 +40,13 @@
 -- end //
 -- delimiter ;
 --
--- call setStudentUsername(1, "Jiglo", "secret");
---
 --
 --
 -- 3 Add other admins to the school I am working in. An admin has first name, middle name, last name,
 -- birthdate, address, email, username, password, and gender. Note that the salary of the admin
 -- depends on the type of the school.
 --
+-- (school_name, username, password, first_name, middle_name, last_name, birth_date date, address, email, gender)
 -- call insertAdmin("Arkham", "heisenberg", "secret", "Walter", "W", "White", '1999-09-09', 'Meth lab second floor', "heisenberg@heisenberg.com", "Male");
 --
 --
@@ -158,6 +157,8 @@
 -- end //
 -- delimiter ;
 --
+--
+-- 
 -- 11 Accept or reject the application submitted by parents to their children.
 --
 -- delimiter //

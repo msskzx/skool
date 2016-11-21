@@ -79,6 +79,8 @@ insert into course_has_student
 values
 (1, 1);
 
+call insertActivity('2016-03-03', "H10", "desc", "Chess Tournament", "nothing", 1, 1, 1);
+
 insert into activities
 (date, location, description, type, admin_id, teacher_id, school_id)
 values

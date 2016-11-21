@@ -1,19 +1,19 @@
 -- “As a system user (registered, or not registered), I should be able to ...”
 --
--- Search for any school by its name, address or its type (national/international).
+-- 1 Search for any school by its name, address or its type (national/international).
 --
 -- delimiter //
 -- create procedure searchSchools
--- (in name varchar(255), in address varchar(255), in type varchar(255))
+-- (in input varchar(255))
 -- BEGIN
 -- select sc.* from schools sc
--- where sc.name like concat('%',name, '%') COLLATE utf8_unicode_ci or sc.address like concat('%',address,'%') COLLATE utf8_unicode_ci or sc.type = type COLLATE utf8_unicode_ci;
+-- where sc.name like concat('%', input, '%') COLLATE utf8_unicode_ci or sc.address like concat('%', input,'%') COLLATE utf8_unicode_ci or sc.type = input COLLATE utf8_unicode_ci;
 -- end //
 -- delimiter ;
 --
 --
 --
---  View a list of all available schools on the system categorized by their level.
+-- 2 View a list of all available schools on the system categorized by their level.
 --
 -- delimiter //
 -- create procedure getElementaryLevels()
@@ -44,7 +44,7 @@
 --
 --
 --
--- View the information of a certain school along with the reviews written about it and teachers
+-- 3 View the information of a certain school along with the reviews written about it and teachers
 -- teaching in this school
 --
 -- delimiter //

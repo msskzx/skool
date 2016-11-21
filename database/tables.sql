@@ -1,4 +1,3 @@
-use trial;
 create table schools (`id` int unsigned not null auto_increment primary key, `name` varchar(255) not null, `email` varchar(255) not null, `vision` mediumtext not null, `mission` mediumtext not null, `general_info` mediumtext not null, `phone_number1` varchar(255) not null, `phone_number2` varchar(255) null, `fees` int not null, `address` varchar(255) not null, `main_language` varchar(255) not null, `type` enum('National', 'International') not null, `created_at` timestamp null, `updated_at` timestamp null);
 alter table schools add unique `schools_email_unique`(`email`);
 create table elementary_levels (`id` int unsigned not null auto_increment primary key, `supplies` mediumtext not null, `created_at` timestamp null, `updated_at` timestamp null, `school_id` int unsigned not null);

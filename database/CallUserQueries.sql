@@ -1,4 +1,13 @@
--- call searchSchools("most","there","nat");
+-- “As a system user (registered, or not registered), I should be able to ...”
+--
+-- 1 Search for any school by its name, address or its type (national/international).
+--
+-- (input)
+-- call searchSchools("most");
+--
+--
+--
+-- 2 View a list of all available schools on the system categorized by their level.
 --
 -- call getElementaryLevels();
 --
@@ -6,6 +15,14 @@
 --
 -- call getHighLevels();
 --
+--
+--
+--
+-- 3 View the information of a certain school along with the reviews written about it and teachers
+-- teaching in this school
+--
+-- (school_id)
 -- call getSchoolReviews(1);
 --
+-- (school_id)
 -- call getSchoolTeachers(1);

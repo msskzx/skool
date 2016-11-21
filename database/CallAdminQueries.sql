@@ -1,21 +1,84 @@
--- call setStudentUsername(1, "Jiglo", "secret");
+-- “As an administrator, I should be able to ...”
 --
--- call setEmployeeUsername(1, "Dahaka", "secret");
+-- 1 View and verify teachers who signed up as employees of the school I am responsible of, and assign
+-- to them a unique username and password. The salary of a teacher is calculated as follows: years of
+-- experience * 500 EGP.
 --
+-- (employee_id, username, password)
+-- call setEmployeeUsername(1, "dahaka", "secret");
+--
+--
+--
+-- 2 View and verify students who enrolled to the school I am responsible of, and assign to them a
+-- unique username and password.
+--
+-- (student_id, username, password)
+-- call setStudentUsername(1, "jiglo", "secret");
+--
+--
+--
+-- 3 Add other admins to the school I am working in. An admin has first name, middle name, last name,
+-- birthdate, address, email, username, password, and gender. Note that the salary of the admin
+-- depends on the type of the school.
+--
+-- (school_name, username, password, first_name, middle_name, last_name, birth_date date, address, email, gender)
+-- call insertAdmin("Arkham", "heisenberg", "secret", "Walter", "W", "White", '1999-09-09', 'Meth lab second floor', "heisenberg@heisenberg.com", "Male");
+--
+--
+--
+-- 4 Delete employees and students from the system.
+--
+-- (student_id)
 -- call deleteStudent(4);
 --
+-- (employee_id)
 -- call deleteEmployee(4);
 --
+--
+--
+-- 5 Edit the information of the school I am working in.
+--
+-- ( school_id, name, email, vision, mission, general_info, phone_number1, phone_number2, fees, address, main_language, type)
 -- call updateSchool(1, "Modern New Neu", "hogdoor@hogdoor.com", "vision", "mission", "general_info", "012" ,"011", 5000, "right there", "English", "International");
 --
+--
+--
+-- 6 Post announcements with the following information: date, title, description and type
+--
+-- ( date, title, description, type, admin_id, school_id)
 -- call insertAnnouncement('2016-03-03', "Party", "Lorem ipsum dolor sit amet, consectetur adipisicing elit...", "Trip", 1, 1);
 --
--- call insertActivity('2016-03-03', "H12", "empty", "Lorem ipsum dolor sit amet, consectetur adipisicing elit...", "Chess Tournament", 1, 1, 1);
 --
+--
+-- Create activities and assign every activity to a certain teacher. An activity has its own date, location
+-- in school, type, equipment(if any), and description.
+--
+-- (date, location, description, type, equipment, admin_id, teacher_id, school_id)
+-- call insertActivity('2016-03-03', "H12", "desc", "Chess Tournament", "nothing", 1, 1, 1);
+--
+--
+--
+-- Change the teacher assigned to an activity.
+--
+-- (activity_id, teacher_id, admin_id)
 -- call assignTeacherActivity(4, 2, 1);
 --
+--
+--
+-- 9 Assign teachers to courses that are taught in my school based on the levels it offers.
+--
+-- (course_id, teacher_id)
 -- call updateTeacherCourse(1, 1);
 --
+--
+--
+-- 10 Assign teachers to be supervisors to other teachers.
+--
+-- (teacher_id, supervisor_id)
 -- call assignSupervisor(1, 2);
 --
+--
+--
+-- 11 Accept or reject the application submitted by parents to their children.
+-- (school_id, student_id, accepted)
 -- call acceptStudent(1, 1, 'Accepted');

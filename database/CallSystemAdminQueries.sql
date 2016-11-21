@@ -1,9 +1,38 @@
+-- “As a system administrator, I should be able to ...”
+--
+-- 1 Create a school with its information: school name, address, phone number, email, general information,
+-- vision, mission, main language, type(national, international) and fees.
+--
+-- ( name, email, vision, mission, general_info,in phone_number1, phone_number2, fees, address, main_language, type)
 -- call insertSchool("Modern New Neu", "hogdoor@hogdoor.com", "vision", "mission", "general_info", "012" ,"011", 5000, "right there", "English", "International");
 --
+--
+--
+-- 2 Add courses to the system with all of its information: course code, course name, course level (elementary,
+-- middle, high), grade, description and prerequisite course(s).
+--
+-- (name, code, description, grade)
 -- call insertCourse("Imaginary Numbers: Dragon Ball edidtion", "IN101", "How to dragon ball the Imaginary our of numbers", 7);
 --
+-- (course_id, req_course_id)
 -- call insertPrerequisite(1, 2);
 --
+--
+--
+-- 3 Add admins to the system with their information: first name, middle name, last name, birthdate,
+-- address, email, username, password, and gender. Given the school name, I should assign admins
+-- to work in this school. Note that the salary of the admin depends on the type of the school. The
+-- salary of an admin working in a national school is 3000 EGP, and that working in an international
+-- school is 5000 EGP.
+--
+-- (school_name, username, password, first_name, middle_name, last_name, birth_date date, address, email, gender)
 -- call insertAdmin("Arkham", "heisenberg", "secret", "Walter", "W", "White", '1999-09-09', 'Meth lab second floor', "heisenberg@heisenberg.com", "Male");
 --
+--
+--
+-- 4 Delete a school from the database with all of its corresponding information. Students and employees
+-- of this school should not be deleted from the system, but should not have a username and password
+-- on the system until they are assigned to a new school again.
+--
+-- (school_id)
 -- call deleteSchool(7);

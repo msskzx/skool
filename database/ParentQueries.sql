@@ -204,11 +204,13 @@
 --
 -- delimiter //
 -- create procedure avgRating
--- (in id int unsigned)
+-- (in teacher_id int unsigned, out ans float(3, 1))
 -- BEGIN
--- select avg(rate)
--- from parent_rates_teacher
--- where teacher_id = id;
+--
+-- select avg(rate) into ans
+-- from parent_rates_teacher prt
+-- where prt.teacher_id = teacher_id;
+--
 -- end //
 -- delimiter ;
 --

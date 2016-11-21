@@ -164,14 +164,33 @@ create procedure joinActivity
 (in student_id int unsigned, in activity_id int unsigned)
 BEGIN
 
+declare acount int;
+declare atype varchar(255);
+declare adate date;
+
+select a.type into atype
+from activities a
+where a.id = activity_id;
+
+select a.date into adate
+from activities a
+where a.id = activity_id;
+
+select count(*) into acount
+from activities a
+inner join activity_joinedBy_student ajbs
+on a.id = ajbs.activity_id and ajbs.student_id = student_id
+and a.type = atype COLLATE utf8_unicode_ci and a.date = adate;
+
+if(acount > 0) then
 insert into activity_joinedBy_student
-(student_id, activity_id)
-values
-(student_id, activity_id);
+   (student_id, activity_id)
+   values
+   (student_id, activity_id);
+end if;
 
 end //
 delimiter ;
-
 --
 --
 --
@@ -215,3 +234,30 @@ delimiter ;
 --
 -- end //
 -- delimiter ;
+--
+--
+--
+-- calculating students ages
+-- delimiter //
+-- create procedure getAge
+-- (in id int unsigned)
+-- BEGIN
+--
+-- select *, year(curdate()) - year(birth_date) as age
+-- from students s
+-- where s.id = id;
+--
+-- end //
+-- delimiter ;
+--
+--
+--
+-- delimiter //
+-- create procedure getAllAges
+-- ()
+-- BEGIN
+--
+-- select *, year(curdate()) - year(birth_date) as age
+-- from students s;
+--
+-- end //

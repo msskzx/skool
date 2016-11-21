@@ -1,6 +1,6 @@
 -- “As a system administrator, I should be able to ...”
 --
--- Create a school with its information: school name, address, phone number, email, general information,
+-- 1 Create a school with its information: school name, address, phone number, email, general information,
 -- vision, mission, main language, type(national, international) and fees.
 --
 -- delimiter //
@@ -16,7 +16,7 @@
 --
 --
 --
--- Add courses to the system with all of its information: course code, course name, course level (elementary,
+-- 2 Add courses to the system with all of its information: course code, course name, course level (elementary,
 -- middle, high), grade, description and prerequisite course(s).
 --
 -- delimiter //
@@ -43,7 +43,7 @@
 --
 --
 --
--- Add admins to the system with their information: first name, middle name, last name, birthdate,
+-- 3 Add admins to the system with their information: first name, middle name, last name, birthdate,
 -- address, email, username, password, and gender. Given the school name, I should assign admins
 -- to work in this school. Note that the salary of the admin depends on the type of the school. The
 -- salary of an admin working in a national school is 3000 EGP, and that working in an international
@@ -93,7 +93,7 @@
 --
 --
 --
--- Delete a school from the database with all of its corresponding information. Students and employees
+-- 4 Delete a school from the database with all of its corresponding information. Students and employees
 -- of this school should not be deleted from the system, but should not have a username and password
 -- on the system until they are assigned to a new school again.
 --

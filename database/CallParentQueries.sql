@@ -19,6 +19,7 @@
 --
 --
 -- 3 View a list of schools that accepted my children categorized by child.
+--
 -- (parent_id)
 -- call getSchoolsAccepted(1);
 --
@@ -86,8 +87,9 @@
 -- 12 View the overall rating of a teacher, where the overall rating is calculated as the average of ratings
 -- provided by parents to that teacher.
 --
--- (teacher_id)
--- call avgRating(2);
+-- (teacher_id, output)
+-- call avgRating(2, @ans);
+-- select @ans;
 --
 --
 --
