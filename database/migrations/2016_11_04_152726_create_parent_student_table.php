@@ -17,7 +17,7 @@ class CreateParentStudentTable extends Migration
                                       ->index();
            $table->integer('parent_id')->unsigned()
                                        ->index();
-           $table->timestamps();
+         //   $table->timestamps();
 
            $table->primary(['student_id', 'parent_id']);
 

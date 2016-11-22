@@ -25,7 +25,7 @@ class CreateEmployeesTable extends Migration
             $table->enum('role', ['Admin', 'Teacher']);
             $table->enum('gender', ['Male', 'Female']);
             $table->date('birth_date');
-            $table->timestamps();
+            // $table->timestamps();
             $table->string('username')->unique()
                                       ->index()
                                       ->nullable();

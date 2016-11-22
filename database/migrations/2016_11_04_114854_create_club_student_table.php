@@ -17,7 +17,7 @@ class CreateClubStudentTable extends Migration
                                          ->index();
             $table->integer('club_id')->unsigned()
                                       ->index();
-            $table->timestamps();
+            // $table->timestamps();
 
             $table->primary(['student_id', 'club_id']);
 

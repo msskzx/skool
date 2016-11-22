@@ -18,7 +18,7 @@ class CreateParentTeacherTable extends Migration
            $table->integer('teacher_id')->unsigned()
                                         ->index();
            $table->integer('rate');
-           $table->timestamps();
+         //   $table->timestamps();
 
            $table->primary(['parent_id', 'teacher_id']);
 

@@ -17,7 +17,7 @@ class CreateCourseStudentTable extends Migration
                                        ->index();
            $table->integer('student_id')->unsigned()
                                         ->index();
-           $table->timestamps();
+         //   $table->timestamps();
 
            $table->primary(['course_id', 'student_id']);
 

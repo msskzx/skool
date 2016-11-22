@@ -15,7 +15,7 @@ class CreateAdminsTable extends Migration
         Schema::create('admins', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('salary');
-            $table->timestamps();
+            // $table->timestamps();
             $table->integer('employee_id')->index()
                                           ->unique()
                                           ->unsigned();

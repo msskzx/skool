@@ -5,6 +5,57 @@
 -- experience * 500 EGP.
 --
 -- delimiter //
+-- create procedure getMySchoolTeachers
+-- (in admin_id int unsigned)
+-- BEGIN
+--
+-- declare school_id int unsigned;
+--
+-- select e.school_id into school_id
+-- from admins a
+-- inner join employees e
+-- on a.employee_id = e.id and a.id = admin_id;
+--
+-- select *
+-- from employees e
+-- inner join teachers t
+-- on t.employee_id = e.id and e.school_id = school_id;
+--
+-- end //
+-- delimiter ;
+--
+-- delimiter //
+-- create procedure rejectTeacher
+-- (in admin_id int unsigned, in teacher_id int unsigned)
+-- BEGIN
+--
+-- declare school_id, school_id1, employee_id int unsigned;
+--
+-- select e.school_id into school_id
+-- from admins a
+-- inner join employees e
+-- on a.employee_id = e.id and a.id = admin_id;
+--
+-- select e.id into employee_id
+-- from teachers t
+-- inner join employees e
+-- on t.employee_id = e.id and t.id = teacher_id;
+--
+-- select e.school_id into school_id1
+-- from employees e
+-- where e.id = employee_id;
+--
+-- if( school_id = school_id1) then
+--
+-- update employees set school_id = null
+-- where employees.id = employee_id;
+--
+-- end if;
+--
+-- end //
+-- delimiter ;
+--
+-- delimiter //
 -- create procedure insertUser
 -- (in username varchar(255), in password varchar(255), in role varchar(255))
 -- BEGIN
@@ -16,12 +67,22 @@
 -- delimiter ;
 --
 -- delimiter //
--- create procedure setEmployeeUsername
--- (in id1 int, in username1 varchar(255), in password1 varchar(255))
+-- create procedure setTeacherUsername
+-- (in teacher_id int, in username varchar(255), in password varchar(255))
 -- BEGIN
---    call insertUser(username1, password1, "Employee");
---    update employees set username = username1
---    where id = id1;
+--
+-- declare employee_id int unsigned;
+--
+-- select e.id into employee_id
+-- from employees e
+-- inner join teachers t
+-- on t.employee_id = e.id and t.id = teacher_id;
+--
+-- call insertUser(username, password, "Employee");
+--
+-- update employees set username = username
+-- where employees.id = employee_id;
+--
 -- end //
 -- delimiter ;
 --
@@ -30,12 +91,32 @@
 -- 2 View and verify students who enrolled to the school I am responsible of, and assign to them a
 -- unique username and password.
 --
+
+-- delimiter //
+-- create procedure getMySchoolStudents
+-- (in admin_id int unsigned)
+-- BEGIN
+--
+-- declare school_id int unsigned;
+--
+-- select e.school_id into school_id
+-- from admins a
+-- inner join employees e
+-- on a.employee_id = e.id and a.id = admin_id;
+--
+-- select *
+-- from students st
+-- where st.school_id = school_id;
+--
+-- end //
+-- delimiter ;
+--
 -- delimiter //
 -- create procedure setStudentUsername
--- (in id1 int, in username1 varchar(255), in password1 varchar(255))
+-- (in id1 int, in username varchar(255), in password varchar(255))
 -- BEGIN
---    call insertUser(username1, password1, "Student");
---    update students set username = username1
+--    call insertUser(username, password, "Student");
+--    update students set username = username
 --    where id = id1;
 -- end //
 -- delimiter ;
@@ -77,10 +158,19 @@
 --
 -- delimiter //
 -- create procedure updateSchool
--- (in id int,in name varchar(255),in email varchar(255),in vision mediumtext,in mission mediumtext,in general_info mediumtext,in phone_number1 int ,in phone_number2 int,in fees int,in address varchar(255),in main_language varchar(255),in type varchar(255))
+-- (in admin_id int unsigned, in name varchar(255), in email varchar(255), in vision mediumtext, in mission mediumtext, in general_info mediumtext, in phone_number1 int , in phone_number2 int, in fees int, in address varchar(255), in main_language varchar(255), in type varchar(255))
 -- BEGIN
---    update schools set name = name, email = email, vision = vision, mission = mission, general_info = general_info, phone_number1 = phone_number1, phone_number2 = phone_number2, fees = fees, address = address, main_language = main_language, type = type
---    where schools.id = id;
+--
+-- declare school_id int unsigned;
+--
+-- select e.school_id into school_id
+-- from admins a
+-- inner join employees e
+-- on a.employee_id = e.id and a.id = admin_id;
+--
+-- update schools set name = name, email = email, vision = vision, mission = mission, general_info = general_info, phone_number1 = phone_number1, phone_number2 = phone_number2, fees = fees, address = address, main_language = main_language, type = type
+-- where schools.id = school_id;
+--
 -- end //
 -- delimiter ;
 --
@@ -90,8 +180,16 @@
 --
 -- delimiter //
 -- create procedure insertAnnouncement
--- (in date date,in title varchar(255),in description mediumtext,in type varchar(255),in admin_id int, in school_id int)
+-- (in date date,in title varchar(255),in description mediumtext,in type varchar(255),in admin_id int)
 -- BEGIN
+--
+-- declare school_id int unsigned;
+--
+-- select e.school_id into school_id
+-- from admins a
+-- inner join employees e
+-- on a.employee_id = e.id and a.id = admin_id;
+--
 -- insert into announcements
 -- (date, title, description, type, admin_id, school_id)
 -- values
@@ -106,8 +204,16 @@
 --
 -- delimiter //
 -- create procedure insertActivity
--- (in date date,in location varchar(255),in description mediumtext,in type varchar(255), in equipment varchar(255), in admin_id int, in teacher_id int, in school_id int)
+-- (in date date,in location varchar(255),in description mediumtext,in type varchar(255), in equipment varchar(255), in admin_id int, in teacher_id int)
 -- BEGIN
+--
+-- declare school_id int unsigned;
+--
+-- select e.school_id into school_id
+-- from admins a
+-- inner join employees e
+-- on a.employee_id = e.id and a.id = admin_id;
+--
 -- insert into activities
 -- (date, location, description, type, equipment, admin_id, teacher_id, school_id)
 -- values
@@ -158,13 +264,21 @@
 -- delimiter ;
 --
 --
--- 
+--
 -- 11 Accept or reject the application submitted by parents to their children.
 --
 -- delimiter //
 -- create procedure acceptStudent
--- (in school_id int, in student_id int, in accepted varchar(255))
+-- (in admin_id int unsigned, in student_id int unsigned, in accepted varchar(255))
 -- BEGIN
+--
+-- declare school_id int unsigned;
+--
+-- select e.school_id into school_id
+-- from admins a
+-- inner join employees e
+-- on a.employee_id = e.id and a.id = admin_id;
+--
 -- update school_appliedInBy_student
 -- set accepted = accepted
 -- where school_appliedInBy_student.student_id = student_id

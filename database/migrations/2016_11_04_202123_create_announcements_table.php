@@ -18,7 +18,7 @@ class CreateAnnouncementsTable extends Migration
            $table->string('type');
            $table->date('date');
            $table->mediumtext('description');
-           $table->timestamps();
+         //   $table->timestamps();
            $table->integer('admin_id')->index()
                                       ->unsigned();
            $table->integer('school_id')->index()

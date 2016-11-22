@@ -16,7 +16,7 @@ class CreateTeachersTable extends Migration
             $table->increments('id');
             $table->integer('years_of_exp');
             $table->integer('salary');
-            $table->timestamps();
+            // $table->timestamps();
             $table->integer('employee_id')->index()
                                           ->unique()
                                           ->unsigned();

@@ -57,8 +57,8 @@
 -- 9 View all the information about activities offered by my school, as well as the teacher responsible
 -- for it.
 --
--- (school_id)
--- call getActivities(1);
+-- (student_id)
+-- call getMySchoolActivities(1);
 --
 --
 --

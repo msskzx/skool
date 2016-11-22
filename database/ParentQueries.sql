@@ -60,14 +60,16 @@
 --
 -- delimiter //
 -- create procedure getSchoolsAccepted
--- (in id int unsigned)
+-- (in parent_id int unsigned)
 -- BEGIN
+
 -- select *
 -- from schools s
 -- inner join school_appliedInBy_student sabs
 -- on s.id = sabs.school_id
--- where sabs.parent_id = id and accepted = "Accepted"
+-- where sabs.parent_id = parent_id and accepted = "Accepted"
 -- order by sabs.student_id;
+
 -- end //
 -- delimiter ;
 --

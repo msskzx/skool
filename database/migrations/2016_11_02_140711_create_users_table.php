@@ -16,9 +16,10 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('username')->unique()
                                       ->index();
+
             $table->string('password');
             $table->enum('role', ['Parent', 'Student', 'Employee']);
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

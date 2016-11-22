@@ -18,7 +18,7 @@ class CreateParentSchoolTable extends Migration
            $table->integer('school_id')->unsigned()
                                        ->index();
            $table->mediumtext('review');
-           $table->timestamps();
+         //   $table->timestamps();
 
            $table->primary(['school_id', 'parent_id']);
 

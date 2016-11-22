@@ -16,7 +16,7 @@ class CreateClubsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->mediumtext('purpose');
-            $table->timestamps();
+            // $table->timestamps();
             $table->integer('high_level_id')->unsigned()
                                             ->index();
 

@@ -15,7 +15,7 @@ class CreateCourseCourse extends Migration
         Schema::create('course_requires_course', function (Blueprint $table) {
             $table->integer('course_id')->unsigned();
             $table->integer('req_course_id')->unsigned();
-            $table->timestamps();
+            // $table->timestamps();
 
             $table->primary(['course_id', 'req_course_id']);
 

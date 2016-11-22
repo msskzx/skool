@@ -23,7 +23,7 @@ class CreateStudentsTable extends Migration
             $table->integer('grade')->nullable();
             $table->enum('gender', ['Male', 'Female']);
             $table->date('birth_date');
-            $table->timestamps();
+            // $table->timestamps();
             $table->integer('school_id')->unsigned()
                                         ->index()
                                         ->nullable();

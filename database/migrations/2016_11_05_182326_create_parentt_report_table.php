@@ -19,7 +19,7 @@ class CreateParenttReportTable extends Migration
                                         ->index();
             $table->text('parent_comment');
             $table->text('teacher_comment')->nullable();
-            $table->timestamps();
+            // $table->timestamps();
 
             $table->primary(['report_id','parent_id']);
 

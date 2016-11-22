@@ -8,7 +8,7 @@
 -- BEGIN
 -- update students
 -- set first_name = first_name, middle_name = middle_name, last_name = last_name, SSN = SSN, gender = gender, birth_date = birth_date
--- where id = student_id;
+-- where students.id = student_id;
 -- end //
 -- delimiter ;
 --
@@ -136,9 +136,15 @@
 -- for it.
 --
 -- delimiter //
--- create procedure getActivities
--- (in school_id int unsigned)
+-- create procedure getMySchoolActivities
+-- (in student_id int unsigned)
 -- BEGIN
+--
+-- declare school_id int unsigned;
+--
+-- select st.school_id into school_id
+-- from students st
+-- where st.id = student_id;
 --
 -- select a.*, t.*
 -- from activities a
@@ -153,38 +159,51 @@
 -- 10 Apply for activities in my school on the condition that I can not join two activities of the same
 -- type on the same date.
 --
--- delimiter //
--- create procedure joinActivity
--- (in student_id int unsigned, in activity_id int unsigned)
--- BEGIN
---
--- declare acount int;
--- declare atype varchar(255);
--- declare adate date;
---
--- select a.type into atype
--- from activities a
--- where a.id = activity_id;
---
--- select a.date into adate
--- from activities a
--- where a.id = activity_id;
---
--- select count(*) into acount
--- from activities a
--- inner join activity_joinedBy_student ajbs
--- on a.id = ajbs.activity_id and ajbs.student_id = student_id
--- and a.type = atype COLLATE utf8_unicode_ci and a.date = adate;
---
--- if(acount = 0) then
--- insert into activity_joinedBy_student
---    (student_id, activity_id)
---    values
---    (student_id, activity_id);
--- end if;
---
--- end //
--- delimiter ;
+delimiter //
+create procedure joinActivity
+(in student_id int unsigned, in activity_id int unsigned)
+BEGIN
+
+declare acount int;
+declare atype varchar(255);
+declare adate date;
+declare school_id1, school_id2 int unsigned;
+
+select st.school_id into school_id1
+from students st
+where st.id = student_id;
+
+select a.school_id into school_id2
+from activities a
+where a.id = activity_id;
+
+if(school_id1 <> school_id2) then
+
+select a.type into atype
+from activities a
+where a.id = activity_id;
+
+select a.date into adate
+from activities a
+where a.id = activity_id;
+
+select count(*) into acount
+from activities a
+inner join activity_joinedBy_student ajbs
+on a.id = ajbs.activity_id and ajbs.student_id = student_id
+and a.type = atype COLLATE utf8_unicode_ci and a.date = adate;
+
+if(acount = 0) then
+insert into activity_joinedBy_student
+   (student_id, activity_id)
+   values
+   (student_id, activity_id);
+end if;
+
+end if;
+
+end //
+delimiter ;
 --
 --
 --

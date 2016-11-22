@@ -17,7 +17,7 @@ class CreateActivitieStudentTable extends Migration
                                               ->index();
                $table->integer('student_id')->unsigned()
                                               ->index();
-               $table->timestamps();
+               // $table->timestamps();
 
                $table->primary(['activity_id', 'student_id']);
 

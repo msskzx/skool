@@ -4,14 +4,23 @@
 -- to them a unique username and password. The salary of a teacher is calculated as follows: years of
 -- experience * 500 EGP.
 --
+-- (admin_id)
+-- call getMySchoolTeachers(1);
+--
+-- (admin_id, teacher_id)
+-- call rejectTeacher(1, 1);
+--
 -- (employee_id, username, password)
--- call setEmployeeUsername(1, "dahaka", "secret");
+-- call setTeacherUsername(1, "dahaka", "secret");
 --
 --
 --
 -- 2 View and verify students who enrolled to the school I am responsible of, and assign to them a
 -- unique username and password.
 --
+-- (admin_id)
+-- call getMySchoolStudents(1);
+-- 
 -- (student_id, username, password)
 -- call setStudentUsername(1, "jiglo", "secret");
 --
@@ -38,23 +47,23 @@
 --
 -- 5 Edit the information of the school I am working in.
 --
--- ( school_id, name, email, vision, mission, general_info, phone_number1, phone_number2, fees, address, main_language, type)
--- call updateSchool(1, "Modern New Neu", "hogdoor@hogdoor.com", "vision", "mission", "general_info", "012" ,"011", 5000, "right there", "English", "International");
+-- ( admin_id, name, email, vision, mission, general_info, phone_number1, phone_number2, fees, address, main_language, type)
+-- call updateSchool(1, "Modern", "hogdoor@hogdoor.com", "vision", "mission", "general_info", "012" ,"011", 5000, "right there", "English", "International");
 --
 --
 --
 -- 6 Post announcements with the following information: date, title, description and type
 --
--- ( date, title, description, type, admin_id, school_id)
--- call insertAnnouncement('2016-03-03', "Party", "Lorem ipsum dolor sit amet, consectetur adipisicing elit...", "Trip", 1, 1);
+-- ( date, title, description, type, admin_id)
+-- call insertAnnouncement('2016-03-03', "Party", "Lorem ipsum dolor sit amet, consectetur adipisicing elit...", "Trip", 1);
 --
 --
 --
 -- Create activities and assign every activity to a certain teacher. An activity has its own date, location
 -- in school, type, equipment(if any), and description.
 --
--- (date, location, description, type, equipment, admin_id, teacher_id, school_id)
--- call insertActivity('2016-03-03', "H12", "desc", "Chess Tournament", "nothing", 1, 1, 1);
+-- (date, location, description, type, equipment, admin_id, teacher_id)
+-- call insertActivity('2016-03-03', "H12", "desc", "Chess Tournament", "nothing", 1, 1);
 --
 --
 --
@@ -80,5 +89,5 @@
 --
 --
 -- 11 Accept or reject the application submitted by parents to their children.
--- (school_id, student_id, accepted)
+-- (admin_id, student_id, accepted)
 -- call acceptStudent(1, 1, 'Accepted');

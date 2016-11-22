@@ -22,7 +22,7 @@ class CreateParentsTable extends Migration
             $table->integer('phone_number')->nullable();
             $table->integer('mobile_number1')->nullable();
             $table->integer('mobile_number2')->nullable();
-            $table->timestamps();
+            // $table->timestamps();
             $table->string('username')->unique()
                                       ->index();
 

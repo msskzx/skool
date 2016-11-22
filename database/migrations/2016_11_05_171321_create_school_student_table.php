@@ -18,7 +18,7 @@ class CreateSchoolStudentTable extends Migration
             $table->integer('student_id')->unsigned()
                                          ->index();
             $table->enum('accepted',['Accepted', 'Rejected', 'Pending'])->default('Pending');
-            $table->timestamps();
+            // $table->timestamps();
             $table->integer('parent_id')->unsigned()
                                          ->index()
                                          ->nullable();
