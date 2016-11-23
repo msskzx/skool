@@ -4,24 +4,24 @@
 --
 -- delimiter //
 -- create procedure insertTeacher
--- (in first_name varchar(255), in middle_name varchar(255), in last_name varchar(255), in role varchar(255), in birth_date date, in address varchar(255), in email varchar(255), in gender varchar(255), in years_of_exp int)
+-- (in first_name varchar(255), in middle_name varchar(255), in last_name varchar(255), in birth_date date, in address varchar(255), in email varchar(255), in gender varchar(255), in years_of_exp int)
 -- BEGIN
 --
--- declare employee_id int unsigned;
+-- declare id int unsigned;
 --
 -- insert into employees
 -- (first_name, middle_name, last_name, role, birth_date, address, email, gender)
 -- values
--- (first_name, middle_name, last_name, role, birth_date, address, email, gender);
+-- (first_name, middle_name, last_name, "Teacher", birth_date, address, email, gender);
 --
--- select e.id into employee_id
+-- select e.id into id
 -- from employees e
 -- where e.email = email COLLATE utf8_unicode_ci;
 --
 -- insert into teachers
--- (employee_id, years_of_exp)
+-- (id, years_of_exp)
 -- values
--- (employee_id, years_of_exp);
+-- (id, years_of_exp);
 --
 -- end //
 -- delimiter ;

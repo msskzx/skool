@@ -13,13 +13,13 @@ class CreateHighLevelsTable extends Migration
     public function up()
     {
         Schema::create('high_levels', function (Blueprint $table) {
-           $table->increments('id');
-         //   $table->timestamps();
-           $table->integer('school_id')->unsigned()
-                                       ->unique()
-                                       ->index();
+           $table->integer('id')->unsigned()
+                                ->index();
+           // $table->timestamps();
 
-           $table->foreign('school_id')
+           $table->primary('id');
+
+           $table->foreign('id')
                  ->references('id')
                  ->on('schools')
                  ->onDelete('cascade');

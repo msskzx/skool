@@ -29,26 +29,21 @@
 -- (in admin_id int unsigned, in teacher_id int unsigned)
 -- BEGIN
 --
--- declare school_id, school_id1, employee_id int unsigned;
+-- declare school_id, school_id1 int unsigned;
 --
 -- select e.school_id into school_id
 -- from admins a
 -- inner join employees e
 -- on a.employee_id = e.id and a.id = admin_id;
 --
--- select e.id into employee_id
--- from teachers t
--- inner join employees e
--- on t.employee_id = e.id and t.id = teacher_id;
---
 -- select e.school_id into school_id1
 -- from employees e
--- where e.id = employee_id;
+-- where e.id = teacher_id;
 --
 -- if( school_id = school_id1) then
 --
 -- update employees set school_id = null
--- where employees.id = employee_id;
+-- where employees.id = teacher_id;
 --
 -- end if;
 --
@@ -71,17 +66,10 @@
 -- (in teacher_id int, in username varchar(255), in password varchar(255))
 -- BEGIN
 --
--- declare employee_id int unsigned;
---
--- select e.id into employee_id
--- from employees e
--- inner join teachers t
--- on t.employee_id = e.id and t.id = teacher_id;
---
 -- call insertUser(username, password, "Employee");
 --
 -- update employees set username = username
--- where employees.id = employee_id;
+-- where employees.id = teacher_id;
 --
 -- end //
 -- delimiter ;
@@ -113,11 +101,22 @@
 --
 -- delimiter //
 -- create procedure setStudentUsername
--- (in id1 int, in username varchar(255), in password varchar(255))
+-- (in student_id int, in username varchar(255), in password varchar(255))
 -- BEGIN
---    call insertUser(username, password, "Student");
---    update students set username = username
---    where id = id1;
+--
+-- declare grade, age int;
+--
+-- select year(curdate()) - year(birth_date) into age
+-- from students st
+-- where st.id = student_id;
+--
+-- set grade = age - 5;
+--
+-- call insertUser(username, password, "Student");
+--
+-- update students set username = username, grade = grade
+-- where students.id = student_id;
+--
 -- end //
 -- delimiter ;
 --
@@ -127,7 +126,7 @@
 -- birthdate, address, email, username, password, and gender. Note that the salary of the admin
 -- depends on the type of the school.
 --
--- (school_name, username, password, first_name, middle_name, last_name, birth_date date, address, email, gender)
+-- (school_name, username, password, first_name, middle_name, last_name, birth_date, address, email, gender)
 -- call insertAdmin("Arkham", "heisenberg", "secret", "Walter", "W", "White", '1999-09-09', 'Meth lab second floor', "heisenberg@heisenberg.com", "Male");
 --
 --

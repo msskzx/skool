@@ -84,7 +84,7 @@ class AuthController extends Controller
                 ->withInput($request->only('username', 'remember'))
                 ->withErrors([
                    'username' => $this->getFailedLoginMessage()]
-                );;
+                );
   }
 
     /**

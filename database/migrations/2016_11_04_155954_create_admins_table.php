@@ -13,14 +13,14 @@ class CreateAdminsTable extends Migration
     public function up()
     {
         Schema::create('admins', function (Blueprint $table) {
-            $table->increments('id');
+           $table->integer('id')->index()
+                                ->unsigned();
             $table->integer('salary');
             // $table->timestamps();
-            $table->integer('employee_id')->index()
-                                          ->unique()
-                                          ->unsigned();
 
-            $table->foreign('employee_id')
+            $table->primary('id');
+
+            $table->foreign('id')
                   ->references('id')
                   ->on('employees')
                   ->onDelete('cascade');

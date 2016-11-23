@@ -20,19 +20,21 @@ class CreateCoursesTable extends Migration
             $table->mediumtext('description');
             // $table->timestamps();
             $table->integer('teacher_id')->unsigned()
-                                         ->index();
+                                         ->index()
+                                         ->nullable();
             $table->integer('school_id')->unsigned()
-                                        ->index();
+                                        ->index()
+                                        ->nullable();
 
             $table->foreign('teacher_id')
                   ->references('id')
                   ->on('teachers')
-                  ->onDelete('cascade');
+                  ->onDelete('set null');
 
             $table->foreign('school_id')
                   ->references('id')
                   ->on('schools')
-                  ->onDelete('cascade');
+                  ->onDelete('set null');
         });
     }
 

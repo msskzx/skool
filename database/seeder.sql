@@ -1,101 +1,66 @@
-use skool;
+-- (name, email, vision, mission, general_info,in phone_number1, phone_number2, fees, address, main_language, type)
+call insertSchool("Hogdoor", "hogdoor@hogdoor.com", "vision", "mission", "general_info", "012" ,"011", 5000, "right there", "English", "International");
+call insertSchool("Most Reviewed School Ever", "ever@ever.com", "vision", "mission", "general_info", "0125465" ,"012331", 5000, "Umnottelling you", "English", "International");
+call insertSchool("Deadpool & Joker Skool", "skool@skool.com", "vision", "mission", "general_info", "012" ,"011", 5000, "First let me show you a magic trick", "English", "National");
+call insertSchool("Arkham", "arkham@arkham.com", "vision", "mission", "general_info", "0121431" ,"0114311", 5000, "arkham asylum", "English", "National");
 
-insert into schools
-(name, email, vision, mission, general_info, phone_number1 ,phone_number2, fees, address, main_language, type)
-values
-("Modern New Neu Nouvle", "hogdoor@hogdoor.com", "vision", "mission", "general_info", "012" ,"011", 5000, "right there", "English", "International"),
-("Most Reviewed School Ever", "ever@ever.com", "vision", "mission", "general_info", "0125465" ,"012331", 5000, "Umnottelling you", "English", "International"),
-("Deadpool & Joker Skool", "skool@skool.com", "vision", "mission", "general_info", "012" ,"011", 5000, "First let me show you a magic trick", "English", "National"),
-("Arkham", "arkham@arkham.com", "vision", "mission", "general_info", "0121431" ,"0114311", 5000, "arkham asylum", "English", "National");
+-- (supplies, school_id)
+call insertElmentaryLevel("supply, supply and a supply", 1);
+call insertElmentaryLevel("supply, supply and a supply", 2);
 
-insert into elementary_levels
-(supplies, school_id)
-values
-("supply, supply and a supply", 1);
+-- (school_id)
+call insertMiddleLevel(1);
+call insertMiddleLevel(3);
 
-insert into middle_levels
-(school_id)
-values(1);
+-- (school_id)
+call insertHighLevel(1);
+call insertHighLevel(4);
 
-insert into high_levels
-(school_id)
-values(1);
+-- (school_name, username, password, first_name, middle_name, last_name, birth_date, address, email, gender)
+call insertAdmin("Arkham", "heisenberg", "secret", "Walter", "W", "White", '1999-09-09', 'Meth lab second floor', "heisenberg@heisenberg.com", "Male");
 
-insert into users
-(username,password,role)
-values
-("mcadmin","secret","Employee"),
-("superteacher","secret","Employee"),
-("normalteacher","secret","Employee"),
-('one', 'secret', 'Student'),
-('maxm', 'secret', 'Student'),
-('vader', 'secret', 'Parent'),
-('deadpool', 'secret', 'Parent'),
-('batman', 'secret', 'Parent'),
-('corleone', 'secret', 'Student');
+-- (first_name, middle_name, last_name, role, birth_date, address, email, gender)
+call insertTeacher('Lil', 'Dai', 'The Brave', 'Teacher', '1999-12-12', 'the brave st', 'lil@lil.com', 'Female');
 
-insert into employees
-(first_name, middle_name, last_name, role, birth_date, address, email, username, gender, school_id, phone_number, mobile_number1, mobile_number2)
-values
-("John", "Doe" , "McAdmin", "Admin", '1990-12-12', "Du, st, ft 1", "mcadmin@mcadmin.com", "mcadmin", "Male", 1, "255","012", "010"),
-("Super", "Ali" , "McTeacher", "Teacher", '1991-12-12', "street 22", "superteacher@superteacher.com", "superteacher", "Male", 1, "122", "010", "01222"),
-("Normal", "Doe" , "Daw", "Teacher", '1992-12-12', "street 1", "normalteacher@normalteacher.com", "normalteacher", "Male", 1, "1223", "01012", "013222");
+-- (employee_id, username, password)
+call setTeacherUsername(1, "dahaka", "secret");
 
-insert into admins
-(salary, employee_id)
-values
-(5000, 1);
+-- (name, code, description, grade)
+call insertCourse("Donuts Per Second", "DPS101", "How to make cookies in exponential donuts time", 1);
+call insertCourse("Donuts structure and Alchemist", "DPS301", "Travel into space", 2);
+call insertCourse("Imaginary Numbers: Dragon Ball edidtion", "IN101", "How to dragon ball the Imaginary our of numbers", 7);
 
-insert into teachers
-(salary, years_of_exp, employee_id)
-values
-(3000, 10, 2);
+-- (course_id, req_course_id)
+call insertPrerequisite(2, 1);
 
-insert into teachers
-(salary, years_of_exp, employee_id, supervisor_id)
-values
-(3000, 10, 3,1);
+-- (username, password, first_name, middle_name, last_name, email, address, phone_number, mobile_number1, mobile_number2)
+call insertParent('gangsta', 'secret', 'TheGodFather', 'Darth', 'Vader', 'gangsta@gangsta.com', 'along this road', '09999', '09990','09991');
+call insertParent('talion', 'secret', 'Talion', 'IDK', 'ISDK', 'talion@talion.com', 'Forge Tower', '095749', '0122390','06541');
+call insertParent('vader', 'Dark', 'Darth', 'Vader', 'vader@vader.com', 'milky way st.', '09999', '09990','09991');
+call insertParent('deadpool', 'Deadpool', 'X', 'L', 'deadpool@deadpool.com', 'R way st.', '09992349', '09321990','099412391');
+call insertParent('batman', 'Batman', 'Bruce', 'Wayne', 'batman@batman.com', 'Bat cave st.', '0999329', '0992390','0923991');
+call insertParent('talion', 'Talion', 'IDK', 'ISDK', 'talion@talion.com', 'Forge Tower', '095749', '0122390','06541');
 
-insert into courses
-(name, code, description, grade, level, teacher_id, school_id)
-values
-("Donuts Per Second", "DPS101", "How to make cookies in exponential donuts time", 1, "Elementary Level", 1, 1),
-("Donuts structure and Alchemist", "DPS301", "Travel into space", 2, "Elementary Level", 1, 1);
 
-insert into course_requires_course
-(course_id, req_course_id)
-values
-(1, 2);
+-- (first_name, middle_name, last_name, email, SSN, grade, gender, birth_date, school_id, username)
+call insertStudent('Corleone', 'III', 'V', 8554, '2005-09-04', 'Male');
+call insertStudent('Lithariel', 'Talion', 'IDK', 121412, '2000-09-09', 'Female');
+call insertStudent('Maxm', 'Twain', 'Devarx', 112,'2010-09-04', 'Female');
+call insertStudent('Goku', 'Dark', 'Vader', 83289, '2005-12-12', 'Male');
+call insertStudent('Darth', 'Dark', 'Vader', 555, '2005-12-12', 'Male');
 
-insert into students
-(first_name, middle_name, last_name, email, SSN, grade, gender, birth_date, school_id, username)
-values
-('One', 'Two', 'Three', 'one@one.com', 134134, 1, 'Male', '2010-09-11', 1 ,'one'),
-('Maxm', 'Twain', 'DeV', 'maxm@maxm.com', 112, 1, 'Female', '2010-09-04', 1 ,'maxm'),
-('Corleone', 'I', 'V', 'corleone@corleone.com', 8, 'Male', '2005-09-04', 2, 'corleone');
+-- (student_id, username, password)
+call setStudentUsername(1, "lithariel", "secret");
 
-insert into course_has_student
-(course_id, student_id)
-values
-(1, 1);
+-- (student_id, parent_id)
+call setParentStudent(1, 1);
+call setParentStudent(2, 1);
+call setParentStudent(3, 2);
 
-call insertActivity('2016-03-03', "H10", "desc", "Chess Tournament", "nothing", 1, 1, 1);
-
-insert into activities
-(date, location, description, type, admin_id, teacher_id, school_id)
-values
-('2016-03-03', "H12", "Lorem ipsum dolor sit amet, consectetur adipisicing elit...", "Chess Tournament", 1, 1, 1);
-
-insert into activity_joinedBy_student
-(activity_id, student_id)
-values
-(1,1);
-
-insert into announcements
-(date, title, description, type, admin_id, school_id)
-values
-('2016-03-03', "Party", "Lorem ipsum dolor sit amet, consectetur adipisicing elit...", "Trip", 1, 1),
-('2016-11-10', "Star Wars skool edition", "Stop the dark side of the Force", "Challenge", 1, 1);
+-- (student_id, school_id, parent_id)
+call applyStudent(1, 1, 1);
+call applyStudent(2, 1, 1);
+call applyStudent(3, 1, 2);
 
 insert into clubs
 (name, high_level_id, purpose)
@@ -104,60 +69,18 @@ values
 ('Klubzinza', 1, 'SUP'),
 ('Akkump', 1, 'One more club for my list of accomplishments');
 
-insert into club_joinedby_student
-(student_id, club_id)
-values
-(1, 1),
-(1, 2),
-(1, 3),
-(2, 1),
-(3, 2);
+call joinClub(1, 1);
 
-insert into parents
-(first_name, middle_name, last_name, email, address, phone_number, mobile_number1, mobile_number2, username)
-values
-('Dark', 'Darth', 'Vader', 'vader@vader.com', 'milky way st.', '09999', '09990','09991','vader'),
-('Deadpool', 'X', 'L', 'deadpool@deadpool.com', 'R way st.', '09992349', '09321990','099412391','deadpool'),
-('Batman', 'Bruce', 'Wayne', 'batman@batman.com', 'Bat cave st.', '0999329', '0992390','0923991','batman'),
-('Talion', 'IDK', 'ISDK', 'talion@talion.com', 'Forge Tower', '095749', '0122390','06541','talion');
+-- (student_id, course_id, title, question)
+call insertQuestion(1, 1, "Apple pie exception", "I was making an apple pie when this error came out tried to pour some milk but it did not get solved");
 
-insert into students
-(first_name, middle_name, last_name, SSN, gender, birth_date)
-values
-('Goku', 'Dark', 'Vader', 83289, 'Male', '2005-12-12'),
-('Darth', 'Dark', 'Vader', 555, 'Male', '2005-12-12');
+-- (post_date, due_date, content, teacher_id, course_id);
+call insertAssignment('2016-11-11', '2016-11-29', 'Solve this by flux finite automaton', 1, 1);
+call insertAssignment('2016-12-12', '2016-12-20', "Problem 1: define dps.", 1, 1);
+call insertAssignment('2016-11-01', '2016-11-20', "Problem 1: If Jack Sparrow was to shift his career what would he be?", 1, 1);
+call insertAssignment('2016-12-12', '2016-12-20', "Problem 1: write a program that detect cycles in dps.", 1, 2);
 
-insert into questions
-(title, question, student_id, course_id)
-values
-("Apple pie exception", "I was making an apple pie when this error came out tried to pour some milk but it did not get solved", 1, 1);
-
-insert into assignments
-(post_date, due_date, content, teacher_id, course_id)
-values
-('2016-12-12', '2016-12-20', "Problem 1: define dps.", 1, 1),
-('2016-11-01', '2016-11-20', "Problem 1: If Jack Sparrow was to shift his career what would he be?", 1, 1),
-('2016-12-12', '2016-12-20', "Problem 1: write a program that detect cycles in dps.", 1, 2);
-
-insert into assignment_solvedBy_student
-(assignment_id, student_id, solution)
-values
-(1, 1, "Donuts Per Second...");
-
-
-call insertParent('gangsta', 'secret', 'TheGodFather', 'Darth', 'Vader', 'gangsta@gangsta.com', 'along this road', '09999', '09990','09991');
-call insertParent('talion', 'secret', 'Talion', 'IDK', 'ISDK', 'talion@talion.com', 'Forge Tower', '095749', '0122390','06541');
-
-call insertStudent('Lithariel', 'Talion', 'IDK', 121412, '1990-09-09', 'Female');
-
-call setParentStudent(6, 5);
-call setParentStudent(3, 1);
-call setParentStudent(4, 1);
-
-call applyStudent(6, 1, 5);
-call applyStudent(3, 1, 1);
-call applyStudent(4, 1, 1);
-
+-- (admin_id, student_id, accepted)
 call acceptStudent(1, 3, 'Accepted');
 
 -- (parent_id, teacher_id, rate)
@@ -180,7 +103,8 @@ call reviewSchool(1, 3, "This should be R rated skool");
 call reviewSchool(2, 3, "Why you do this");
 call reviewSchool(1, 4, "Crowded classes are cleared away... one by one...");
 
-insert into reports
-(report, teacher_id, student_id)
-values
-("This is not a very long report", 1, 3);
+-- ( date, title, description, type, admin_id)
+call insertAnnouncement('2016-03-03', "Party", "Lorem ipsum dolor sit amet, consectetur adipisicing elit...", "Trip", 1);
+
+-- (date, location, description, type, equipment, admin_id, teacher_id)
+call insertActivity('2016-03-03', "H12", "desc", "Chess Tournament", "nothing", 1, 1);

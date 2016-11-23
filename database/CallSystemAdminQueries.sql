@@ -3,8 +3,17 @@
 -- 1 Create a school with its information: school name, address, phone number, email, general information,
 -- vision, mission, main language, type(national, international) and fees.
 --
--- ( name, email, vision, mission, general_info,in phone_number1, phone_number2, fees, address, main_language, type)
--- call insertSchool("Modern New Neu", "hogdoor@hogdoor.com", "vision", "mission", "general_info", "012" ,"011", 5000, "right there", "English", "International");
+-- (name, email, vision, mission, general_info,in phone_number1, phone_number2, fees, address, main_language, type)
+-- call insertSchool("Hogdoor", "hogdoor@hogdoor.com", "vision", "mission", "general_info", "012" ,"011", 5000, "right there", "English", "International");
+--
+-- (supplies, school_id)
+-- call insertElementaryLevel("keep it in a dry place", 1);
+--
+-- (school_id)
+-- call insertMiddleLevel(1);
+--
+-- (school_id)
+-- call insertHighLevel(1);
 --
 --
 --
@@ -25,7 +34,7 @@
 -- salary of an admin working in a national school is 3000 EGP, and that working in an international
 -- school is 5000 EGP.
 --
--- (school_name, username, password, first_name, middle_name, last_name, birth_date date, address, email, gender)
+-- (school_name, username, password, first_name, middle_name, last_name, birth_date, address, email, gender)
 -- call insertAdmin("Arkham", "heisenberg", "secret", "Walter", "W", "White", '1999-09-09', 'Meth lab second floor', "heisenberg@heisenberg.com", "Male");
 --
 --

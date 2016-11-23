@@ -250,27 +250,16 @@ delimiter ;
 --
 --
 --
--- calculating students ages
+-- get all information of a student and his age
+--
 -- delimiter //
 -- create procedure getAge
--- (in id int unsigned)
+-- (in student_id int unsigned)
 -- BEGIN
 --
 -- select *, year(curdate()) - year(birth_date) as age
 -- from students s
--- where s.id = id;
+-- where s.id = student_id;
 --
 -- end //
 -- delimiter ;
---
---
---
--- delimiter //
--- create procedure getAllAges
--- ()
--- BEGIN
---
--- select *, year(curdate()) - year(birth_date) as age
--- from students s;
---
--- end //

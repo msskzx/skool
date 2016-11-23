@@ -14,6 +14,45 @@
 -- end //
 -- delimiter ;
 --
+-- delimiter //
+-- create procedure insertElementaryLevel
+-- (in supplies mediumtext, in school_id int unsigned)
+-- BEGIN
+--
+-- insert into elementary_levels
+-- (supplies, school_id)
+-- values
+-- (supplies, school_id);
+--
+-- end //
+-- delimiter ;
+--
+-- delimiter //
+-- create procedure insertMiddleLevel
+-- (in school_id int unsigned)
+-- BEGIN
+--
+-- insert into middle_levels
+-- (school_id)
+-- values
+-- (school_id);
+--
+-- end //
+-- delimiter ;
+--
+-- delimiter //
+-- create procedure insertHighLevel
+-- (in school_id int unsigned)
+-- BEGIN
+--
+-- insert into high_levels
+-- (school_id)
+-- values
+-- (school_id);
+--
+-- end //
+-- delimiter ;
+--
 --
 --
 -- 2 Add courses to the system with all of its information: course code, course name, course level (elementary,
@@ -53,8 +92,7 @@
 -- create procedure insertAdmin
 -- (in school_name varchar(255), in username varchar(255), in password varchar(255), in first_name varchar(255), in middle_name varchar(255), in last_name varchar(255), in birth_date date, in address varchar(255), in email varchar(255), in gender varchar(255))
 -- BEGIN
--- declare school_id int unsigned;
--- declare employee_id int unsigned;
+-- declare school_id, employee_id int unsigned;
 -- declare salary int;
 -- declare school_type varchar(255);
 --
@@ -72,11 +110,11 @@
 -- select e.id into employee_id
 -- from employees e
 -- where e.username = username COLLATE utf8_unicode_ci;
-
+--
 -- select sc.type into school_type
 -- from schools sc
 -- where sc.id = school_id;
-
+--
 -- if(school_type = 'National') then
 -- set salary = 3000;
 -- else
@@ -84,7 +122,7 @@
 -- end if;
 --
 -- insert into admins
--- (salary, employee_id)
+-- (salary, id)
 -- values
 -- (salary, employee_id);
 --

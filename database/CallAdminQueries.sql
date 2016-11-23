@@ -20,7 +20,7 @@
 --
 -- (admin_id)
 -- call getMySchoolStudents(1);
--- 
+--
 -- (student_id, username, password)
 -- call setStudentUsername(1, "jiglo", "secret");
 --
@@ -30,7 +30,7 @@
 -- birthdate, address, email, username, password, and gender. Note that the salary of the admin
 -- depends on the type of the school.
 --
--- (school_name, username, password, first_name, middle_name, last_name, birth_date date, address, email, gender)
+-- (school_name, username, password, first_name, middle_name, last_name, birth_date, address, email, gender)
 -- call insertAdmin("Arkham", "heisenberg", "secret", "Walter", "W", "White", '1999-09-09', 'Meth lab second floor', "heisenberg@heisenberg.com", "Male");
 --
 --
@@ -48,7 +48,7 @@
 -- 5 Edit the information of the school I am working in.
 --
 -- ( admin_id, name, email, vision, mission, general_info, phone_number1, phone_number2, fees, address, main_language, type)
--- call updateSchool(1, "Modern", "hogdoor@hogdoor.com", "vision", "mission", "general_info", "012" ,"011", 5000, "right there", "English", "International");
+-- call updateSchool(1, "Hogdoor", "hogdoor@hogdoor.com", "vision", "mission", "general_info", "012" ,"011", 5000, "right there", "English", "International");
 --
 --
 --

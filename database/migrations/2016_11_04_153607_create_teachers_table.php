@@ -13,21 +13,26 @@ class CreateTeachersTable extends Migration
     public function up()
     {
         Schema::create('teachers', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('id')->index()
+                                ->unsigned();
             $table->integer('years_of_exp');
-            $table->integer('salary');
+            $table->integer('salary')->virtualAs('years_of_exp * 500');
             // $table->timestamps();
-            $table->integer('employee_id')->index()
-                                          ->unique()
-                                          ->unsigned();
             $table->integer('supervisor_id')->index()
                                             ->unsigned()
                                             ->nullable();
 
-            $table->foreign('employee_id')
-               ->references('id')
-               ->on('employees')
-               ->onDelete('cascade');
+            $table->primary('id');
+
+            $table->foreign('supervisor_id')
+                  ->references('id')
+                  ->on('teachers')
+                  ->onDelete('set null');
+
+            $table->foreign('id')
+                  ->references('id')
+                  ->on('employees')
+                  ->onDelete('cascade');
         });
     }
 
