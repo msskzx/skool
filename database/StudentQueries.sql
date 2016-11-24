@@ -177,13 +177,9 @@ select a.school_id into school_id2
 from activities a
 where a.id = activity_id;
 
-if(school_id1 <> school_id2) then
+if(school_id1 = school_id2) then
 
-select a.type into atype
-from activities a
-where a.id = activity_id;
-
-select a.date into adate
+select a.type, a.date into atype, adate
 from activities a
 where a.id = activity_id;
 
@@ -236,14 +232,14 @@ delimiter ;
 --
 -- delimiter //
 -- create procedure searchCourses
--- (in student_id int unsigned, in name varchar(255), in code varchar(255))
+-- (in student_id int unsigned, in input varchar(255))
 -- BEGIN
 --
 -- select c.*
 -- from courses c
 -- inner join course_has_student chs
 -- on c.id = chs.course_id and chs.student_id = student_id and
--- (c.name like concat('%', name, '%') COLLATE utf8_unicode_ci or c.code like concat('%', code, '%') COLLATE utf8_unicode_ci);
+-- (c.name like concat('%', input, '%') COLLATE utf8_unicode_ci or c.code like concat('%', input, '%') COLLATE utf8_unicode_ci);
 --
 -- end //
 -- delimiter ;

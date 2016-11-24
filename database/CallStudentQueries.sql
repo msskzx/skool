@@ -43,7 +43,7 @@
 -- 7 View the grade of the assignments I solved per course.
 --
 -- (student_id, course_id)
--- call getMyAssignments(1, 1);
+-- call getGrades(1, 1);
 --
 --
 --
@@ -79,5 +79,5 @@
 --
 -- 12 Search in a list of courses that i take by its name or code.
 --
--- (student_id, name, code)
--- call searchCourses(1, 'Donuts', '101');
+-- (student_id, input)
+-- call searchCourses(1, 'Donuts');

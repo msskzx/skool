@@ -7,12 +7,14 @@
 -- create procedure insertParent
 -- (in username varchar(255), in password varchar(255), in first_name varchar(255), in middle_name varchar(255), in last_name varchar(255), in email varchar(255), in address varchar(255), in phone_number int, in mobile_number1 int, in mobile_number2 int)
 -- BEGIN
+
 --    call insertUser(username, password, "Parent");
 --
 --    insert into parents
 --    (first_name, middle_name, last_name, email, address, phone_number, mobile_number1, mobile_number2, username)
 --    values
 --    (first_name, middle_name, last_name, email, address, phone_number, mobile_number1, mobile_number2, username);
+
 -- end //
 -- delimiter ;
 --
@@ -25,10 +27,12 @@
 -- create procedure insertStudent
 -- (in first_name varchar(255), in middle_name varchar(255), in last_name varchar(255),in SSN int, in birth_date date, in gender varchar(255))
 -- BEGIN
+
 -- insert into students
 -- (first_name, middle_name, last_name, SSN, gender, birth_date)
 -- values
 -- (first_name, middle_name, last_name, SSN, gender, birth_date);
+
 -- end //
 -- delimiter ;
 --

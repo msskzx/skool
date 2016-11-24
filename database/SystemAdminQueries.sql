@@ -16,39 +16,39 @@
 --
 -- delimiter //
 -- create procedure insertElementaryLevel
--- (in supplies mediumtext, in school_id int unsigned)
+-- (in supplies mediumtext, in id int unsigned)
 -- BEGIN
 --
 -- insert into elementary_levels
--- (supplies, school_id)
+-- (id, supplies)
 -- values
--- (supplies, school_id);
+-- (id, supplies);
 --
 -- end //
 -- delimiter ;
 --
 -- delimiter //
 -- create procedure insertMiddleLevel
--- (in school_id int unsigned)
+-- (in id int unsigned)
 -- BEGIN
 --
 -- insert into middle_levels
--- (school_id)
+-- (id)
 -- values
--- (school_id);
+-- (id);
 --
 -- end //
 -- delimiter ;
 --
 -- delimiter //
 -- create procedure insertHighLevel
--- (in school_id int unsigned)
+-- (in id int unsigned)
 -- BEGIN
 --
 -- insert into high_levels
--- (school_id)
+-- (id)
 -- values
--- (school_id);
+-- (id);
 --
 -- end //
 -- delimiter ;

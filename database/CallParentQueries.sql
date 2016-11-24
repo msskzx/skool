@@ -11,8 +11,10 @@
 --
 -- (first_name, middle_name, last_name, SSN, birth_date, gender)
 -- call insertStudent('Lithariel', 'Talion', 'IDK', 121412, '1990-09-09', 'Female');
+--
 -- (student_id, parent_id)
 -- call setParentStudent(6, 5);
+-- 
 -- (student_id, school_id, parent_id)
 -- call applyStudent(6, 1, 5);
 --

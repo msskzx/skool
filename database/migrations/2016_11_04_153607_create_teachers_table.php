@@ -14,7 +14,7 @@ class CreateTeachersTable extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->integer('id')->index()
-                                ->unsigned();
+                                 ->unsigned();
             $table->integer('years_of_exp');
             $table->integer('salary')->virtualAs('years_of_exp * 500');
             // $table->timestamps();

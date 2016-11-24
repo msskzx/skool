@@ -2,8 +2,8 @@
 --
 -- 1 Sign up by providing my first name, middle name, last name, birthdate, address, email, and gender.
 --
--- (first_name, middle_name, last_name, role, birth_date, address, email, gender)
--- call insertTeacher('Lil', 'Dai', 'The Brave', 'Teacher', '1999-12-12', 'the brave st', 'lil@lil.com', 'Female');
+-- (first_name, middle_name, last_name, role, birth_date, address, email, gender, years_of_exp)
+-- call insertTeacher('Lil', 'Dai', 'The Brave', 'Teacher', '1999-12-12', 'the brave st', 'lil@lil.com', 'Female', 2);
 --
 --
 --
@@ -17,8 +17,8 @@
 -- 3 Post assignments for the course(s) I teach. Every assignment has a posting date, due date and
 -- content.
 --
--- (post_date, due_date, content, teacher_id, course_id);
--- call insertAssignment('2016-11-11', '2016-11-29', 'Solve this by flux finite automaton', 1, 1);
+-- (post_date, due_date, content, course_id);
+-- call insertAssignment('2016-11-11', '2016-11-29', 'Solve this by flux finite automaton', 1);
 --
 --
 --
@@ -82,5 +82,6 @@
 -- 12 Display the name of the high school student who is currently a member of the greatest number of
 -- clubs.
 --
+-- (output)
 -- call getMostActiveStudent(@name);
 -- select @name;

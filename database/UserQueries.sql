@@ -20,7 +20,7 @@
 -- BEGIN
 -- select sc.*
 -- from schools sc inner join elementary_levels el
--- on sc.id = el.school_id;
+-- on sc.id = el.id;
 -- end //
 -- delimiter ;
 --
@@ -29,7 +29,7 @@
 -- BEGIN
 -- select sc.*
 -- from schools sc inner join middle_levels ml
--- on sc.id = ml.school_id;
+-- on sc.id = ml.id;
 -- end //
 -- delimiter ;
 --
@@ -38,7 +38,7 @@
 -- BEGIN
 -- select sc.*
 -- from schools sc inner join high_levels hl
--- on sc.id = hl.school_id;
+-- on sc.id = hl.id;
 -- end //
 -- delimiter ;
 --
@@ -49,24 +49,26 @@
 --
 -- delimiter //
 -- create procedure getSchoolReviews
--- (in id int)
+-- (in school_id int)
 -- BEGIN
--- select *
+--
+-- select prs.*
 -- from schools sc inner join parent_reviews_school prs
--- on sc.id = prs.school_id
--- where sc.id = id;
+-- on sc.id = prs.school_id and sc.id = school_id;
+--
 -- end //
 -- delimiter ;
 --
 -- delimiter //
 -- create procedure getSchoolTeachers
--- (in id int)
+-- (in school_id int)
 -- BEGIN
--- select *
+--
+-- select e.*, t.years_of_exp
 -- from schools sc inner join employees e
 -- on sc.id = e.school_id
 -- inner join teachers t
--- on e.id = t.employee_id
--- where sc.id = id;
+-- on e.id = t.id and sc.id = school_id;
+--
 -- end //
 -- delimiter ;

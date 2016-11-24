@@ -26,6 +26,16 @@
 -- end //
 -- delimiter ;
 --
+-- delimiter //
+-- create procedure applySchoolTeacher
+-- (in teacher_id int unsigned, in school_id int unsigned)
+-- BEGIN
+--
+-- update employees set school_id = school_id
+-- where employees.id = teacher_id;
+--
+-- end //
+-- delimiter ;
 --
 --
 -- 2 View a list of courses’ names I teach categorized by level and grade.
@@ -48,18 +58,24 @@
 -- 3 Post assignments for the course(s) I teach. Every assignment has a posting date, due date and
 -- content.
 --
--- delimiter //
--- create procedure insertAssignment
--- (in post_date date, in due_date date, in content mediumtext, in teacher_id int unsigned, in course_id int unsigned)
--- BEGIN
---
--- insert into assignments
--- (post_date, due_date, content, teacher_id, course_id)
--- values
--- (post_date, due_date, content, teacher_id, course_id);
---
--- end //
--- delimiter ;
+delimiter //
+create procedure insertAssignment
+(in post_date date, in due_date date, in content mediumtext, in course_id int unsigned)
+BEGIN
+
+declare teacher_id int unsigned;
+
+select c.teacher_id into teacher_id
+from courses c
+where c.id = course_id;
+
+insert into assignments
+(post_date, due_date, content, teacher_id, course_id)
+values
+(post_date, due_date, content, teacher_id, course_id);
+
+end //
+delimiter ;
 --
 --
 --

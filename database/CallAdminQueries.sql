@@ -62,8 +62,8 @@
 -- Create activities and assign every activity to a certain teacher. An activity has its own date, location
 -- in school, type, equipment(if any), and description.
 --
--- (date, location, description, type, equipment, admin_id, teacher_id)
--- call insertActivity('2016-03-03', "H12", "desc", "Chess Tournament", "nothing", 1, 1);
+-- (date, location, description, type, equipment, admin_id)
+-- call insertActivity('2016-03-03', "H12", "desc", "Chess Tournament", "nothing", 1);
 --
 --
 --
