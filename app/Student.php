@@ -16,6 +16,13 @@ class Student extends Model
   protected $guarded = [];
 
   /**
+  * Indicates if the model should be timestamped.
+  *
+  * @var bool
+  */
+  public $timestamps = false;
+
+  /**
    * School which accepted this student.
    *
    * @return School
@@ -39,7 +46,7 @@ class Student extends Model
    * @return User
    */
   public function clubs() {
-     return $this->belongsToMany('App\Club', 'club_joinedBy_student')->withTimestamps();
+     return $this->belongsToMany('App\Club', 'club_joinedBy_student');
   }
 
   /**
@@ -48,7 +55,7 @@ class Student extends Model
    * @return Parentt array
    */
   public function parents() {
-     return $this->belongsToMany('App\Parentt', 'parent_has_student')->withTimestamps();
+     return $this->belongsToMany('App\Parentt', 'parent_has_student');
   }
 
   /**
@@ -57,7 +64,7 @@ class Student extends Model
    * @return Course array
    */
   public function courses() {
-     return $this->belongsToMany('App\Course', 'course_has_student')->withTimestamps();
+     return $this->belongsToMany('App\Course', 'course_has_student');
   }
 
  /**
@@ -66,7 +73,7 @@ class Student extends Model
   * @return Activitie array
   */
   public function activities() {
-     return $this->belongsToMany('App\Activity', 'activity_joinedBy_student')->withPivot('accepted')->withTimestamps();
+     return $this->belongsToMany('App\Activity', 'activity_joinedBy_student')->withPivot('accepted');
   }
 
   /**
@@ -84,7 +91,7 @@ class Student extends Model
    * @return Assignment array
    */
   public function assignments() {
-     return $this->belongsToMany('App\Assignment', 'assignment_solvedBy_student')->withPivot('grade', 'solution')->withTimestamps();
+     return $this->belongsToMany('App\Assignment', 'assignment_solvedBy_student')->withPivot('grade', 'solution');
   }
 
   /**
@@ -93,7 +100,7 @@ class Student extends Model
    * @return School
    */
   public function schools() {
-     return $this->belongsToMany('App\School', 'school_appliedBy_student')->withPivot('accepted', 'parentt_id')->withTimestamps();
+     return $this->belongsToMany('App\School', 'school_appliedBy_student')->withPivot('accepted', 'parentt_id');
   }
 
   /**

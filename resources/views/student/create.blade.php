@@ -7,7 +7,7 @@
 
     <hr>
 
-    {!! Form::model($student,['url' => 'student']) !!}
+    {!! Form::open(['url' => 'student']) !!}
 
     @include('student.form',['submitButtonText' => 'Create'])
 

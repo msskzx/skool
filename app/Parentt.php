@@ -14,6 +14,13 @@ class Parentt extends Model
    protected $table = 'parents';
 
    /**
+    * Indicates if the model should be timestamped.
+    *
+    * @var bool
+    */
+   public $timestamps = false;
+
+   /**
     * The attributes that are not mass assignable.
     *
     * @var array
@@ -35,7 +42,7 @@ class Parentt extends Model
      * @return Student array
      */
     public function students() {
-      return $this->belongsToMany('App\Student', 'parent_has_student')->withTimestamps();
+      return $this->belongsToMany('App\Student', 'parent_has_student');
     }
 
    /**
@@ -44,7 +51,7 @@ class Parentt extends Model
     * @return School array
     */
    public function schoolsReviewed() {
-      return $this->belongsToMany('App\School', 'parent_reviews_school')->withPivot('review')->withTimestamps();
+      return $this->belongsToMany('App\School', 'parent_reviews_school')->withPivot('review');
    }
 
    /**
@@ -53,7 +60,7 @@ class Parentt extends Model
     * @return Teacher array
     */
    public function teachers() {
-      return $this->belongsToMany('App\Teacher', 'parent_rates_teacher')->withPivot('rate')->withTimestamps();
+      return $this->belongsToMany('App\Teacher', 'parent_rates_teacher')->withPivot('rate');
    }
 
    /**
@@ -62,7 +69,7 @@ class Parentt extends Model
     * @return School array
     */
    public function schoolsApplied() {
-      return $this->belongsToMany('App\School','school_appliedBy_student')->withPivot('accepted', 'student_id')->withTimestamps();
+      return $this->belongsToMany('App\School','school_appliedBy_student')->withPivot('accepted', 'student_id');
    }
 
    /**
@@ -71,6 +78,6 @@ class Parentt extends Model
     * @return Report array
     */
    public function reports() {
-      return $this->belongsToMany('App\Report', 'parent_repliesOn_report')->withPivot('teacher_comment', 'parent_comment')->withTimestamps();
+      return $this->belongsToMany('App\Report', 'parent_repliesOn_report')->withPivot('teacher_comment', 'parent_comment');
    }
 }

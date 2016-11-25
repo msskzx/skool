@@ -14,12 +14,19 @@ class Teacher extends Model
    protected $guarded = [];
 
    /**
+    * Indicates if the model should be timestamped.
+    *
+    * @var bool
+    */
+   public $timestamps = false;
+
+   /**
     * Employee associated with this teacher.
     *
     * @return Employee
     */
    public function employee() {
-      return $this->belongsTo('App\Employee');
+      return $this->belongsTo('App\Employee', 'id', 'id');
    }
 
    /**
@@ -64,7 +71,7 @@ class Teacher extends Model
     * @return Parentt array
     */
    public function parents() {
-      return $this->belongsToMany('App\Parentt', 'parent_rates_teacher')->withPivot('rate')->withTimestamps();
+      return $this->belongsToMany('App\Parentt', 'parent_rates_teacher')->withPivot('rate');
    }
 
    /**

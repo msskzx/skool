@@ -14,6 +14,13 @@ class Employee extends Model
  protected $guarded = [];
 
  /**
+  * Indicates if the model should be timestamped.
+  *
+  * @var bool
+  */
+  public $timestamps = false;
+
+ /**
   * School associated with this employee.
   *
   * @return School
@@ -37,7 +44,7 @@ class Employee extends Model
   * @return Teacher
   */
  public function teacher() {
-    return $this->hasOne('App\Teacher');
+    return $this->hasOne('App\Teacher', 'id');
  }
 
  /**

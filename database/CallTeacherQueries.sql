@@ -2,8 +2,8 @@
 --
 -- 1 Sign up by providing my first name, middle name, last name, birthdate, address, email, and gender.
 --
--- (first_name, middle_name, last_name, role, birth_date, address, email, gender, years_of_exp)
--- call insertTeacher('Lil', 'Dai', 'The Brave', 'Teacher', '1999-12-12', 'the brave st', 'lil@lil.com', 'Female', 2);
+-- (first_name, middle_name, last_name, birth_date, address, email, gender, years_of_exp)
+-- call insertTeacher('Lil', 'Dai', 'The Brave', '1999-12-12', 'the brave st', 'lil@lil.com', 'Female', 2);
 --
 --
 --

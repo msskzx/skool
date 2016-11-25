@@ -56,34 +56,6 @@
     </div>
   </div>
 
-  <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-    <div class = "control-label col-md-2">
-      {!! Form::label('username','Username') !!}
-    </div>
-   <div class = "col-md-10">
-     {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'choose a unique username', 'required']) !!}
-     @if ($errors->has('username'))
-         <span class="help-block">
-             <strong>{{ $errors->first('username') }}</strong>
-         </span>
-     @endif
-    </div>
-  </div>
-
-  <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-    <div class = "control-label col-md-2">
-      {!! Form::label('password','Password') !!}
-    </div>
-   <div class = "col-md-10">
-     {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'choose a strong password', 'required']) !!}
-     @if ($errors->has('password'))
-         <span class="help-block">
-             <strong>{{ $errors->first('password') }}</strong>
-         </span>
-     @endif
-    </div>
-  </div>
-
   <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
       {!! Form::label('address','Address') !!}
@@ -98,7 +70,21 @@
     </div>
   </div>
 
-  <div class="form-group{{ $errors->has('phone_number1') ? ' has-error' : '' }}">
+  <div class="form-group{{ $errors->has('years_of_exp') ? ' has-error' : '' }}">
+    <div class = "control-label col-md-2">
+      {!! Form::label('years_of_exp','Years of experience') !!}
+    </div>
+   <div class = "col-md-10">
+     {!! Form::number('years_of_exp', null, ['class' => 'form-control', 'placeholder' => 'years of experience', 'required']) !!}
+     @if ($errors->has('years_of_exp'))
+         <span class="help-block">
+             <strong>{{ $errors->first('years_of_exp') }}</strong>
+         </span>
+     @endif
+    </div>
+  </div>
+
+  <div class="form-group{{ $errors->has('phone_number') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
       {!! Form::label('phone_number','Phone Number') !!}
     </div>
@@ -135,6 +121,34 @@
      @if ($errors->has('mobile_number2'))
          <span class="help-block">
              <strong>{{ $errors->first('mobile_number2') }}</strong>
+         </span>
+     @endif
+    </div>
+  </div>
+
+  <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
+    <div class = "control-label col-md-2">
+      {!! Form::label('gender','Gender') !!}
+    </div>
+  <div class = "col-md-10">
+     {!! Form::select('gender',['Male' => 'Male', 'Female' => 'Female'], null, ['class' => 'form-control', 'placeholder' => 'Gender', 'required']) !!}
+     @if ($errors->has('gender'))
+         <span class="help-block">
+             <strong>{{ $errors->first('gender') }}</strong>
+         </span>
+     @endif
+    </div>
+  </div>
+
+  <div class="form-group{{ $errors->has('birth_date') ? ' has-error' : '' }}">
+    <div class = "control-label col-md-2">
+      {!! Form::label('birth_date','Birth Date') !!}
+    </div>
+  <div class = "col-md-10">
+     {!! Form::date('birth_date', null, ['class' => 'form-control', 'placeholder' => 'birth date', 'required']) !!}
+     @if ($errors->has('birth_date'))
+         <span class="help-block">
+             <strong>{{ $errors->first('birth_date') }}</strong>
          </span>
      @endif
     </div>

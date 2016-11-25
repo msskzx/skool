@@ -1103,15 +1103,15 @@ delimiter ;
 
 delimiter //
 create procedure insertTeacher
-(in first_name varchar(255), in middle_name varchar(255), in last_name varchar(255), in birth_date date, in address varchar(255), in email varchar(255), in gender varchar(255), in years_of_exp int)
+(in first_name varchar(255), in middle_name varchar(255), in last_name varchar(255), in birth_date date, in address varchar(255), in email varchar(255), in gender varchar(255), in years_of_exp int, in phone_number varchar(255), in mobile_number1 varchar(255), in mobile_number2 varchar(255))
 BEGIN
 
 declare id int unsigned;
 
 insert into employees
-(first_name, middle_name, last_name, role, birth_date, address, email, gender)
+(first_name, middle_name, last_name, role, birth_date, address, email, gender, phone_number, mobile_number1, mobile_number2)
 values
-(first_name, middle_name, last_name, "Teacher", birth_date, address, email, gender);
+(first_name, middle_name, last_name, "Teacher", birth_date, address, email, gender, phone_number, mobile_number1, mobile_number2);
 
 select e.id into id
 from employees e

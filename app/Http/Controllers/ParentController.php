@@ -12,10 +12,12 @@ use App\User;
 
 use Auth;
 
+use DB;
+
 class ParentController extends Controller
 {
    public function index() {
-      return Parentt::with('students')->get();
+      return Parentt::all();
    }
 
    public function show(Parentt $parent) {
@@ -23,16 +25,27 @@ class ParentController extends Controller
    }
 
    public function create() {
-      $parent =Auth::user();
-      return view('parent.create', compact('parent'));
+      return view('parent.create');
    }
 
    public function store(Request $request) {
       $this->validate($request, [
-        'username' => 'exists:users|required|unique:parents'
+        'username' => 'required|unique:users'
       ]);
 
-      Parentt::create($request->all());
+      // -- (username, password, first_name, middle_name, last_name, email, address, phone_number, mobile_number1, mobile_number2)
+      DB::statement('call insertParent(?, ?, ? ,? ,? ,? ,?, ?, ?, ?)',[
+         $request['username'],
+         $request['password'],
+         $request['first_name'],
+         $request['middle_name'],
+         $request['last_name'],
+         $request['email'],
+         $request['address'],
+         $request['phone_number'],
+         $request['mobile_number1'],
+         $request['mobile_number2']
+      ]);
 
       return $this->index();
    }
@@ -43,13 +56,16 @@ class ParentController extends Controller
 
    public function update(Request $request, Parentt $parent) {
       $parent->update($request->all());
-
       return $this->index();
    }
 
    public function destroy(Parentt $parent) {
-     $user = User::findOrFail($parent->username);
-     $user->delete();
+     $user = User::where('username', $parent->username);
+
+     if(user != null) {
+        $user->delete();
+        $parent->delete();
+     }
 
      return $this->index();
    }

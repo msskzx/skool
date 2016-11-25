@@ -32,10 +32,10 @@ call insertAdmin("Mordor", "splinter", "secret", "Splinter", "Ninja", "Rat", '19
 call insertAdmin("The Skool", "terminator", "secret", "Terminator", "X", "Dest", '1990-09-09', 'Sky net lab ', "terminator@terminator.com", "Male");
 call insertAdmin("Arkham", "joker", "secret", "Joker", "Heh", "Gas", '1990-09-09', 'Villain pub', "joker@joker.com", "Male");
 
--- (first_name, middle_name, last_name, birth_date, address, email, gender)
-call insertTeacher('Lili', 'Dai', 'The Brave', '1992-12-12', 'the brave st', 'lili@lili.com', 'Female', 2);
-call insertTeacher('Harley', 'Quin', 'Juan', '1992-12-12', 'Baseball st', 'harley@harley.com', 'Female', 3);
-call insertTeacher('Dahaka', 'Abyss', 'Ndere', '1982-12-12', 'Time Island', 'lil@lil.com', 'Male', 20);
+-- (first_name, middle_name, last_name, birth_date, address, email, gender, phone_number, mobile_number1, mobile_number2)
+call insertTeacher('Lili', 'Dai', 'The Brave', '1992-12-12', 'the brave st', 'lili@lili.com', 'Female', 2, null, null, null);
+call insertTeacher('Harley', 'Quin', 'Juan', '1992-12-12', 'Baseball st', 'harley@harley.com', 'Female', 3, null, "12321", null);
+call insertTeacher('Dahaka', 'Abyss', 'Ndere', '1982-12-12', 'Time Island', 'lil@lil.com', 'Male', 20, "012", null, null);
 
 -- (teacher_id, school_id)
 call applySchoolTeacher(6, 1);

@@ -10,15 +10,17 @@ use App\Student;
 
 use Auth;
 
+use DB;
+
 class StudentController extends Controller
 {
 
-   public function __construct() {
-     $this->middleware('auth');
-   }
+   // public function __construct() {
+   //   $this->middleware('auth');
+   // }
 
    public function index() {
-     return Student::with('courses')->get();
+     return Student::all();
   }
 
   public function show(Student $student) {
@@ -26,22 +28,24 @@ class StudentController extends Controller
   }
 
   public function create() {
-     $student =Auth::user();
-     return view('student.create', compact('student'));
+     return view('student.create');
   }
 
   public function store(Request $request) {
-     if($request['school_id'] == null) {
-        $request['school_id'] = 1;
-     }
 
      $this->validate($request, [
-        'username' => 'exists:users|required|unique:students',
-        'SSN' => 'required|unique:students',
-        'school_id' => 'exists:schools,id'
+        'SSN' => 'required|unique:students'
      ]);
 
-     Student::create($request->all());
+     //   -- (first_name, middle_name, last_name, SSN, birth_date, gender)
+     DB::statement('call insertStudent(?, ?, ? ,? ,? ,?)',[
+        $request['first_name'],
+        $request['middle_name'],
+        $request['last_name'],
+        $request['SSN'],
+        $request['birth_date'],
+        $request['gender']
+     ]);
 
      return $this->index();
   }
@@ -51,16 +55,21 @@ class StudentController extends Controller
   }
 
   public function update(Request $request, Student $student) {
-     if($request['school_id'] == null) {
-        $request['school_id'] = 1;
-     }
-
      $this->validate($request, [
-        'SSN' => 'required|unique:students,SSN,'.$student->id,
-        'school_id' => 'exists:schools,id'
+        'email' => 'unique:students,email,'.$student->id,
+        'SSN' => 'required|unique:students,SSN,'.$student->id
      ]);
 
-     $student->update($request->all());
+   //   -- (id, first_name, middle_name, last_name, SSN, birth_date, gender)
+     DB::statement('call updateStudent(?, ?, ?, ? ,? ,? ,?)',[
+        $student->id,
+        $request['first_name'],
+        $request['middle_name'],
+        $request['last_name'],
+        $request['SSN'],
+        $request['birth_date'],
+        $request['gender']
+     ]);
 
      return $this->index();
   }
