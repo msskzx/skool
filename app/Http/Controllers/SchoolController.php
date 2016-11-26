@@ -7,34 +7,50 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\School;
+use App\Parentt;
 
 use DB;
+use Auth;
 
 class SchoolController extends Controller
 {
-    public function index() {
-      $el = DB::select(
-         "select *
-          from schools inner join elementary_levels
-          on schools.id = school_id
-          ");
-      $m = DB::select(
-         "select *
-          from schools inner join middle_levels
-          on schools.id = school_id
-          ");
-      $h = DB::select(
-         "select *
-          from schools inner join high_levels
-          on schools.id = school_id
-          ");
 
-      return [$el, $m, $h];
-      //  return School::all();
+   public function __construct() {
+     $this->middleware('auth');
+   }
+
+    public function index() {
+       return School::all();
+    }
+
+    /**
+     * View a list of all available schools on the system categorized by their level.
+     *
+     * @return
+     */
+    public function levels() {
+      $elementary_levels = DB::select('call getElementaryLevels()');
+      $middle_levels = DB::select('call getMiddleLevels()');
+      $high_levels = DB::select('call getHighLevels()');
+
+      return view('school.levels', compact('elementary_levels', 'middle_levels', 'high_levels'));
     }
 
     public function show(School $school) {
-       return $school;
+      $reviews = DB::select('call getSchoolReviews(?)', [$school->id]);
+
+      $announcements = null;
+      $parent = Auth::user()->parent;
+
+      if($parent != null) {
+         // (parent_id, school_id)
+         $announcements = DB::select('call getChildrenAnnouncements(?, ?)', [
+            $parent->id,
+            $school->id
+         ]);
+      }
+
+      return view('school.show', compact('school', 'reviews', 'announcements'));
     }
 
     public function create() {
@@ -76,15 +92,17 @@ class SchoolController extends Controller
     }
 
     public function destroy(School $school) {
-       $school->delete();
-       //TODO
-       //when you delete a school delete all its users(employees,students)
-
+       DB::statement('call deleteSchool(?)',[$school->id]);
        return $this->index();
     }
 
     public function search(Request $request) {
-      // TODO
-      // name, address or type
+      $schools = DB::statement('call searchSchools(?)',[$request['keyword']]);
+      return $schools;
+    }
+
+    public function showReview(School $school, Parentt $parent) {
+      $all = $school->parentsReviewed()->where('parent_id', $parent->id)->first();
+      return view('school.review', compact('all'));
     }
 }

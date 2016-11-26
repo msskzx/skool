@@ -91,7 +91,9 @@ call assignSupervisor(1, 2);
 -- 11 Accept or reject the application submitted by parents to their children.
 -- (admin_id, student_id, accepted)
 call acceptStudent(1, 1, 'Accepted');
-
+--
+-- “As a parent, I should be able to ...”
+--
 -- 1 Sign up by providing my name (first name and last name), contact email, mobile number(s), address,
 -- home phone number, a unique username and password.
 --
@@ -168,8 +170,8 @@ call rateTeacher(1, 1, 8);
 --
 -- 10 Write reviews about my children’s school(s).
 --
--- (parent_id, school_id, review)
-call reviewSchool(1, 6, "This is sehr gut");
+-- (parent_id, school_id, title, review)
+call reviewSchool(1, 6, "Gut", "This is sehr gut");
 --
 --
 --
@@ -201,7 +203,10 @@ call topSchools(0);
 -- highest number of reviews.
 --
 call popularInternational();
-
+--
+--
+-- “As an enrolled student, I should be able to ...”
+--
 -- 1 Update my account information except for the username.
 --
 -- (id, first_name, middle_name, last_name, SSN, birth_date, gender)

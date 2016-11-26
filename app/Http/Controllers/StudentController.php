@@ -7,17 +7,17 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Student;
+use App\Course;
 
 use Auth;
-
 use DB;
 
 class StudentController extends Controller
 {
 
-   // public function __construct() {
-   //   $this->middleware('auth');
-   // }
+   public function __construct() {
+     $this->middleware('auth');
+   }
 
    public function index() {
      return Student::all();
@@ -32,12 +32,11 @@ class StudentController extends Controller
   }
 
   public function store(Request $request) {
-
      $this->validate($request, [
         'SSN' => 'required|unique:students'
      ]);
 
-     //   -- (first_name, middle_name, last_name, SSN, birth_date, gender)
+     // (first_name, middle_name, last_name, SSN, birth_date, gender)
      DB::statement('call insertStudent(?, ?, ? ,? ,? ,?)',[
         $request['first_name'],
         $request['middle_name'],
@@ -60,7 +59,7 @@ class StudentController extends Controller
         'SSN' => 'required|unique:students,SSN,'.$student->id
      ]);
 
-   //   -- (id, first_name, middle_name, last_name, SSN, birth_date, gender)
+     // (id, first_name, middle_name, last_name, SSN, birth_date, gender)
      DB::statement('call updateStudent(?, ?, ?, ? ,? ,? ,?)',[
         $student->id,
         $request['first_name'],
@@ -75,9 +74,31 @@ class StudentController extends Controller
   }
 
   public function destroy(Student $student) {
-    $user = User::findOrFail($student->username);
-    $user->delete();
+     DB::statement('call deleteStudent(?)', [$student->id]);
+     return $this->index();
+  }
 
-    return $this->index();
+  /**
+   * View a list of courses’ names assigned to me based on my
+   * grade ordered by name.
+   *
+   * @return
+   */
+  public function getMyCourses() {
+     $student = Auth::user()->student;
+     $courses = DB::select('call getMyCourses(?)', [$student->id]);
+     return $courses;
+  }
+
+  /**
+   * View all the information about activities offered by my school,
+   * as well as the teacher responsible for it
+   *
+   * @return [type] [description]
+   */
+  public function getMySchoolActivities() {
+     $student = Auth::user()->student;
+     $activities = DB::select('call getMySchoolActivities(?)', [$student->id]);
+     return $activities;
   }
 }

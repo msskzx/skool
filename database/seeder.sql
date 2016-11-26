@@ -197,16 +197,16 @@ call rateTeacher(1, 7, 9);
 call rateTeacher(1, 8, 9);
 
 -- (parent_id, school_id, review)
-call reviewSchool(1, 1, "If you tell the truth, you don't have to remember anything.");
-call reviewSchool(2, 1, "I am so clever that sometimes I don't understand a single word of what I am saying.");
-call reviewSchool(3, 1, "Good friends, good books, and a sleepy conscience: this is the ideal life.");
-call reviewSchool(4, 1, "Never put off till tomorrow what may be done day after tomorrow just as well.");
-call reviewSchool(5, 1, "I love deadlines. I love the whooshing noise they make as they go by.");
-call reviewSchool(1, 2, "I like work: it fascinates me. I can sit and look at it for hours.");
-call reviewSchool(2, 2, "You can't throw too much style into a miracle.");
-call reviewSchool(3, 2, "How empty is theory in the presence of fact!");
-call reviewSchool(4, 3, "No one can make you feel inferior without your consent.");
-call reviewSchool(5, 4, "A day without sunshine is like, you know, night.");
+call reviewSchool(1, 1, "Not bad", "If you tell the truth, you don't have to remember anything.");
+call reviewSchool(2, 1, "Not bad", "I am so clever that sometimes I don't understand a single word of what I am saying.");
+call reviewSchool(3, 1, "Not bad", "Good friends, good books, and a sleepy conscience: this is the ideal life.");
+call reviewSchool(4, 1, "Not bad", "Never put off till tomorrow what may be done day after tomorrow just as well.");
+call reviewSchool(5, 1, "Not bad", "I love deadlines. I love the whooshing noise they make as they go by.");
+call reviewSchool(1, 2, "Not bad", "I like work: it fascinates me. I can sit and look at it for hours.");
+call reviewSchool(2, 2, "Not bad", "You can't throw too much style into a miracle.");
+call reviewSchool(3, 2, "Not bad", "How empty is theory in the presence of fact!");
+call reviewSchool(4, 3, "Not bad", "No one can make you feel inferior without your consent.");
+call reviewSchool(5, 4, "Not bad", "A day without sunshine is like, you know, night.");
 
 -- ( date, title, description, type, admin_id)
 call insertAnnouncement('2016-12-03', "Well Party", "Well... IDK", "Party", 1);

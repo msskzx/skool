@@ -182,7 +182,7 @@ delimiter ;
 delimiter //
 create procedure getElementaryLevels()
 BEGIN
-select sc.*
+select sc.*, el.supplies
 from schools sc inner join elementary_levels el
 on sc.id = el.id;
 end //
@@ -710,16 +710,16 @@ delimiter ;
 
 
 
-10 Write reviews about my children’s school(s).
+-- 10 Write reviews about my children’s school(s).
 
 delimiter //
 create procedure reviewSchool
-(in parent_id int unsigned, in school_id int unsigned, in review mediumtext)
+(in parent_id int unsigned, in school_id int unsigned, in title varchar(255), in review mediumtext)
 BEGIN
 insert into parent_reviews_school
-(parent_id, school_id, review)
+(parent_id, school_id, title, review)
 values
-(parent_id, school_id, review);
+(parent_id, school_id, title, review);
 end //
 delimiter ;
 
@@ -941,11 +941,10 @@ create procedure getGrades
 (in student_id int unsigned, in course_id int unsigned)
 BEGIN
 
-select a.id, asbs.grade
+select a.name, asbs.grade
 from assignment_solvedBy_student asbs
 inner join assignments a
-on asbs.assignment_id = a.id
-where asbs.student_id =  student_id and a.course_id = course_id;
+on asbs.assignment_id = a.id and asbs.student_id =  student_id and a.course_id = course_id;
 
 end //
 delimiter ;
@@ -983,10 +982,12 @@ select st.school_id into school_id
 from students st
 where st.id = student_id;
 
-select a.*, t.*
+select a.*, e.*
 from activities a
 inner join teachers t
-on a.teacher_id = t.id and a.school_id = school_id;
+on a.teacher_id = t.id and a.school_id = school_id
+inner join employees e
+on e.id = t.id;
 
 end //
 delimiter ;
@@ -1159,7 +1160,7 @@ delimiter ;
 
 delimiter //
 create procedure insertAssignment
-(in post_date date, in due_date date, in content mediumtext, in course_id int unsigned)
+(in name varchar(255), in post_date date, in due_date date, in content mediumtext, in course_id int unsigned)
 BEGIN
 
 declare teacher_id int unsigned;
@@ -1169,9 +1170,9 @@ from courses c
 where c.id = course_id;
 
 insert into assignments
-(post_date, due_date, content, teacher_id, course_id)
+(name, post_date, due_date, content, teacher_id, course_id)
 values
-(post_date, due_date, content, teacher_id, course_id);
+(name, post_date, due_date, content, teacher_id, course_id);
 
 end //
 delimiter ;

@@ -48,4 +48,32 @@ class User extends Authenticatable
     public function employee() {
       return $this->hasOne('App\Employee', 'username', 'username');
     }
+
+    /*
+     * Overriding these functions to disable
+     * remember_token
+     */
+    public function getRememberToken()
+    {
+        return '';
+    }
+
+    public function setRememberToken($value)
+    {
+    }
+
+    public function getRememberTokenName()
+    {
+        return '';
+    }
+
+    /**
+     * Fake attribute setter so that Guard doesn't complain about
+     * a property not existing that it tries to set.
+     *
+     * Does nothing, obviously.
+     */
+    public function setTrashAttributeAttribute($value)
+    {
+    }
 }

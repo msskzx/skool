@@ -34,6 +34,8 @@ Route::get('/', 'HomeController@index');
 |--------------------------------------------------------------------------
 */
 Route::resource('/school', 'SchoolController');
+Route::get('/school/{school}/{parent}', 'SchoolController@showReview');
+Route::get('/levels', 'SchoolController@levels');
 
 /*
 |--------------------------------------------------------------------------
@@ -76,6 +78,8 @@ Route::resource('/parent', 'ParentController');
 | student routes
 |--------------------------------------------------------------------------
 */
+Route::get('/student/courses', 'StudentController@getMyCourses');
+Route::get('/student/activities', 'StudentController@getMySchoolActivities');
 Route::resource('/student', 'StudentController');
 
 /*
@@ -106,6 +110,9 @@ Route::resource('/admin', 'AdminController');
 |--------------------------------------------------------------------------
 */
 Route::resource('/course', 'CourseController');
+Route::get('/course/{course}/questions', 'CourseController@getQuestionsByOthers');
+Route::get('/course/{course}/assignments', 'CourseController@getAssignments');
+Route::get('/course/{course}/grades', 'CourseController@getGrades');
 
 /*
 |--------------------------------------------------------------------------
@@ -113,7 +120,7 @@ Route::resource('/course', 'CourseController');
 |--------------------------------------------------------------------------
 */
 Route::resource('/assignment', 'AssignmentController');
-
+Route::get('/assignment/solve', 'AssignmentController@solveForm');
 /*
 |--------------------------------------------------------------------------
 | question routes
@@ -123,21 +130,21 @@ Route::resource('/question', 'QuestionController');
 
 /*
 |--------------------------------------------------------------------------
-| activitie routes
+| activity routes
 |--------------------------------------------------------------------------
 */
 Route::resource('/activity', 'ActivityController');
 
 /*
 |--------------------------------------------------------------------------
-| course routes
+| announcement routes
 |--------------------------------------------------------------------------
 */
 Route::resource('/announcement', 'AnnouncementController');
 
 /*
 |--------------------------------------------------------------------------
-| course routes
+| report routes
 |--------------------------------------------------------------------------
 */
 Route::resource('/report', 'ReportController');

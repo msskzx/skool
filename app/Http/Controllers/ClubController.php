@@ -76,9 +76,7 @@ class ClubController extends Controller
     }
 
     public function join(Club $club) {
-      $user = Auth::user();
-      
-      $student = Student::where('username', $user->username)->first();
+      $student = Auth::user()->Student;
 
       $club->students()->attach($student->id);
 

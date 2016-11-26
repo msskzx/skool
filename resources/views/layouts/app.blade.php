@@ -12,18 +12,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous"> -->
+    <link href="{{ url('/css/libs/bootstrap.min.css') }}" rel="stylesheet">
+    <link href={{ url('/css/skool.css')}} rel="stylesheet">
 
-    <style>
-        body {
-            font-family: 'Lato';
-        }
-
-        .fa-btn {
-            margin-right: 6px;
-        }
-    </style>
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-static-top">
@@ -52,6 +43,21 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
+
+                   <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                      Links <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="{{ url('/school') }}">Schools</a></li>
+
+                      <li role="separator" class="divider"></li>
+
+                      <li><a href="{{ url('/teacher/create') }}"><i class="fa fa-plus" aria-hidden="true"></i>New teacher</a></li>
+                      <li><a href="{{ url('/parent/create') }}"><i class="fa fa-plus" aria-hidden="true"></i>New parent</a></li>
+                      <li><a href="{{ url('/student/create') }}"><i class="fa fa-plus" aria-hidden="true"></i>New student</a></li>
+                    </ul>
+                  </li>
+
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Login</a></li>

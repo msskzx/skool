@@ -131,7 +131,7 @@
       {!! Form::label('gender','Gender') !!}
     </div>
   <div class = "col-md-10">
-     {!! Form::select('gender',['Male' => 'Male', 'Female' => 'Female'], null, ['class' => 'form-control', 'placeholder' => 'Gender', 'required']) !!}
+     {!! Form::select('gender',['Male' => 'Male', 'Female' => 'Female'], null, ['class' => 'form-control', 'placeholder' => 'gender', 'required']) !!}
      @if ($errors->has('gender'))
          <span class="help-block">
              <strong>{{ $errors->first('gender') }}</strong>

@@ -13,12 +13,12 @@ use DB;
 
 class TeacherController extends Controller
 {
-   // public function __construct() {
-      // $this->middleware('auth',['only'=>['edit', 'update', 'destroy']]);
-   // }
+   public function __construct() {
+      $this->middleware('auth', ['only' => ['edit', 'update', 'destroy']]);
+   }
 
     public function index() {
-       return Teacher::with('teachers')->get();
+       return Teacher::all();
     }
 
     public function show(Teacher $teacher) {
@@ -30,9 +30,9 @@ class TeacherController extends Controller
     }
 
     public function store(Request $request) {
-       // -- (first_name, middle_name, last_name, birth_date, address, email, gender, years_of_exp, phone_number, mobile_number1, mobile_number2)
-       DB::statement('call insertTeacher(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-       [$request['first_name'],
+       // (first_name, middle_name, last_name, birth_date, address, email, gender, years_of_exp, phone_number, mobile_number1, mobile_number2)
+       DB::statement('call insertTeacher(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',[
+        $request['first_name'],
         $request['middle_name'],
         $request['last_name'],
         $request['birth_date'],
@@ -44,6 +44,7 @@ class TeacherController extends Controller
         $request['mobile_number1'],
         $request['mobile_number2']
        ]);
+
        return $this->index();
     }
 

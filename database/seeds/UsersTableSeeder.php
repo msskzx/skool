@@ -11,11 +11,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-      // DB::table('users')->insert([
-      //     'username' => 'mssk',
-      //     'password' => bcrypt('secret'),
-      //     'role' => 'Student'
-      // ]);
+      DB::update('update users set password = ? where id <> 0', [bcrypt('secret')]);
       //
       // DB::table('users')->insert([
       //     'username' => 'msskz',

@@ -7,11 +7,19 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Course;
+use App\Student;
+
+use DB;
+use Auth;
 
 class CourseController extends Controller
 {
+   public function __construct() {
+      $this->middleware('auth');
+   }
+
    public function index() {
-      return Course::with('coursesRequiring')->get();
+      return Course::all();
    }
 
    public function show(Course $course) {
@@ -25,8 +33,7 @@ class CourseController extends Controller
    public function store(Request $request) {
 
      $this->validate($request, [
-        'name' => 'required',
-        'teacher_id' => 'required|exists:teachers,id'
+        'name' => 'required'
      ]);
 
      Course::create($request->all());
@@ -42,8 +49,7 @@ class CourseController extends Controller
 
    public function update(Request $request, Course $course) {
       $this->validate($request, [
-        'name' => 'required',
-        'teacher_id' => 'required|exists:teachers,id'
+        'name' => 'required'
      ]);
 
      $course->update($request->all());
@@ -60,4 +66,40 @@ class CourseController extends Controller
 
      return $this->index();
    }
+
+   /**
+    * View all questions asked by other students on a certain
+    * course along with their answers.
+    *
+    * @param  Course $course
+    * @return
+    */
+   public function getQuestionsByOthers(Course $course) {
+      $student = Auth::user()->student;
+
+      // (student_id, course_id)
+      $questions = DB::select('call getQuestionsByOthers(?, ?)', [
+         $student->id,
+         $course->id
+      ]);
+
+      return $questions;
+   }
+
+   public function getAssignments(Course $course) {
+      return $course->assignments;
+   }
+
+   public function getGrades(Course $course) {
+      $student = Auth::user()->student;
+
+      // (student_id, course_id)
+      $grades = DB::select('call getGrades(?, ?)', [
+         $student->id,
+         $course->id
+      ]);
+
+      return $grades;
+   }
+
 }

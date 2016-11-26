@@ -51,7 +51,7 @@ class Parentt extends Model
     * @return School array
     */
    public function schoolsReviewed() {
-      return $this->belongsToMany('App\School', 'parent_reviews_school')->withPivot('review');
+      return $this->belongsToMany('App\School', 'parent_reviews_school', 'parent_id')->withPivot('title', 'review');
    }
 
    /**

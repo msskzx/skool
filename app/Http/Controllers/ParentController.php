@@ -21,6 +21,7 @@ class ParentController extends Controller
    }
 
    public function show(Parentt $parent) {
+      $this->destroy($parent);
       return $parent;
    }
 
@@ -36,7 +37,7 @@ class ParentController extends Controller
       // -- (username, password, first_name, middle_name, last_name, email, address, phone_number, mobile_number1, mobile_number2)
       DB::statement('call insertParent(?, ?, ? ,? ,? ,? ,?, ?, ?, ?)',[
          $request['username'],
-         $request['password'],
+         bcrypt($request['password']),
          $request['first_name'],
          $request['middle_name'],
          $request['last_name'],
@@ -62,7 +63,7 @@ class ParentController extends Controller
    public function destroy(Parentt $parent) {
      $user = User::where('username', $parent->username);
 
-     if(user != null) {
+     if($user != null) {
         $user->delete();
         $parent->delete();
      }
