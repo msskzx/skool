@@ -36,6 +36,8 @@ Route::get('/', 'HomeController@index');
 Route::resource('/school', 'SchoolController');
 Route::get('/school/{school}/{parent}', 'SchoolController@showReview');
 Route::get('/levels', 'SchoolController@levels');
+Route::get('search_schools', 'SchoolController@search');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +83,7 @@ Route::resource('/parent', 'ParentController');
 Route::get('/student/courses', 'StudentController@getMyCourses');
 Route::get('/student/activities', 'StudentController@getMySchoolActivities');
 Route::resource('/student', 'StudentController');
+Route::get('/profile', 'StudentController@profile');
 
 /*
 |--------------------------------------------------------------------------

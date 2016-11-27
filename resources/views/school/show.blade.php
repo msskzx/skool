@@ -5,20 +5,59 @@
     <div class="jumbotron" >
       <h1>{{ $school -> name }}</h1>
 
+      <table class="table">
+       <tbody>
+         <tr>
+           <td>Type</td>
+           <td>{{ $school -> type }}</td>
+         </tr>
+         <tr>
+           <td>Fees</td>
+           <td>{{ $school -> fees }}</td>
+         </tr>
+         <tr>
+            <td>Address</td>
+            <td>{{ $school -> address }}</td>
+         </tr>
+         <tr>
+            <td>E-mail</td>
+            <td>{{ $school -> email }}</td>
+         </tr>
+         <tr>
+           <td>Phone number 1</td>
+           <td>{{ $school -> phone_number1 }}</td>
+         </tr>
+         <tr>
+           <td>Phone number 2</td>
+           <td>{{ $school -> phone_number2 }}</td>
+         </tr>
+         <tr>
+           <td>Main language</td>
+           <td>{{ $school -> main_language }}</td>
+         </tr>
+       </tbody>
+      </table>
+
       <hr>
 
-      <ul>
-         <li>{{ $school -> email }}</li>
-         <li>{{ $school -> phone_number1 }}</li>
-         <li>{{ $school -> phone_number2 }}</li>
-         <li>{{ $school -> fees }}</li>
-         <li>{{ $school -> vision }}</li>
-         <li>{{ $school -> mission }}</li>
-         <li>{{ $school -> general_info }}</li>
-         <li>{{ $school -> address }}</li>
-         <li>{{ $school -> main_language }}</li>
-         <li>{{ $school -> type }}</li>
-      </ul>
+      <h4>General information:</h4>
+      <article>
+         {{ $school -> mission }}
+      </article>
+
+      <hr>
+
+      <h4>General information:</h4>
+      <article>
+         {{ $school -> vision }}
+      </article>
+
+      <hr>
+
+      <h4>General information:</h4>
+      <article>
+         {{ $school -> general_info }}
+      </article>
 
     </div>
 
@@ -29,6 +68,13 @@
           @include('school.reviews')
          </ul>
       </div>
+   @endunless
+
+   @unless(empty($announcements))
+      <div class="jumbotron">
+        <h3>Announcements</h3>
+         @include('announcement.announcements')
+     </div>
    @endunless
 
 </div>

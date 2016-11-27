@@ -2,13 +2,16 @@
 
 @section('content')
   <div class = "container">
-    <div class="jumbotron" >
-      <h3>{{ $all -> title }}</h3>
+     <div class="jumbotron">
+
+      <h3>{{ $all -> pivot -> title }}</h3>
+
+      <hr>
+      <article>{{ $all -> pivot -> review }}</article>
 
       <hr>
 
-      <p style="color:red;">{{ $all -> pivot -> review }}</p>
-
+      <h5>Parent: {{ $all->first_name ." ". $all->middle_name ." ". $all->last_name}}</h5>
     </div>
 
 </div>

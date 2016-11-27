@@ -24,7 +24,7 @@ class StudentController extends Controller
   }
 
   public function show(Student $student) {
-     return $student;
+     return view('student.show', compact('student'));
   }
 
   public function create() {
@@ -87,7 +87,7 @@ class StudentController extends Controller
   public function getMyCourses() {
      $student = Auth::user()->student;
      $courses = DB::select('call getMyCourses(?)', [$student->id]);
-     return $courses;
+     return view('course.studentCourses', compact('courses'));
   }
 
   /**
@@ -100,5 +100,9 @@ class StudentController extends Controller
      $student = Auth::user()->student;
      $activities = DB::select('call getMySchoolActivities(?)', [$student->id]);
      return $activities;
+  }
+
+  public function profile() {
+     return $this->show(Auth::user()->student);
   }
 }

@@ -13,6 +13,7 @@
 
     <!-- Styles -->
     <link href="{{ url('/css/libs/bootstrap.min.css') }}" rel="stylesheet">
+    <link href={{ url("css/libs/jquery-ui.css")}} rel="stylesheet">
     <link href={{ url('/css/skool.css')}} rel="stylesheet">
 
 </head>
@@ -36,11 +37,6 @@
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/') }}">Home</a></li>
-                </ul>
-
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
 
@@ -48,7 +44,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                       Links <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="{{ url('/school') }}">Schools</a></li>
+                      <li><a href="{{ url('/levels') }}">Schools</a></li>
 
                       <li role="separator" class="divider"></li>
 
@@ -69,7 +65,12 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                               @if(Auth::check())
+                                 <li><a href="{{ url('/profile') }}">My profile</a></li>
+                               @endif
+                               <li role="separator" class="divider"></li>
+
+                               <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
                     @endif
@@ -85,7 +86,13 @@
     @yield('content')
 
     <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 </body>
+
+<!-- JavaScripts -->
+<script src={{ url("js/libs/jquery.min.js")}}></script>
+<script src={{ url("js/libs/bootstrap.min.js")}}></script>
+<script src={{ url("js/libs/select2.min.js")}}></script>
+<script src={{ url("js/libs/jquery-ui.js")}}></script>
+
 </html>

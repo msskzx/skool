@@ -21,4 +21,12 @@ class Announcement extends Model
   public function admin() {
      return $this->belongsTo('App\Admin');
   }
+
+  /**
+   * School associated with this announcement
+   * @return School
+   */
+  public function school() {
+     return $this->belongsTo('App\School');
+  }
 }

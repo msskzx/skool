@@ -39,16 +39,7 @@ class SchoolController extends Controller
     public function show(School $school) {
       $reviews = DB::select('call getSchoolReviews(?)', [$school->id]);
 
-      $announcements = null;
-      $parent = Auth::user()->parent;
-
-      if($parent != null) {
-         // (parent_id, school_id)
-         $announcements = DB::select('call getChildrenAnnouncements(?, ?)', [
-            $parent->id,
-            $school->id
-         ]);
-      }
+      $announcements = $school->announcements;
 
       return view('school.show', compact('school', 'reviews', 'announcements'));
     }
@@ -97,8 +88,8 @@ class SchoolController extends Controller
     }
 
     public function search(Request $request) {
-      $schools = DB::statement('call searchSchools(?)',[$request['keyword']]);
-      return $schools;
+      $schools = DB::select('call searchSchools(?)',[$request['search']]);
+      return view('school.search', compact('schools'));
     }
 
     public function showReview(School $school, Parentt $parent) {

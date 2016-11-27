@@ -3,6 +3,8 @@
 @section('content')
   <div class = "container">
 
+     @include('school.searchForm')
+
      <?php $schools = $elementary_levels ?>
      <h3>Schools offering elementary level</h3>
      @include('school.schools')

@@ -9,3 +9,15 @@
  .fa {
     margin-right: 3px;
 }
+
+.search-input-group {
+    margin-top: 7px;
+}
+
+.search-input-group .input-group-addon{
+    background: white !important;
+}
+.search-input-group button{
+    border:0;
+    background:transparent;
+}

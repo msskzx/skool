@@ -17,12 +17,10 @@ class AnnouncementController extends Controller
   public function index() {
      $announcements = Announcement::all();
      return $announcements;
-   //   return view('announcement.index', compact('announcements'));
   }
 
   public function show(Announcement $announcement) {
-     $school = $announcement->school($announcement);
-     return view('announcement.show', compact('announcement','school'));
+     return view('announcement.show', compact('announcement'));
   }
 
   public function create() {

@@ -59,15 +59,6 @@ class School extends Model
    }
 
    /**
-    * Parents who reviewed this school.
-    *
-    * @return Parentt array
-    */
-   public function parents() {
-      return $this->belongsToMany('App\Parentt', 'parent_reviews_school')->withPivot('title', 'review');
-   }
-
-   /**
     * Students who applied for this school.
     *
     * @return Student array
@@ -86,12 +77,12 @@ class School extends Model
    }
 
    /**
-    * Schools reviewed by this parent.
+    * Parents reviewd this school.
     *
     * @return School array
     */
    public function parentsReviewed() {
-      return $this->belongsToMany('App\Parentt', 'parent_reviews_school', 'school_id', 'parent_id')->withPivot('review');
+      return $this->belongsToMany('App\Parentt', 'parent_reviews_school', 'school_id', 'parent_id')->withPivot('title', 'review');
    }
 
    /**
@@ -101,5 +92,13 @@ class School extends Model
     */
    public function courses() {
       return $this->hasMany('App\Course');
+   }
+
+   /**
+    * Announcements of this school.
+    * @return Announcement array
+    */
+   public function announcements() {
+      return $this->hasMany('App\Announcement');
    }
 }

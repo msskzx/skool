@@ -858,7 +858,7 @@ create procedure getMyCourses
 (in id int unsigned)
 BEGIN
 
-select c.name
+select c.*
 from courses c
 inner join course_has_student chs
 on c.id = chs.course_id and chs.student_id = id
