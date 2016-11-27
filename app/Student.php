@@ -16,10 +16,10 @@ class Student extends Model
   protected $guarded = [];
 
   /**
-  * Indicates if the model should be timestamped.
-  *
-  * @var bool
-  */
+   * Indicates if the model should be timestamped.
+   *
+   * @var bool
+   */
   public $timestamps = false;
 
   /**

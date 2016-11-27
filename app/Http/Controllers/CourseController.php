@@ -83,11 +83,22 @@ class CourseController extends Controller
          $course->id
       ]);
 
-      return $questions;
+      foreach($questions as $question) {
+         $question->course = $course;
+      }
+
+      return view('question.index', compact('questions'));
    }
 
    public function getAssignments(Course $course) {
-      return $course->assignments;
+      $assignments = DB::select('select a.* from courses c
+                                 inner join assignments a
+
+      foreach($assignments as $assignment) {
+         $assignment->course = $course;
+      }
+
+      return view('assignment.index', compact('assignments'));
    }
 
    public function getGrades(Course $course) {
@@ -98,8 +109,7 @@ class CourseController extends Controller
          $student->id,
          $course->id
       ]);
-
-      return $grades;
+      return view('course.grades', compact('grades'));
    }
 
 }

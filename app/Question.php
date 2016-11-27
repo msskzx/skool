@@ -14,21 +14,19 @@ class Question extends Model
     protected $guarded = [];
 
     /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
      * Student who asked this question.
      *
      * @return Student
      */
     public function student() {
       return $this->belongsTo('App\Student');
-    }
-
-    /**
-     * Teacher who answered this question.
-     *
-     * @return Teacher
-     */
-    public function teacher() {
-      return $this->belongsTo('App\Teacher');
     }
 
     /**

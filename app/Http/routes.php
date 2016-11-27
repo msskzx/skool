@@ -123,7 +123,9 @@ Route::get('/course/{course}/grades', 'CourseController@getGrades');
 |--------------------------------------------------------------------------
 */
 Route::resource('/assignment', 'AssignmentController');
-Route::get('/assignment/solve', 'AssignmentController@solveForm');
+Route::get('/assignment/{assignment}/solve', 'AssignmentController@solveForm');
+Route::post('/assignment/{assignment}/solve', 'AssignmentController@solve');
+
 /*
 |--------------------------------------------------------------------------
 | question routes

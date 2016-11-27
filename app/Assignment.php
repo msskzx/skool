@@ -14,6 +14,13 @@ class Assignment extends Model
    protected $guarded = [];
 
    /**
+    * Indicates if the model should be timestamped.
+    *
+    * @var bool
+    */
+   public $timestamps = false;
+
+   /**
     * Teacher teaching this course.
     *
     * @return Teacher
@@ -37,6 +44,6 @@ class Assignment extends Model
     * @return Student array
     */
    public function students() {
-      return $this->belongsToMany('App\Student', 'assignment_solvedBy_student')->withPivot('grade', 'solution')->withTimestamps();
+      return $this->belongsToMany('App\Student', 'assignment_solvedBy_student')->withPivot('grade', 'solution');
    }
 }

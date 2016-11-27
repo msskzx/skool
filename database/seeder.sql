@@ -179,16 +179,18 @@ call insertQuestion(3, 16, "GCD exception", "I was mathing the science out of th
 call answerQuestion(1, 'restart you router');
 
 -- (post_date, due_date, content, course_id);
-call insertAssignment('2016-11-11', '2016-11-29', 'Solve this by flux finite automaton', 1);
-call insertAssignment('2016-12-12', '2016-12-20', "Problem 1: define dps.", 1);
-call insertAssignment('2016-12-12', '2016-12-20', "Problem 1: write a program that detect cycles in dps.", 2);
-call insertAssignment('2016-11-01', '2016-11-20', "Problem 1: If Jack Sparrow was to shift his career what would he be?", 3);
+call insertAssignment('Assignment 1', '2016-11-11', '2016-11-29', 'Solve this by flux finite automaton', 1);
+call insertAssignment('Assignment 1', '2016-12-12', '2016-12-20', "Problem 1: define dps.", 1);
+call insertAssignment('Assignment 1', '2016-12-12', '2016-12-20', "Problem 1: write a program that detect cycles in dps.", 2);
+call insertAssignment('Assignment 1', '2016-11-01', '2016-11-20', "Problem 1: If Jack Sparrow was to shift his career what would he be?", 3);
+call insertAssignment('Assignment 1', '2016-12-12', '2016-12-20', "Is the answer to the universe divisible by 2?", 16);
 
 -- (student_id, assignment_id, solution)
 call insertSolution(1, 1, "Donuts per second ma dear fellow");
-
+call insertSolution(3, 5, "let the answer be 42 then yes")
 -- (student_id, assignment_id, grade)
 call gradeAssignment(1, 1, 10);
+call gradeAssignment(3, 5, 10);
 
 -- (parent_id, teacher_id, rate)
 call rateTeacher(1, 6, 8);

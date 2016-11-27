@@ -1,9 +1,8 @@
-<div class="jumbotron">
-   <ul>
-      @foreach ($courses as $course)
-         <li>
-            <a href = {{ url('course', $course->id)}}>{{ $course-> name }}</a>
-         </li>
-      @endforeach
-   </ul>
-</div>
+@foreach ($courses as $course)
+   <div class="jumbotron">
+      <h5>Name:
+         <a href = {{ url('course', $course->id)}}>{{ $course-> name }}</a>
+      </h5>
+      <h5>Code: {{ $course -> code }}</h5>
+   </div>
+@endforeach

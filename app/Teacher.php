@@ -75,15 +75,6 @@ class Teacher extends Model
    }
 
    /**
-    * Questions answered by this teacher.
-    *
-    * @return Question array
-    */
-   public function questions() {
-      return $this->hasMany('App\Question');
-   }
-
-   /**
     * Assignments posted by this teacher.
     *
     * @return Assignment array

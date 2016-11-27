@@ -8,6 +8,9 @@ use App\Http\Requests;
 
 use App\Assignment;
 
+use Auth;
+use DB;
+
 class AssignmentController extends Controller
 {
    public function __construct() {
@@ -21,8 +24,7 @@ class AssignmentController extends Controller
     }
 
     public function show(Assignment $assignment) {
-       $school = $assignment->school($assignment);
-       return view('assignment.show', compact('assignment','school'));
+       return view('assignment.show', compact('assignment'));
     }
 
     public function create() {
@@ -33,7 +35,11 @@ class AssignmentController extends Controller
       return view('assignment.edit', compact('assignment'));
     }
 
-    public function solveForm() {
+    public function solveForm(Assignment $assignment) {
+      return view('assignment.solution.solution', compact('assignment'));
+    }
+
+    public function update(Request $request, Assignment $assignment) {
 
     }
 
@@ -41,18 +47,18 @@ class AssignmentController extends Controller
     * Solve assignments posted for courses I take.
     *
     * @param  Request $request
-    * @return [type]
+    * @return
     */
-    public function solve(Request $request) {
+    public function solve(Request $request, Assignment $assignment) {
       $student = Auth::user()->student;
 
       // (student_id, assignment_id, solution)
       DB::statement('call insertSolution(?, ?, ?)', [
          $student->id,
-         $request['assignment_id'],
+         $assignment->id,
          $request['solution']
       ]);
-      
+
       return $this->index();
     }
 }

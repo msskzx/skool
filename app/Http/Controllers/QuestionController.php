@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Question;
+use App\Course;
 
 use DB;
+use Auth;
 
 class QuestionController extends Controller
 {
@@ -18,17 +20,17 @@ class QuestionController extends Controller
 
    public function index() {
       $questions = Question::all();
-      return $questions;
-      // return view('question.index', compact('questions'));
+      return view('question.index', compact('questions'));
    }
 
    public function show(Question $question) {
-      return $question;
-      // return view('question.show', compact('question'));
+      $question->teacher = $question->course->teacher->employee;
+      return view('question.show', compact('question'));
    }
 
    public function create() {
-      return view('question.create');
+      $courses = Course::lists('name', 'id');
+      return view('question.create', compact('courses'));
    }
 
    public function store(Request $request) {
@@ -37,7 +39,7 @@ class QuestionController extends Controller
       // (student_id, course_id, title, question)
       DB::statement('call insertQuestion(?, ?, ?, ?)', [
          $student->id,
-         $request['course_id'],
+         $request['course'],
          $request['title'],
          $request['question']
       ]);
@@ -46,11 +48,12 @@ class QuestionController extends Controller
    }
 
    public function edit(Question $question) {
-     return view('question.edit', compact('question'));
+      $courses = Course::lists('name', 'id');
+      return view('question.edit', compact('question', 'courses'));
    }
 
-   public function update(Request $request) {
-
+   public function update(Request $request, Question $question) {
+      $question->update($request->all());
       return $this->index();
    }
 
