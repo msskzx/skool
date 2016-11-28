@@ -33,6 +33,7 @@ Route::get('/', 'HomeController@index');
 | school routes
 |--------------------------------------------------------------------------
 */
+Route::get('school/{school}/reviews', 'SchoolController@reviewIndex');
 Route::get('school/{school}/activities', 'ActivityController@getSchoolActivities');
 Route::resource('/school', 'SchoolController');
 Route::get('/school/{school}/clubs', 'ClubController@getSchoolClubs');

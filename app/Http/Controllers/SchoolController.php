@@ -16,7 +16,7 @@ class SchoolController extends Controller
 {
 
    public function __construct() {
-     $this->middleware('auth');
+     $this->middleware('auth', ['except' => ['index', 'levels', 'show', 'reviewIndex', 'search', 'getStudentSchool']]);
    }
 
     public function index() {
@@ -37,13 +37,11 @@ class SchoolController extends Controller
     }
 
     public function show(School $school) {
-      $reviews = DB::select('call getSchoolReviews(?)', [$school->id]);
-
       $announcements = DB::select('call getSchoolAnnouncements(?)', [$school->id]);
 
       $teachers = DB::select('call getSchoolTeachers(?)', [$school->id]);
 
-      return view('school.show', compact('school', 'reviews', 'announcements', 'teachers'));
+      return view('school.show', compact('school', 'announcements', 'teachers'));
     }
 
     public function create() {
@@ -94,9 +92,9 @@ class SchoolController extends Controller
       return view('school.search', compact('schools'));
     }
 
-    public function showReview(School $school, Parentt $parent) {
-      $all = $school->parentsReviewed()->where('parent_id', $parent->id)->first();
-      return view('school.review', compact('all'));
+    public function reviewIndex(School $school) {
+      $reviews = DB::select('call getSchoolReviews(?)', [$school->id]);
+      return view('school.review.index', compact('reviews'));
     }
 
     public function getStudentSchool() {

@@ -64,6 +64,7 @@
     <div class="btn-group-vertical">
       <a href="{{ action('ActivityController@getSchoolActivities', [$school->id]) }}" type="button" class="btn btn-primary">Activities</a>
       <a href="{{ action('ClubController@getSchoolClubs', [$school->id]) }}" type="button" class="btn btn-primary">Clubs</a>
+      <a href="{{ action('SchoolController@reviewIndex', [$school->id]) }}" type="button" class="btn btn-primary">Reviews</a>
    </div>
 
     @unless(empty($reviews))
