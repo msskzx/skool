@@ -17,7 +17,6 @@ class CreateQuestionsTable extends Migration
            $table->string('title');
            $table->mediumtext('question');
            $table->mediumtext('answer')->nullable();
-         //   $table->timestamps();
            $table->integer('student_id')->unsigned()
                                         ->index();
            $table->integer('course_id')->unsigned()

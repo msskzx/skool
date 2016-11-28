@@ -24,7 +24,6 @@ class QuestionController extends Controller
    }
 
    public function show(Question $question) {
-      $question->teacher = $question->course->teacher->employee;
       return view('question.show', compact('question'));
    }
 

@@ -100,7 +100,9 @@ class SchoolController extends Controller
     }
 
     public function getStudentSchool() {
-       $school = Auth::user()->student->school;
+       $student = Auth::user()->student;
+       $school = DB::select('select s.* from schools s inner join students st
+                              on s.id = st.school and st.id = ?', [$student->id]);
        return $this->show($school);
     }
 }

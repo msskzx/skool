@@ -30,7 +30,9 @@ class TeacherController extends Controller
     }
 
     public function store(Request $request) {
-       // (first_name, middle_name, last_name, birth_date, address, email, gender, years_of_exp, phone_number, mobile_number1, mobile_number2)
+      /**
+       * (first_name, middle_name, last_name, birth_date, address, email, gender, years_of_exp, phone_number, mobile_number1, mobile_number2)
+       */
        DB::statement('call insertTeacher(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',[
         $request['first_name'],
         $request['middle_name'],

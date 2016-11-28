@@ -5,8 +5,8 @@
    </h3>
 
    <ul>
-      <li>{{ $school -> email }}</li>
-      <li>{{ $school -> fees }}</li>
+      <li>Type: {{ $school -> type }}</li>
+      <li>Fees: {{ $school -> fees }}</li>
    </ul>
 
 </div>

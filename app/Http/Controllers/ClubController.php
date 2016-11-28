@@ -28,8 +28,7 @@ class ClubController extends Controller
     }
 
     public function show(Club $club) {
-       $school = $club->school($club);
-       return view('club.show', compact('club','school'));
+       return view('club.show', compact('club'));
     }
 
     public function create() {
@@ -37,7 +36,6 @@ class ClubController extends Controller
     }
 
     public function store(Request $request) {
-
       $this->validate($request, [
          'high_level_id' => 'required',
          'name' => 'required'
