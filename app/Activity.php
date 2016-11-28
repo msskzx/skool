@@ -6,12 +6,27 @@ use Illuminate\Database\Eloquent\Model;
 
 class Activity extends Model
 {
+
+   /**
+    * Table associated with this model.
+    *
+    * @var string
+    */
+   protected $table = 'activities';
+
    /**
     * The attributes that are not mass assignable.
     *
     * @var array
     */
    protected $guarded = [];
+
+   /**
+    * Indicates if the model should be timestamped.
+    *
+    * @var bool
+    */
+   public $timestamps = false;
 
    /**
     * Admin posted and assigned this activity.

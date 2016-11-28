@@ -33,7 +33,7 @@
       {!! Form::label('course_id','Course') !!}
     </div>
     <div class = "col-md-10">
-      {!! Form::select('course_id', $courses, null, ['class' => 'form-control', 'placeholder' => 'course_id...', 'required']) !!}
+      {!! Form::select('course_id', $courses, null, ['class' => 'form-control', 'placeholder' => 'course...', 'required']) !!}
       @if ($errors->has('question'))
           <span class="help-block">
              <strong>{{ $errors->first('course_id') }}</strong>
@@ -43,7 +43,7 @@
   </div>
 
   <div class="form-group">
-      <div class="col-sm-offset-1 col-sm-2">
+      <div class="col-sm-offset-2 col-sm-1">
         {!! Form::submit($submitButtonText,['class' => 'btn-success form-control']) !!}
     </div>
   </div>

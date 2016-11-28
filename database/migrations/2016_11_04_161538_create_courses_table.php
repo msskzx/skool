@@ -18,7 +18,6 @@ class CreateCoursesTable extends Migration
             $table->string('code');
             $table->integer('grade');
             $table->mediumtext('description');
-            // $table->timestamps();
             $table->integer('teacher_id')->unsigned()
                                          ->index()
                                          ->nullable();

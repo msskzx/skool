@@ -14,6 +14,13 @@ class Club extends Model
   protected $guarded = [];
 
   /**
+   * Indicates if the model should be timestamped.
+   *
+   * @var bool
+   */
+  public $timestamps = false;
+
+  /**
    * High level associated with this club.
    *
    * @return User
@@ -28,7 +35,7 @@ class Club extends Model
    * @return User
    */
   public function students() {
-     return $this->belongsToMany('App\Student', 'club_joinedBy_student')->withTimestamps();
+     return $this->belongsToMany('App\Student', 'club_joinedBy_student');
   }
 
   /**

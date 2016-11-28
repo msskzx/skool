@@ -3,11 +3,12 @@
 @section('content')
   <div class = "container">
 
-     <h3>My courses</h3>
+    <h1>Activities</h1>
 
-     <hr>
+    <hr>
 
-     @include('course.courses')
+    @include('activity.activities')
 
-</div>
+  </div>
+
 @endsection

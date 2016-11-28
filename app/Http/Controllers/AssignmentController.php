@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Assignment;
+use App\Course;
+use App\Student;
 
 use Auth;
 use DB;
@@ -19,8 +21,7 @@ class AssignmentController extends Controller
 
     public function index() {
        $assignments = Assignment::all();
-       return $assignments;
-      //  return view('assignment.index', compact('assignments'));
+       return view('assignment.index', compact('assignments'));
     }
 
     public function show(Assignment $assignment) {
@@ -43,16 +44,18 @@ class AssignmentController extends Controller
 
     }
 
-   /**
-    * Solve assignments posted for courses I take.
-    *
-    * @param  Request $request
-    * @return
-    */
+    /**
+     * Solve assignments posted for courses I take.
+     *
+     * @param  Request $request
+     * @return
+     */
     public function solve(Request $request, Assignment $assignment) {
       $student = Auth::user()->student;
 
-      // (student_id, assignment_id, solution)
+     /**
+      * (student_id, assignment_id, solution)
+      */
       DB::statement('call insertSolution(?, ?, ?)', [
          $student->id,
          $assignment->id,
@@ -61,4 +64,14 @@ class AssignmentController extends Controller
 
       return $this->index();
     }
+
+    public function getCourseAssignments(Course $course) {
+      $assignments = DB::select('call getCourseAssignments(?)', [$course->id]);
+      return view('assignment.index', compact('assignments'));
+    }
+
+   public function getStudentAssignments(Student $student) {
+      $assignments = DB::select('call getStudentAssignments(?)', [$student->id]);
+      return view('assignment.index', compact('assignments'));
+   }
 }

@@ -242,26 +242,9 @@ delimiter ;
 -- 1 View and verify teachers who signed up as employees of the school I am responsible of, and assign
 -- to them a unique username and password. The salary of a teacher is calculated as follows: years of
 -- experience * 500 EGP.
-
-delimiter //
-create procedure getMySchoolTeachers
-(in admin_id int unsigned)
-BEGIN
-
-declare school_id int unsigned;
-
-select e.school_id into school_id
-from admins a
-inner join employees e
-on a.id = e.id and a.id = admin_id;
-
-select *
-from employees e
-inner join teachers t
-on t.id = e.id and e.school_id = school_id;
-
-end //
-delimiter ;
+--
+-- (school_id)
+-- call getSchoolTeachers(1);
 
 delimiter //
 create procedure rejectTeacher
@@ -841,10 +824,10 @@ delimiter ;
 
 delimiter //
 create procedure updateStudent
-(in student_id int unsigned, in first_name varchar(255), in middle_name varchar(255), in last_name varchar(255),in SSN int, in birth_date date, in gender varchar(255))
+(in student_id int unsigned, in first_name varchar(255), in middle_name varchar(255), in last_name varchar(255),in SSN int, in birth_date date, in gender varchar(255), in email varchar(255))
 BEGIN
 update students
-set first_name = first_name, middle_name = middle_name, last_name = last_name, SSN = SSN, gender = gender, birth_date = birth_date
+set first_name = first_name, middle_name = middle_name, last_name = last_name, SSN = SSN, gender = gender, birth_date = birth_date, email = email
 where students.id = student_id;
 end //
 delimiter ;
@@ -854,14 +837,14 @@ delimiter ;
 -- 2 View a list of courses’ names assigned to me based on my grade ordered by name.
 
 delimiter //
-create procedure getMyCourses
-(in id int unsigned)
+create procedure getStudentCourses
+(in student_id int unsigned)
 BEGIN
 
 select c.*
 from courses c
 inner join course_has_student chs
-on c.id = chs.course_id and chs.student_id = id
+on c.id = chs.course_id and chs.student_id = student_id
 order by c.name;
 
 end //
@@ -954,14 +937,13 @@ delimiter ;
 -- 8 View the announcements posted within the past 10 days about the school I am enrolled in.
 
 delimiter //
-create procedure getAnnouncements
-(in student_id int unsigned)
+create procedure getSchoolAnnouncements
+(in school_id int unsigned)
 BEGIN
 
 select a.*
 from announcements a
-inner join students st
-on a.school_id = st.school_id and st.id = student_id and datediff(curdate(), a.date) < 10;
+where a.school_id = school_id and datediff(curdate(), a.date) < 10;
 
 end //
 delimiter ;
@@ -972,17 +954,11 @@ delimiter ;
 -- for it.
 
 delimiter //
-create procedure getMySchoolActivities
-(in student_id int unsigned)
+create procedure getSchoolActivities
+(in school_id int unsigned)
 BEGIN
 
-declare school_id int unsigned;
-
-select st.school_id into school_id
-from students st
-where st.id = student_id;
-
-select a.*, e.*
+select a.*, e.first_name, e.last_name
 from activities a
 inner join teachers t
 on a.teacher_id = t.id and a.school_id = school_id
@@ -1337,6 +1313,30 @@ on st.id = cjbs.student_id
 group by st.id
 order by count(*) desc
 limit 1);
+
+end //
+delimiter ;
+
+
+
+delimiter //
+create procedure getCourseAssignments
+(in course_id int unsigned)
+BEGIN
+
+select a.* from assignments a where a.id = course_id;
+
+end //
+delimiter ;
+
+
+
+delimiter //
+create procedure getSchoolClubs
+(in school_id int unsigned)
+BEGIN
+
+select c.* from clubs c where c.id = school_id;
 
 end //
 delimiter ;

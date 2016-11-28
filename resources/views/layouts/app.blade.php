@@ -66,7 +66,15 @@
 
                             <ul class="dropdown-menu" role="menu">
                                @if(Auth::check())
-                                 <li><a href="{{ url('/profile') }}">My profile</a></li>
+                                 @if(strcmp(Auth::user()->role, 'Student')==0)
+                                    <li><a href="{{ url('/student/profile') }}">My profile</a></li>
+                                    <li><a href="{{ url('/student/school') }}">My School</a></li>
+                                    <li><a href="{{ url('/student/courses') }}">My courses</a></li>
+                                 @endif
+                                 <li role="separator" class="divider"></li>
+
+                                 <li><a href="{{ url('/question/create') }}">Ask a question</a></li>
+
                                @endif
                                <li role="separator" class="divider"></li>
 

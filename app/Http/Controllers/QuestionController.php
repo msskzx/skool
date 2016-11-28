@@ -36,10 +36,13 @@ class QuestionController extends Controller
    public function store(Request $request) {
       $student = Auth::user()->student;
 
-      // (student_id, course_id, title, question)
+      /**
+       * (student_id, course_id, title, question)
+       *
+       */
       DB::statement('call insertQuestion(?, ?, ?, ?)', [
          $student->id,
-         $request['course'],
+         $request['course_id'],
          $request['title'],
          $request['question']
       ]);
@@ -60,5 +63,31 @@ class QuestionController extends Controller
    public function destroy(Question $question) {
       $question->delete();
       return $this->index();
+   }
+
+   /**
+    * View all questions asked by other students on a certain
+    * course along with their answers.
+    *
+    * @param  Course $course
+    * @return
+    */
+   public function getQuestionsByOthers(Course $course) {
+      $student = Auth::user()->student;
+
+      /**
+       * (student_id, course_id)
+       *
+       */
+      $questions = DB::select('call getQuestionsByOthers(?, ?)', [
+         $student->id,
+         $course->id
+      ]);
+
+      foreach($questions as $question) {
+         $question->course = $course;
+      }
+
+      return view('question.index', compact('questions'));
    }
 }

@@ -4,8 +4,8 @@
 -- to them a unique username and password. The salary of a teacher is calculated as follows: years of
 -- experience * 500 EGP.
 --
--- (admin_id)
-call getMySchoolTeachers(1);
+-- (school_id)
+call getSchoolTeachers(1);
 --
 -- (admin_id, teacher_id)
 call rejectTeacher(1, 1);
@@ -209,15 +209,15 @@ call popularInternational();
 --
 -- 1 Update my account information except for the username.
 --
--- (id, first_name, middle_name, last_name, SSN, birth_date, gender)
-call updateStudent(6, 'Lithariel', 'Talion', 'Forgerizer', 121412, '1990-09-09', 'Female');
+-- (id, first_name, middle_name, last_name, SSN, birth_date, gender, email)
+call updateStudent(6, 'Lithariel', 'Talion', 'Forgerizer', 121412, '1990-09-09', 'Female', 'lithariel@lithariel.com');
 --
 --
 --
 -- 2 View a list of courses’ names assigned to me based on my grade ordered by name.
 --
 -- (student_id)
-call getMyCourses(1);
+call getStudentCourses(1);
 --
 --
 --
@@ -238,7 +238,7 @@ call getQuestionsByOthers(2, 1);
 -- 5 View the assignments posted for the courses I take.
 --
 -- (student_id)
-call getMyAssignments(1);
+call getStudentAssignments(1);
 --
 --
 --
@@ -258,16 +258,16 @@ call getGrades(1, 1);
 --
 -- 8 View the announcements posted within the past 10 days about the school I am enrolled in.
 --
--- (student_id)
-call getAnnouncements(1);
+-- (school_id)
+call getSchoolAnnouncements(1);
 --
 --
 --
 -- 9 View all the information about activities offered by my school, as well as the teacher responsible
 -- for it.
 --
--- (student_id)
-call getMySchoolActivities(1);
+-- (school_id)
+call getSchoolActivities(1);
 --
 --
 --
@@ -290,7 +290,9 @@ call joinClub(1, 1);
 --
 -- (student_id, input)
 call searchCourses(1, 'Donuts');
-
+--
+--
+--
 -- “As a system administrator, I should be able to ...”
 --
 -- 1 Create a school with its information: school name, address, phone number, email, general information,
@@ -455,3 +457,6 @@ call getSchoolReviews(1);
 --
 -- (school_id)
 call getSchoolTeachers(1);
+--
+--
+-- 

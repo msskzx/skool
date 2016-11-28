@@ -40,30 +40,36 @@
 
       <hr>
 
-      <h4>General information:</h4>
-      <article>
+      <h3>Mission</h3>
+      <article class="lead">
          {{ $school -> mission }}
       </article>
 
       <hr>
 
-      <h4>General information:</h4>
-      <article>
+      <h3>Vission</h3>
+      <article class="lead">
          {{ $school -> vision }}
       </article>
 
       <hr>
 
-      <h4>General information:</h4>
-      <article>
+      <h3>General information</h3>
+      <article class="lead">
          {{ $school -> general_info }}
       </article>
 
     </div>
 
+    <div class="btn-group-vertical">
+      <a href="{{ action('ActivityController@getSchoolActivities', [$school->id]) }}" type="button" class="btn btn-primary">Activities</a>
+      <a href="{{ action('ClubController@getSchoolClubs', [$school->id]) }}" type="button" class="btn btn-primary">Clubs</a>
+   </div>
+
     @unless(empty($reviews))
        <div class="jumbotron">
          <h3>Reviews</h3>
+         <hr>
          <ul>
           @include('school.reviews')
          </ul>
@@ -73,7 +79,16 @@
    @unless(empty($announcements))
       <div class="jumbotron">
         <h3>Announcements</h3>
+        <hr>
          @include('announcement.announcements')
+     </div>
+   @endunless
+
+   @unless(empty($teachers))
+      <div class="jumbotron">
+        <h3>Teachers</h3>
+        <hr>
+         @include('employee.teacher.teachers')
      </div>
    @endunless
 

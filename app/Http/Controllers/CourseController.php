@@ -19,11 +19,12 @@ class CourseController extends Controller
    }
 
    public function index() {
-      return Course::all();
+      $courses = Course::all();
+      return view('course.index', compact('courses'));
    }
 
    public function show(Course $course) {
-      return $course;
+      return view('course.show', compact('course'));
    }
 
    public function create() {
@@ -68,48 +69,35 @@ class CourseController extends Controller
    }
 
    /**
-    * View all questions asked by other students on a certain
-    * course along with their answers.
+    * View the grade of the assignments I solved per course.
     *
     * @param  Course $course
     * @return
     */
-   public function getQuestionsByOthers(Course $course) {
-      $student = Auth::user()->student;
-
-      // (student_id, course_id)
-      $questions = DB::select('call getQuestionsByOthers(?, ?)', [
-         $student->id,
-         $course->id
-      ]);
-
-      foreach($questions as $question) {
-         $question->course = $course;
-      }
-
-      return view('question.index', compact('questions'));
-   }
-
-   public function getAssignments(Course $course) {
-      $assignments = DB::select('select a.* from courses c
-                                 inner join assignments a
-
-      foreach($assignments as $assignment) {
-         $assignment->course = $course;
-      }
-
-      return view('assignment.index', compact('assignments'));
-   }
-
    public function getGrades(Course $course) {
       $student = Auth::user()->student;
 
-      // (student_id, course_id)
+      /**
+       * (student_id, course_id)
+       *
+       */
       $grades = DB::select('call getGrades(?, ?)', [
          $student->id,
          $course->id
       ]);
       return view('course.grades', compact('grades'));
+   }
+
+   /**
+    * 2 View a list of courses’ names assigned to me based on my
+    * grade ordered by name.
+    *
+    * @return
+    */
+   public function getStudentCourses() {
+      $student = Auth::user()->student;
+      $courses = DB::select('call getStudentCourses(?)', [$student->id]);
+      return view('course.index', compact('courses'));
    }
 
 }

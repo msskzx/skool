@@ -39,9 +39,11 @@ class SchoolController extends Controller
     public function show(School $school) {
       $reviews = DB::select('call getSchoolReviews(?)', [$school->id]);
 
-      $announcements = $school->announcements;
+      $announcements = DB::select('call getSchoolAnnouncements(?)', [$school->id]);
 
-      return view('school.show', compact('school', 'reviews', 'announcements'));
+      $teachers = DB::select('call getSchoolTeachers(?)', [$school->id]);
+
+      return view('school.show', compact('school', 'reviews', 'announcements', 'teachers'));
     }
 
     public function create() {
@@ -95,5 +97,10 @@ class SchoolController extends Controller
     public function showReview(School $school, Parentt $parent) {
       $all = $school->parentsReviewed()->where('parent_id', $parent->id)->first();
       return view('school.review', compact('all'));
+    }
+
+    public function getStudentSchool() {
+       $school = Auth::user()->student->school;
+       return $this->show($school);
     }
 }

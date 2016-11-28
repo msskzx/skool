@@ -9,7 +9,7 @@
 
     {!! Form::open(['action' => ['AssignmentController@solve', $assignment->id]]) !!}
 
-      @include('assignment.solution.form',['submitButtonText' => 'Solve'])
+      @include('assignment.solution.form',['submitButtonText' => 'Submit'])
 
     {!! Form::close() !!}
 

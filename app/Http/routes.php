@@ -33,11 +33,12 @@ Route::get('/', 'HomeController@index');
 | school routes
 |--------------------------------------------------------------------------
 */
+Route::get('school/{school}/activities', 'ActivityController@getSchoolActivities');
 Route::resource('/school', 'SchoolController');
+Route::get('/school/{school}/clubs', 'ClubController@getSchoolClubs');
 Route::get('/school/{school}/{parent}', 'SchoolController@showReview');
 Route::get('/levels', 'SchoolController@levels');
 Route::get('search_schools', 'SchoolController@search');
-
 
 /*
 |--------------------------------------------------------------------------
@@ -66,7 +67,7 @@ Route::resource('/highlevel', 'HighLevelController');
 |--------------------------------------------------------------------------
 */
 Route::resource('/club', 'ClubController');
-Route::post('/club/{club}/join', 'ClubController@join');
+Route::get('/club/{club}/join', 'ClubController@join');
 
 /*
 |--------------------------------------------------------------------------
@@ -80,10 +81,11 @@ Route::resource('/parent', 'ParentController');
 | student routes
 |--------------------------------------------------------------------------
 */
-Route::get('/student/courses', 'StudentController@getMyCourses');
-Route::get('/student/activities', 'StudentController@getMySchoolActivities');
+Route::get('/student/school', 'SchoolController@getStudentSchool');
+Route::get('/student/courses', 'CourseController@getStudentCourses');
+Route::get('/student/profile', 'StudentController@profile');
+Route::get('/student/{student}/assignments', 'AssignmentController@getStudentAssignments');
 Route::resource('/student', 'StudentController');
-Route::get('/profile', 'StudentController@profile');
 
 /*
 |--------------------------------------------------------------------------
@@ -99,7 +101,6 @@ Route::resource('/employee', 'EmployeeController');
 */
 Route::resource('/teacher', 'TeacherController');
 
-
 /*
 |--------------------------------------------------------------------------
 | admin routes
@@ -113,8 +114,8 @@ Route::resource('/admin', 'AdminController');
 |--------------------------------------------------------------------------
 */
 Route::resource('/course', 'CourseController');
-Route::get('/course/{course}/questions', 'CourseController@getQuestionsByOthers');
-Route::get('/course/{course}/assignments', 'CourseController@getAssignments');
+Route::get('/course/{course}/questions', 'QuestionController@getQuestionsByOthers');
+Route::get('/course/{course}/assignments', 'AssignmentController@getCourseAssignments');
 Route::get('/course/{course}/grades', 'CourseController@getGrades');
 
 /*
@@ -138,6 +139,7 @@ Route::resource('/question', 'QuestionController');
 | activity routes
 |--------------------------------------------------------------------------
 */
+Route::get('/activity/{activity}/join', 'ActivityController@join');
 Route::resource('/activity', 'ActivityController');
 
 /*

@@ -59,18 +59,19 @@ class StudentController extends Controller
         'SSN' => 'required|unique:students,SSN,'.$student->id
      ]);
 
-     // (id, first_name, middle_name, last_name, SSN, birth_date, gender)
-     DB::statement('call updateStudent(?, ?, ?, ? ,? ,? ,?)',[
+     // (id, first_name, middle_name, last_name, SSN, birth_date, gender, email)
+     DB::statement('call updateStudent(?, ?, ?, ? ,? ,? , ?, ?)',[
         $student->id,
         $request['first_name'],
         $request['middle_name'],
         $request['last_name'],
         $request['SSN'],
         $request['birth_date'],
-        $request['gender']
+        $request['gender'],
+        $request['email']
      ]);
 
-     return $this->index();
+     return $this->profile();
   }
 
   public function destroy(Student $student) {
@@ -78,31 +79,8 @@ class StudentController extends Controller
      return $this->index();
   }
 
-  /**
-   * View a list of courses’ names assigned to me based on my
-   * grade ordered by name.
-   *
-   * @return
-   */
-  public function getMyCourses() {
-     $student = Auth::user()->student;
-     $courses = DB::select('call getMyCourses(?)', [$student->id]);
-     return view('course.studentCourses', compact('courses'));
-  }
-
-  /**
-   * View all the information about activities offered by my school,
-   * as well as the teacher responsible for it
-   *
-   * @return [type] [description]
-   */
-  public function getMySchoolActivities() {
-     $student = Auth::user()->student;
-     $activities = DB::select('call getMySchoolActivities(?)', [$student->id]);
-     return $activities;
-  }
-
   public function profile() {
      return $this->show(Auth::user()->student);
   }
+
 }

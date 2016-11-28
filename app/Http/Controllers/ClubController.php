@@ -9,10 +9,11 @@ use App\Http\Requests;
 use App\Club;
 
 use App\HighLevel;
+use App\Student;
+use App\School;
 
 use Auth;
-
-use App\Student;
+use DB;
 
 class ClubController extends Controller
 {
@@ -78,9 +79,18 @@ class ClubController extends Controller
     public function join(Club $club) {
       $student = Auth::user()->Student;
 
-      $club->students()->attach($student->id);
+      // (student_id, club_id)
+      DB::statement('call joinClub(?, ?)', [
+         $student->id,
+         $club->id
+      ]);
 
       return $this->show($club);
+    }
+
+    public function getSchoolClubs(School $school) {
+       $clubs = DB::select('call getSchoolClubs(?)', [$school->id]);
+       return view('club.index', compact('clubs'));
     }
 
 }

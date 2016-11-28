@@ -5,24 +5,29 @@
     <div class="jumbotron" >
       <div class="row">
          <div class="col-md-10">
-            <h1>{{ $club -> name }}</h1>
-            <p>{{ $club -> purpose }}</p>
+            <h2>{{ $club -> name }}</h2>
          </div>
 
-         <div class="col-md-2">
-            {!! Form::open(['method' => 'POST', 'action' =>['ClubController@join', $club->id]]) !!}
-             <button type="submit" class="btn btn-primary">
-               <i class="fa fa-plus" aria-hidden="true"></i>Join</button>
-            {!! Form::close() !!}
-         </div>
-     </div>
+            <a href="{{ action('ClubController@join', [$club->id]) }}" class="btn btn-success col-md-1">
+               <i class="fa fa-plus" aria-hidden="true"></i>Join</a>
 
-     <hr>
-     <h2><a href = {{ url('school', $school->id)}}>{{ $school->name }}</h2>
+      </div>
+
+      <hr>
+
+      <article class="lead">{{ $club -> purpose }}</article>
+
     </div>
 
     @unless(count($club->students) === 0)
-     @include('student.students', ['students' => $club->students])
+      <div class="jumbotron">
+
+         <h3>Members</h3>
+         <hr>
+         @include('student.students', ['students' => $club->students])
+
+      </div>
     @endunless
+
 </div>
 @endsection
