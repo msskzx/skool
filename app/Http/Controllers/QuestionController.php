@@ -23,7 +23,8 @@ class QuestionController extends Controller
       return view('question.index', compact('questions'));
    }
 
-   public function show(Question $question) {
+   public function show($question) {
+      $question = Question::getQuestion($question);
       return view('question.show', compact('question'));
    }
 
@@ -37,7 +38,6 @@ class QuestionController extends Controller
 
       /**
        * (student_id, course_id, title, question)
-       *
        */
       DB::statement('call insertQuestion(?, ?, ?, ?)', [
          $student->id,
@@ -71,12 +71,13 @@ class QuestionController extends Controller
     * @param  Course $course
     * @return
     */
-   public function getQuestionsByOthers(Course $course) {
+   public function getQuestionsByOthers($course) {
       $student = Auth::user()->student;
+
+      $course = Course::getCourse($course);
 
       /**
        * (student_id, course_id)
-       *
        */
       $questions = DB::select('call getQuestionsByOthers(?, ?)', [
          $student->id,

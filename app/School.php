@@ -14,6 +14,13 @@ class School extends Model
    protected $guarded = [];
 
    /**
+    * Indicates if the model should be timestamped.
+    *
+    * @var bool
+    */
+   public $timestamps = false;
+
+   /**
     * Elementary level associated with this school.
     *
     * @return ElementaryLevel
@@ -100,5 +107,13 @@ class School extends Model
     */
    public function announcements() {
       return $this->hasMany('App\Announcement');
+   }
+
+   /**
+    * For m4
+    * @var
+    */
+   public static function getSchool($school) {
+      return \DB::select('select * from schools where id = ?', [$school])[0];
    }
 }

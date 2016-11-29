@@ -3,7 +3,7 @@
 @section('content')
   <div class = "container">
 
-    <h2>Solve: {{ $assignment -> title }}</h2>
+    <h2>Solve: {{ $assignment -> name }}</h2>
 
     <hr>
 

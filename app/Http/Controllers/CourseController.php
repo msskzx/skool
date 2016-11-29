@@ -23,49 +23,9 @@ class CourseController extends Controller
       return view('course.index', compact('courses'));
    }
 
-   public function show(Course $course) {
+   public function show($course) {
+      $course = Course::getCourse($course);
       return view('course.show', compact('course'));
-   }
-
-   public function create() {
-      return view('course.create');
-   }
-
-   public function store(Request $request) {
-
-     $this->validate($request, [
-        'name' => 'required'
-     ]);
-
-     Course::create($request->all());
-
-     flash()->success('The course has been created successfully!');
-
-     return $this->index();
-   }
-
-   public function edit(Course $course) {
-     return view('course.edit', compact('course'));
-   }
-
-   public function update(Request $request, Course $course) {
-      $this->validate($request, [
-        'name' => 'required'
-     ]);
-
-     $course->update($request->all());
-
-     flash()->success('The course has been edited successfully!');
-
-     return $this->index();
-   }
-
-   public function destroy(Course $course) {
-     $course->delete();
-
-     flash()->success('The course has been deleted successfully!');
-
-     return $this->index();
    }
 
    /**
@@ -74,16 +34,15 @@ class CourseController extends Controller
     * @param  Course $course
     * @return
     */
-   public function getGrades(Course $course) {
+   public function getGrades($course) {
       $student = Auth::user()->student;
 
       /**
        * (student_id, course_id)
-       *
        */
       $grades = DB::select('call getGrades(?, ?)', [
          $student->id,
-         $course->id
+         $course
       ]);
       return view('course.grades', compact('grades'));
    }

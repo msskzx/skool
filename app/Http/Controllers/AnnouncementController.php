@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Announcement;
 
+use DB;
+
 class AnnouncementController extends Controller
 {
    public function __construct() {
@@ -19,15 +21,8 @@ class AnnouncementController extends Controller
      return $announcements;
   }
 
-  public function show(Announcement $announcement) {
+  public function show($announcement) {
+     $announcement = DB::select('select * from announcements where id = ?', [$announcement])[0];
      return view('announcement.show', compact('announcement'));
-  }
-
-  public function create() {
-     return view('announcement.create');
-  }
-
-  public function edit(Announcement $announcement) {
-    return view('announcement.edit', compact('announcement'));
   }
 }

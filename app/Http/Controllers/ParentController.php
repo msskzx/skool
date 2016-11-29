@@ -33,8 +33,9 @@ class ParentController extends Controller
       $this->validate($request, [
         'username' => 'required|unique:users'
       ]);
-
-      // -- (username, password, first_name, middle_name, last_name, email, address, phone_number, mobile_number1, mobile_number2)
+      /**
+       * (username, password, first_name, middle_name, last_name, email, address, phone_number, mobile_number1, mobile_number2)
+       */
       DB::statement('call insertParent(?, ?, ? ,? ,? ,? ,?, ?, ?, ?)',[
          $request['username'],
          bcrypt($request['password']),

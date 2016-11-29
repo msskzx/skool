@@ -3,7 +3,18 @@
 @section('content')
   <div class = "container">
     <div class="jumbotron" >
-      <h1>{{ $school -> name }}</h1>
+      <div class="row">
+         <h1 class="col-md-10 lead">{{ $school -> name }}</h1>
+
+         <div class="col-md-2">
+            <ul class="list-group">
+               <li class="list-group-item"><a href="{{ action('ActivityController@getSchoolActivities', [$school->id]) }}">Activities</a></li>
+               <li class="list-group-item"><a href="{{ action('ClubController@getSchoolClubs', [$school->id]) }}">Clubs</a></li>
+               <li class="list-group-item"><a href="{{ action('SchoolController@reviewIndex', [$school->id]) }}">Reviews</a></li>
+            </ul>
+         </div>
+
+      </div>
 
       <table class="table">
        <tbody>
@@ -60,12 +71,6 @@
       </article>
 
     </div>
-
-    <div class="btn-group-vertical">
-      <a href="{{ action('ActivityController@getSchoolActivities', [$school->id]) }}" type="button" class="btn btn-primary">Activities</a>
-      <a href="{{ action('ClubController@getSchoolClubs', [$school->id]) }}" type="button" class="btn btn-primary">Clubs</a>
-      <a href="{{ action('SchoolController@reviewIndex', [$school->id]) }}" type="button" class="btn btn-primary">Reviews</a>
-   </div>
 
     @unless(empty($reviews))
        <div class="jumbotron">

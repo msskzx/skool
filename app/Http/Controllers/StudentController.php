@@ -23,7 +23,9 @@ class StudentController extends Controller
      return Student::all();
   }
 
-  public function show(Student $student) {
+  public function show($student) {
+     $x = Student::getStudent($student);
+     $student = $x;
      return view('student.show', compact('student'));
   }
 
@@ -36,7 +38,9 @@ class StudentController extends Controller
         'SSN' => 'required|unique:students'
      ]);
 
-     // (first_name, middle_name, last_name, SSN, birth_date, gender)
+     /**
+      * (first_name, middle_name, last_name, SSN, birth_date, gender)
+      */
      DB::statement('call insertStudent(?, ?, ? ,? ,? ,?)',[
         $request['first_name'],
         $request['middle_name'],
@@ -49,17 +53,24 @@ class StudentController extends Controller
      return $this->index();
   }
 
-  public function edit(Student $student) {
+  public function edit($student) {
+     $x = Student::getStudent($student);
+     $student = $x;
      return view('student.edit', compact('student'));
   }
 
-  public function update(Request $request, Student $student) {
+  public function update(Request $request, $student) {
+     $x = Student::getStudent($student);
+     $student = $x;
+
      $this->validate($request, [
         'email' => 'unique:students,email,'.$student->id,
         'SSN' => 'required|unique:students,SSN,'.$student->id
      ]);
 
-     // (id, first_name, middle_name, last_name, SSN, birth_date, gender, email)
+     /**
+      * (id, first_name, middle_name, last_name, SSN, birth_date, gender, email)
+      */
      DB::statement('call updateStudent(?, ?, ?, ? ,? ,? , ?, ?)',[
         $student->id,
         $request['first_name'],
@@ -80,7 +91,7 @@ class StudentController extends Controller
   }
 
   public function profile() {
-     return $this->show(Auth::user()->student);
+     return $this->show(Auth::user()->student->id);
   }
 
 }

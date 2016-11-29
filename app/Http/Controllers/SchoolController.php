@@ -36,7 +36,9 @@ class SchoolController extends Controller
       return view('school.levels', compact('elementary_levels', 'middle_levels', 'high_levels'));
     }
 
-    public function show(School $school) {
+    public function show($school) {
+      $school = School::getSchool($school);
+
       $announcements = DB::select('call getSchoolAnnouncements(?)', [$school->id]);
 
       $teachers = DB::select('call getSchoolTeachers(?)', [$school->id]);
@@ -99,8 +101,6 @@ class SchoolController extends Controller
 
     public function getStudentSchool() {
        $student = Auth::user()->student;
-       $school = DB::select('select s.* from schools s inner join students st
-                              on s.id = st.school and st.id = ?', [$student->id]);
-       return $this->show($school);
+      return $this->show($student->school_id);
     }
 }

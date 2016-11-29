@@ -23,14 +23,9 @@ class ActivityController extends Controller
       return view('activity.index', compact('activities'));
    }
 
-   /**
-    * 9 View all the information about activities offered by my school, as well as the teacher responsible
-    * for it.
-    *
-    * @param  Activity $activity
-    * @return
-    */
-   public function show(Activity $activity) {
+   public function show($activity) {
+      $activity = DB::select('select * from activities where id = ?', [$activity])[0];
+
       $teacher = DB::select('select e.* from activities a inner join teachers t
                              on a.teacher_id = t.id and a.id = ?
                              inner join employees e
@@ -39,25 +34,21 @@ class ActivityController extends Controller
       return view('activity.show', compact('activity', 'teacher'));
    }
 
-   public function create() {
-      return view('activity.create');
-   }
-
-   public function edit(Activity $activity) {
-     return view('activity.edit', compact('activity'));
-   }
-
    /**
     * 10 Apply for activities in my school on the condition that I can not join two activities of the same
     * type on the same date.
     *
-    * @param  Club   $club
+    * @param
     * @return
     */
-   public function join(Activity $activity) {
-     $student = Auth::user()->Student;
+   public function join($activity) {
+     $activity = DB::select('select * from activities where id = ?', [$activity])[0];
 
-     // (student_id, activity_id)
+     $student = Auth::user()->student;
+
+     /**
+      * (student_id, activity_id)
+      */
      DB::statement('call joinActivity(?, ?)', [
         $student->id,
         $activity->id
@@ -75,7 +66,8 @@ class ActivityController extends Controller
     * @param  School $school
     * @return
     */
-   public function getSchoolActivities(School $school) {
+   public function getSchoolActivities($school) {
+      $school = DB::select('select * from schools where id = ?', [$school])[0];
       $activities = DB::select('call getSchoolActivities(?)', [$school->id]);
       return view('activity.index', compact('activities'));
    }

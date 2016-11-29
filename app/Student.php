@@ -121,4 +121,8 @@ class Student extends Model
   public function getAgeAttribute() {
       return Carbon::parse($this->birth_date)->age;
   }
+
+  public static function getStudent($student) {
+     return \DB::select('select * from students where id = ?', [$student])[0];
+  }
 }

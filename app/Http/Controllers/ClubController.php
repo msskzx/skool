@@ -27,7 +27,8 @@ class ClubController extends Controller
        return view('club.index', compact('clubs'));
     }
 
-    public function show(Club $club) {
+    public function show($club) {
+       $club = DB::select('select  * from clubs where id = ?', [$club])[0];
        return view('club.show', compact('club'));
     }
 
@@ -74,20 +75,21 @@ class ClubController extends Controller
       return $this->index();
     }
 
-    public function join(Club $club) {
+    public function join($club) {
       $student = Auth::user()->Student;
-
-      // (student_id, club_id)
+      /**
+       * (student_id, club_id)
+       */
       DB::statement('call joinClub(?, ?)', [
          $student->id,
-         $club->id
+         $club
       ]);
 
       return $this->show($club);
     }
 
-    public function getSchoolClubs(School $school) {
-       $clubs = DB::select('call getSchoolClubs(?)', [$school->id]);
+    public function getSchoolClubs($school) {
+       $clubs = DB::select('call getSchoolClubs(?)', [$school]);
        return view('club.index', compact('clubs'));
     }
 

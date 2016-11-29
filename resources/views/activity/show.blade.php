@@ -21,8 +21,12 @@
                  <td>{{ $activity -> equipment }}</td>
               </tr>
               <tr>
-                 <td>Teacher</td>
+                 <td>Teacher's name</td>
                  <td>{{ $teacher -> first_name ." ". $teacher->last_name }}</td>
+              </tr>
+              <tr>
+                 <td>Teacher's email</td>
+                 <td>{{ $teacher -> email }}</td>
               </tr>
            </tbody>
         </table>

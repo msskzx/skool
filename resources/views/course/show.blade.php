@@ -5,7 +5,15 @@
 
     <div class="jumbotron" >
 
-      <h3>Course: {{ $course->name }}</h3>
+      <div class="row">
+         <h3 class="col-md-10">Course: {{ $course->name }}</h3>
+
+         <ul class="list-group col-md-2">
+            <li class="list-group-item"><a href="{{ action('CourseController@getGrades', [$course->id]) }}">Grades</a></li>
+            <li class="list-group-item"><a href="{{ action('QuestionController@getQuestionsByOthers', [$course->id]) }}">Questions</a></li>
+            <li class="list-group-item"><a href="{{ action('AssignmentController@getCourseAssignments', [$course->id]) }}">Assignments</a></li>
+         </ul>
+      </div>
 
       <table class="table">
          <tbody>
@@ -25,12 +33,6 @@
          {{ $course -> description }}
       </article>
 
-   </div>
-
-   <div class="btn-group-vertical">
-      <a href="{{ action('CourseController@getGrades', [$course->id]) }}" type="button" class="btn btn-primary">Grades</a>
-      <a href="{{ action('QuestionController@getQuestionsByOthers', [$course->id]) }}" type="button" class="btn btn-primary">Questions</a>
-      <a href="{{ action('AssignmentController@getCourseAssignments', [$course->id]) }}" type="button" class="btn btn-primary">Assignments</a>
    </div>
 
 </div>

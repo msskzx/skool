@@ -38,4 +38,8 @@ class Question extends Model
       return $this->belongsTo('App\Course');
     }
 
+    public static function getQuestion($question) {
+      return \DB::select('select * from questions where id = ?', [$question])[0];
+    }
+
 }

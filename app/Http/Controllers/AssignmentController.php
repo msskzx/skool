@@ -24,24 +24,14 @@ class AssignmentController extends Controller
        return view('assignment.index', compact('assignments'));
     }
 
-    public function show(Assignment $assignment) {
+    public function show($assignment) {
+       $assignment = Assignment::getAssignment($assignment);
        return view('assignment.show', compact('assignment'));
     }
 
-    public function create() {
-       return view('assignment.create');
-    }
-
-    public function edit(Assignment $assignment) {
-      return view('assignment.edit', compact('assignment'));
-    }
-
-    public function solveForm(Assignment $assignment) {
+    public function solveForm($assignment) {
+      $assignment = Assignment::getAssignment($assignment);
       return view('assignment.solution.solution', compact('assignment'));
-    }
-
-    public function update(Request $request, Assignment $assignment) {
-
     }
 
     /**
@@ -65,13 +55,13 @@ class AssignmentController extends Controller
       return $this->index();
     }
 
-    public function getCourseAssignments(Course $course) {
-      $assignments = DB::select('call getCourseAssignments(?)', [$course->id]);
+    public function getCourseAssignments($course) {
+      $assignments = DB::select('call getCourseAssignments(?)', [$course]);
       return view('assignment.index', compact('assignments'));
     }
 
-   public function getStudentAssignments(Student $student) {
-      $assignments = DB::select('call getStudentAssignments(?)', [$student->id]);
+   public function getStudentAssignments($student) {
+      $assignments = DB::select('call getStudentAssignments(?)', [$student]);
       return view('assignment.index', compact('assignments'));
    }
 }

@@ -46,4 +46,12 @@ class Assignment extends Model
    public function students() {
       return $this->belongsToMany('App\Student', 'assignment_solvedBy_student')->withPivot('grade', 'solution');
    }
+
+   /**
+    * For m4
+    * @var
+    */
+   public static function getAssignment($assignment) {
+      return \DB::select('select * from assignments where id = ?', [$assignment])[0];
+   }
 }

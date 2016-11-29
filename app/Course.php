@@ -75,4 +75,8 @@ class Course extends Model
   public function school() {
      return $this->belongsTo('App\School');
   }
+
+  public static function getCourse($course) {
+     return \DB::select('select * from courses where id = ?', [$course])[0];
+  }
 }
