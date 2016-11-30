@@ -2,7 +2,7 @@
 
   <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
-      {!! Form::label('name','Name:') !!}
+      {!! Form::label('name','Name') !!}
     </div>
    <div class = "col-md-10">
      {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter name', 'required']) !!}
@@ -16,7 +16,7 @@
 
   <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
-      {!! Form::label('purpose','Purpose:') !!}
+      {!! Form::label('purpose','Purpose') !!}
     </div>
    <div class = "col-md-10">
      {!! Form::text('purpose', null, ['class' => 'form-control', 'placeholder' => 'Enter purpose', 'required']) !!}
@@ -30,7 +30,7 @@
 
   <div class="form-group{{ $errors->has('high_level_id') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
-      {!! Form::label('high_level_id','High Level ID') !!}
+      {!! Form::label('high_level_id','School ID') !!}
     </div>
    <div class = "col-md-10">
      {!! Form::text('high_level_id', null, ['class' => 'form-control', 'placeholder' => 'Enter high level ID', 'required']) !!}

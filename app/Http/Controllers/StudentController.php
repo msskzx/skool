@@ -94,4 +94,17 @@ class StudentController extends Controller
      return $this->show(Auth::user()->stu->id);
   }
 
+  public function passwordForm() {
+     $controller = 'StudentController';
+     return view('auth.password.edit', compact('controller'));
+  }
+
+  public function password(Request $request) {
+     DB::statement('update users set password = ? where username = ?', [
+        bcrypt($request['password']),
+        Auth::user()->username
+     ]);
+     return $this->profile();
+  }
+
 }

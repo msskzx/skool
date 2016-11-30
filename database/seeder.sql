@@ -51,25 +51,24 @@ call setTeacherUsername(8, "dahaka", "secret");
 call assignSupervisor(6, 8);
 call assignSupervisor(7, 8);
 
-
 -- (name, code, description, grade)
 call insertCourse("Donuts", "DPS101", "How to make cookies in exponential donuts time", 1);
 call insertCourse("Graph Theory", "GT101", "Solving mazes", 1);
 call insertCourse("Neural Networks", "NN101", "This is getting neural", 1);
 call insertCourse("Donuts structure", "DPS301", "Travel into space", 2);
 call insertCourse("Imaginary Numbers: Dragon Ball edidtion", "IN101", "How to dragon ball the Imaginary out of numbers", 7);
-call insertCourse("Mathematics", "math", "mathing the science out of things", 1);
-call insertCourse("Mathematics", "math", "mathing the science out of things", 2);
-call insertCourse("Mathematics", "math", "mathing the science out of things", 3);
-call insertCourse("Mathematics", "math", "mathing the science out of things", 4);
-call insertCourse("Mathematics", "math", "mathing the science out of things", 5);
-call insertCourse("Mathematics", "math", "mathing the science out of things", 6);
-call insertCourse("Mathematics", "math", "mathing the science out of things", 7);
-call insertCourse("Mathematics", "math", "mathing the science out of things", 8);
-call insertCourse("Mathematics", "math", "mathing the science out of things", 9);
-call insertCourse("Mathematics", "math", "mathing the science out of things", 10);
-call insertCourse("Mathematics", "math", "mathing the science out of things", 11);
-call insertCourse("Mathematics", "math", "mathing the science out of things", 12);
+call insertCourse("Mathematics", "math1", "mathing the science out of things", 1);
+call insertCourse("Mathematics", "math2", "mathing the science out of things", 2);
+call insertCourse("Mathematics", "math3", "mathing the science out of things", 3);
+call insertCourse("Mathematics", "math4", "mathing the science out of things", 4);
+call insertCourse("Mathematics", "math5", "mathing the science out of things", 5);
+call insertCourse("Mathematics", "math6", "mathing the science out of things", 6);
+call insertCourse("Mathematics", "math7", "mathing the science out of things", 7);
+call insertCourse("Mathematics", "math8", "mathing the science out of things", 8);
+call insertCourse("Mathematics", "math9", "mathing the science out of things", 9);
+call insertCourse("Mathematics", "math10", "mathing the science out of things", 10);
+call insertCourse("Mathematics", "math11", "mathing the science out of things", 11);
+call insertCourse("Mathematics", "math12", "mathing the science out of things", 12);
 
 -- (course_id, req_course_id)
 call insertPrerequisite(4, 1);
@@ -100,7 +99,6 @@ values
 (2, 1),
 (3, 1),
 (16, 3);
-
 
 -- (username, password, first_name, middle_name, last_name, email, address, phone_number, mobile_number1, mobile_number2)
 call insertParent('vader', 'secret', 'Dark', 'Darth', 'Vader', 'vader@vader.com', 'milky way st.', '09999', '09990','09991');
@@ -148,13 +146,11 @@ call enrollStudent(2, 1);
 call enrollStudent(3, 1);
 call enrollStudent(4, 1);
 
-
 -- (student_id, username, password)
 call setStudentUsername(1, "goku", "secret");
 call setStudentUsername(2, "kad", "secret");
 call setStudentUsername(3, "lithariel", "secret");
 call setStudentUsername(4, "corleone", "secret");
-
 
 insert into clubs
 (name, high_level_id, purpose)
@@ -167,9 +163,6 @@ values
 call joinClub(3, 1);
 call joinClub(3, 2);
 call joinClub(4, 2);
-
-
-
 
 -- (student_id, course_id, title, question)
 call insertQuestion(1, 1, "Apple pie exception", "I was making an apple pie when this error came out tried to pour some milk but it did not get solved");

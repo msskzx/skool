@@ -11,7 +11,13 @@
 
          @if(strcmp(Auth::user()->username, $student->username)==0)
             <div class="col-md-2">
-               <a href="{{ route('student.edit', $student->id) }}" class="btn btn-primary col-md-12">Edit</a>
+
+            </div>
+            <div class="col-md-2">
+               <ul class="list-group">
+                  <li class="list-group-item"><a href="{{ route('student.edit', $student->id) }}">Edit information</a></li>
+                  <li class="list-group-item"><a href="{{ url('student/edit/password') }}">Edit password</a></li>
+               </ul>
             </div>
          @endif
 
