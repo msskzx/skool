@@ -886,7 +886,7 @@ delimiter ;
 -- 5 View the assignments posted for the courses I take.
 
 delimiter //
-create procedure getMyAssignments
+create procedure getStudentAssignments
 (in student_id int unsigned)
 BEGIN
 

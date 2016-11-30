@@ -44,15 +44,17 @@ class ActivityController extends Controller
    public function join($activity) {
      $activity = DB::select('select * from activities where id = ?', [$activity])[0];
 
-     $student = Auth::user()->stu;
+     if(strcmp(Auth::user()->role, 'Student')==0) {
+        $student = Auth::user()->stu;
 
-     /**
-      * (student_id, activity_id)
-      */
-     DB::statement('call joinActivity(?, ?)', [
-        $student->id,
-        $activity->id
-     ]);
+        /**
+        * (student_id, activity_id)
+        */
+        DB::statement('call joinActivity(?, ?)', [
+           $student->id,
+           $activity->id
+        ]);
+     }
 
      return $this->index();
    }

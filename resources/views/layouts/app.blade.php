@@ -68,6 +68,7 @@
                                <li><a href="{{ url('/student/profile') }}">My profile</a></li>
                                <li><a href="{{ url('/student/school') }}">My School</a></li>
                                <li><a href="{{ url('/student/courses') }}">My courses</a></li>
+                               <li><a href="{{ url('/student/assignments') }}">My assignments</a></li>
 
                                <li role="separator" class="divider"></li>
 

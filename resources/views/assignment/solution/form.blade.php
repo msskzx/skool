@@ -1,6 +1,6 @@
 <div class = "form-horizontal">
 
-  <div class="form-group{{ $errors->has('solution') ? ' has-error' : '' }}">
+  <div class="form-group{{ $errors->has('solution') || $errors->has('student_id') || $errors->has('assignment_id') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
       {!! Form::label('solution','Solution') !!}
     </div>
@@ -9,6 +9,12 @@
      @if ($errors->has('solution'))
          <span class="help-block">
              <strong>{{ $errors->first('solution') }}</strong>
+         </span>
+     @endif
+
+     @if ($errors->has('student_id') || $errors->has('assignment_id'))
+         <span class="help-block">
+             <strong>You already solved this.</strong>
          </span>
      @endif
     </div>

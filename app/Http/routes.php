@@ -86,11 +86,11 @@ Route::resource('/parent', 'ParentController');
 |--------------------------------------------------------------------------
 */
 Route::get('/student/school', 'SchoolController@getStudentSchool');
+Route::get('/student/assignments', 'AssignmentController@getStudentAssignments');
 Route::get('/student/edit/password', 'StudentController@passwordForm');
 Route::patch('/student/edit/password', 'StudentController@password');
 Route::get('/student/courses', 'CourseController@getStudentCourses');
 Route::get('/student/profile', 'StudentController@profile');
-Route::get('/student/{student}/assignments', 'AssignmentController@getStudentAssignments');
 Route::resource('/student', 'StudentController');
 
 /*

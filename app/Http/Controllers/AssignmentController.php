@@ -40,18 +40,28 @@ class AssignmentController extends Controller
      * @param  Request $request
      * @return
      */
-    public function solve(Request $request, Assignment $assignment) {
-      $student = Auth::user()->stu;
+    public function solve(Request $request, $assignment) {
+      if(strcmp(Auth::user()->role, 'Student')==0) {
+         $student = Auth::user()->stu;
 
-     /**
-      * (student_id, assignment_id, solution)
-      */
-      DB::statement('call insertSolution(?, ?, ?)', [
-         $student->id,
-         $assignment->id,
-         $request['solution']
-      ]);
+         $request['student_id'] = $student->id;
+         $request['assignment_id'] = $assignment;
+         $this->validate($request, [
+            'student_id' => 'unique:assignment_solvedBy_student,student_id,NULL,assignment_id,assignment_id,' . $assignment,
+            'assignment_id' => 'unique:assignment_solvedBy_student,assignment_id,NULL,student_id,student_id,' . $student->id
+         ]);
 
+         /**
+         * (student_id, assignment_id, solution)
+         */
+         DB::statement('call insertSolution(?, ?, ?)', [
+            $student->id,
+            $assignment,
+            $request['solution']
+         ]);
+
+         flash()->success('Assignment solution has been submitted successfully.');
+      }
       return $this->index();
     }
 
@@ -60,8 +70,12 @@ class AssignmentController extends Controller
       return view('assignment.index', compact('assignments'));
     }
 
-   public function getStudentAssignments($student) {
-      $assignments = DB::select('call getStudentAssignments(?)', [$student]);
-      return view('assignment.index', compact('assignments'));
+   public function getStudentAssignments() {
+      if(strcmp(Auth::user()->role, 'Student')==0) {
+         $student = Auth::user()->stu;
+         $assignments = DB::select('call getStudentAssignments(?)', [$student->id]);
+         return view('assignment.index', compact('assignments'));
+      }
+      return back();
    }
 }
