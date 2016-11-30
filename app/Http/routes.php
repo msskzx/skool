@@ -12,6 +12,12 @@
 */
 
 // Route::group(['middleware' => ['web']], function () {
+/*
+|--------------------------------------------------------------------------
+| static pages routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/', 'HomeController@home');
 
 /*
 |--------------------------------------------------------------------------
@@ -22,13 +28,6 @@ Route::get('/login', 'Auth\AuthController@showLoginForm');
 Route::post('/login', 'Auth\AuthController@login');
 Route::get('/logout', 'Auth\AuthController@logout');
 Route::resource('/user', 'UserController');
-
-/*
-|--------------------------------------------------------------------------
-| static pages routes
-|--------------------------------------------------------------------------
-*/
-Route::get('/', 'HomeController@index');
 
 /*
 |--------------------------------------------------------------------------

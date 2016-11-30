@@ -91,8 +91,6 @@
 
     @yield('content')
 
-    <!-- JavaScripts -->
-
 </body>
 
 <!-- JavaScripts -->

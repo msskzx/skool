@@ -3,7 +3,7 @@
 @section('content')
   <div class = "container">
 
-    <h2>Sign up a new teacher</h2>
+    <h2>Sign up as a teacher</h2>
 
     <hr>
 

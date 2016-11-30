@@ -11,11 +11,11 @@
             }
 
             body {
-                background-color: rgb(0, 26, 51);
+                background-color: #4c4c4c;
                 margin: 0;
                 padding: 0;
                 width: 100%;
-                color: #B0BEC5;
+                color: #bdbdbd;
                 display: table;
                 font-weight: 100;
                 font-family: 'Lato';
