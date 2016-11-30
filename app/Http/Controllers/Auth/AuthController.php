@@ -28,7 +28,7 @@ class AuthController extends Controller
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
-     * Where to redirect users after login / registration.
+     * Where to redirect users after login.
      *
      * @var string
      */
@@ -42,21 +42,6 @@ class AuthController extends Controller
     public function __construct()
     {
       $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
-    }
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'username' => 'required|max:255|unique:users',
-            'password' => 'required|min:8|confirmed',
-            'role' => 'in:Student,Parent,Employee|required'
-        ]);
     }
 
     /**
@@ -78,23 +63,6 @@ class AuthController extends Controller
 
       return redirect('login')
                 ->withInput($request->only('username', 'remember'))
-                ->withErrors([
-                   'username' => $this->getFailedLoginMessage()]
-                );
+                ->withErrors(['username' => $this->getFailedLoginMessage()]);
   }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'username' => $data['username'],
-            'password' => bcrypt($data['password']),
-            'role' => $data['role']
-        ]);
-    }
 }

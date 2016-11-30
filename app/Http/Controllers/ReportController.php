@@ -21,7 +21,7 @@ class ReportController extends Controller
    }
 
    public function show(Report $report) {
-      $school = $report->school($report);
+      $school = $report->school;
       return view('report.show', compact('report','school'));
    }
 

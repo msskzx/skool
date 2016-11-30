@@ -35,7 +35,7 @@ class CourseController extends Controller
     * @return
     */
    public function getGrades($course) {
-      $student = Auth::user()->student;
+      $student = Auth::user()->stu;
 
       /**
        * (student_id, course_id)
@@ -54,7 +54,7 @@ class CourseController extends Controller
     * @return
     */
    public function getStudentCourses() {
-      $student = Auth::user()->student;
+      $student = Auth::user()->stu;
       $courses = DB::select('call getStudentCourses(?)', [$student->id]);
       return view('course.index', compact('courses'));
    }

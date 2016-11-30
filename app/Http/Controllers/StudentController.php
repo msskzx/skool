@@ -91,7 +91,7 @@ class StudentController extends Controller
   }
 
   public function profile() {
-     return $this->show(Auth::user()->student->id);
+     return $this->show(Auth::user()->stu->id);
   }
 
 }

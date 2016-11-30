@@ -68,7 +68,7 @@ alter table `course_has_student` add constraint `course_has_student_student_id_f
 alter table `course_has_student` add constraint `course_has_student_course_id_foreign` foreign key (`course_id`) references `courses` (`id`) on delete cascade;
 alter table `course_has_student` add index `course_has_student_course_id_index`(`course_id`);
 alter table `course_has_student` add index `course_has_student_student_id_index`(`student_id`);
-create table `parent_reviews_school` (`parent_id` int unsigned not null, `school_id` int unsigned not null, `review` mediumtext not null) default character set utf8 collate utf8_unicode_ci;
+create table `parent_reviews_school` (`parent_id` int unsigned not null, `school_id` int unsigned not null, `title` varchar(255), `review` mediumtext not null) default character set utf8 collate utf8_unicode_ci;
 alter table `parent_reviews_school` add primary key `parent_reviews_school_school_id_parent_id_primary`(`school_id`, `parent_id`);
 alter table `parent_reviews_school` add constraint `parent_reviews_school_school_id_foreign` foreign key (`school_id`) references `schools` (`id`) on delete cascade;
 alter table `parent_reviews_school` add constraint `parent_reviews_school_parent_id_foreign` foreign key (`parent_id`) references `parents` (`id`) on delete cascade;

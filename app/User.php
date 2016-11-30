@@ -58,12 +58,6 @@ class User extends Authenticatable
     public function getStuAttribute() {
       return \DB::select('select st.* from students st inner join users u on u.username = st.username and u.username = ?', [$this->username])[0];
    }
-   public function getEmpAttribute() {
-      return \DB::select('select e.* from employees e inner join users u on u.username = e.username and u.username = ?', [$this->username])[0];
-   }
-   public function getParAttribute() {
-      return \DB::select('select p.* from parents p inner join users u on u.username = p.username and u.username = ?', [$this->username])[0];
-   }
 
     /**
      * Overriding these functions to disable

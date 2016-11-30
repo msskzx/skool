@@ -100,7 +100,7 @@ class SchoolController extends Controller
     }
 
     public function getStudentSchool() {
-       $student = Auth::user()->student;
+       $student = Auth::user()->stu;
       return $this->show($student->school_id);
     }
 }

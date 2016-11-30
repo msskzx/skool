@@ -41,7 +41,7 @@ class AssignmentController extends Controller
      * @return
      */
     public function solve(Request $request, Assignment $assignment) {
-      $student = Auth::user()->student;
+      $student = Auth::user()->stu;
 
      /**
       * (student_id, assignment_id, solution)

@@ -34,7 +34,7 @@ class QuestionController extends Controller
    }
 
    public function store(Request $request) {
-      $student = Auth::user()->student;
+      $student = Auth::user()->stu;
 
       /**
        * (student_id, course_id, title, question)
@@ -72,8 +72,7 @@ class QuestionController extends Controller
     * @return
     */
    public function getQuestionsByOthers($course) {
-      $student = Auth::user()->student;
-
+      $student = Auth::user()->stu;
       $course = Course::getCourse($course);
 
       /**
