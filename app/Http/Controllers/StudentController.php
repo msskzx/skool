@@ -101,14 +101,23 @@ class StudentController extends Controller
 
   public function password(Request $request) {
      $this->validate($request, [
-       'password' => 'required|min:6'
+        'old_password' => 'required',
+        'new_password' => 'required|min:6|confirmed'
      ]);
 
-     DB::statement('update users set password = ? where username = ?', [
-        bcrypt($request['password']),
-        Auth::user()->username
-     ]);
-     return $this->profile();
+     $user = Auth::user();
+
+     if (\Hash::check($request->old_password, $user->password)) {
+
+        DB::statement('update users set password = ? where username = ?', [
+           bcrypt($request['password']),
+           $user->username
+        ]);
+
+        flash()->success('Password has been edited successfully.');
+     }
+
+     return $this->passwordForm();
   }
 
 }
