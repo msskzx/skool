@@ -35,13 +35,13 @@ Route::get('/', 'HomeController@index');
 | school routes
 |--------------------------------------------------------------------------
 */
+Route::get('school/search', 'SchoolController@search');
 Route::get('school/{school}/reviews', 'SchoolController@reviewIndex');
 Route::get('school/{school}/activities', 'ActivityController@getSchoolActivities');
 Route::resource('/school', 'SchoolController');
 Route::get('/school/{school}/clubs', 'ClubController@getSchoolClubs');
 Route::get('/school/{school}/{parent}', 'SchoolController@showReview');
 Route::get('/levels', 'SchoolController@levels');
-Route::get('search_schools', 'SchoolController@search');
 
 /*
 |--------------------------------------------------------------------------
@@ -119,6 +119,7 @@ Route::resource('/admin', 'AdminController');
 | course routes
 |--------------------------------------------------------------------------
 */
+Route::get('course/search', 'CourseController@search');
 Route::resource('/course', 'CourseController');
 Route::get('/course/{course}/questions', 'QuestionController@getQuestionsByOthers');
 Route::get('/course/{course}/assignments', 'AssignmentController@getCourseAssignments');

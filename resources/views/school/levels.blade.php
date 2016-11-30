@@ -3,22 +3,19 @@
 @section('content')
   <div class = "container">
 
-     @include('school.searchForm')
+     @include('search.form', ['searchURL' => 'school/search'])
 
-     <?php $schools = $elementary_levels ?>
      <h3>Schools offering elementary level</h3>
      <hr>
-     @include('school.schools')
+     @include('school.schools', ['schools' => $elementary_levels])
 
-     <?php $schools = $middle_levels ?>
      <h3>Schools offering middle level</h3>
      <hr>
-     @include('school.schools')
+     @include('school.schools', ['schools' => $middle_levels])
 
-     <?php $schools = $high_levels ?>
      <h3>Schools offering high level</h3>
      <hr>
-     @include('school.schools')
+     @include('school.schools', ['schools' => $high_levels])
 
   </div>
 

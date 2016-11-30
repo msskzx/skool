@@ -4,12 +4,13 @@
   <div class = "container">
 
      @include('search.form', ['searchURL' => 'course/search'])
-
-     <h3>Courses</h3>
-
+     <h3>Results</h3>
      <hr>
-
-     @include('course.courses')
+     @if(empty($courses))
+        <h5>No results</h5>
+     @else
+        @include('course.courses')
+     @endif
 
 </div>
 @endsection

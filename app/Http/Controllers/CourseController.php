@@ -62,4 +62,24 @@ class CourseController extends Controller
       return view('course.index', compact('courses'));
    }
 
+   /**
+    * 12 Search in a list of courses that i take by its name or code.
+    *
+    * @param  Request $request
+    * @return view
+    */
+   public function search(Request $request) {
+      if(strcmp(Auth::user()->role, 'Student')==0) {
+         /**
+          * (student_id, search)
+          */
+         $courses = DB::select('call searchCourses(?, ?)', [
+            Auth::user()->stu->id,
+            $request->search
+         ]);
+         return view('search.course.results', compact('courses'));
+      }
+      return back();
+   }
+
 }

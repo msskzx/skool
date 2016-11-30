@@ -1,5 +1,5 @@
 <div class="row">
-   {!! Form::open(['method'=>'GET','url'=>'search_schools','role'=>'search']) !!}
+   {!! Form::open(['method'=>'GET', 'url'=>$searchURL, 'role'=>'search']) !!}
     <div class="col-md-12">
      <div class="input-group search-input-group">
         {!! Form::text('search',null,  ['class' => 'form-control', 'placeholder'=>'search', 'required']) !!}

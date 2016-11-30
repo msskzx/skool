@@ -6,7 +6,7 @@
 
    <ul>
       <li>Type: {{ $school -> type }}</li>
-      <li>Fees: {{ $school -> fees }}</li>
+      <li>Address: {{ $school -> address }}</li>
    </ul>
 
    @if(array_key_exists('supplies', $school))

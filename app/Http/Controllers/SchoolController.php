@@ -89,7 +89,7 @@ class SchoolController extends Controller
 
     public function search(Request $request) {
       $schools = DB::select('call searchSchools(?)',[$request['search']]);
-      return view('school.search', compact('schools'));
+      return view('search.school.results', compact('schools'));
     }
 
     public function reviewIndex(School $school) {
