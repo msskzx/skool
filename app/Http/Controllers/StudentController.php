@@ -82,6 +82,7 @@ class StudentController extends Controller
         $request['email']
      ]);
 
+     flash()->success('Successful update.');
      return $this->profile();
   }
 
@@ -91,7 +92,9 @@ class StudentController extends Controller
   }
 
   public function profile() {
-     return $this->show(Auth::user()->stu->id);
+     if(strcmp(Auth::user()->role, 'Student')==0) {
+        return $this->show(Auth::user()->stu->id);
+     }
   }
 
   public function passwordForm() {

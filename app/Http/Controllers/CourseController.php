@@ -35,16 +35,19 @@ class CourseController extends Controller
     * @return
     */
    public function getGrades($course) {
-      $student = Auth::user()->stu;
+      if(strcmp(Auth::user()->role, 'Student')==0) {
+         $student = Auth::user()->stu;
 
-      /**
-       * (student_id, course_id)
-       */
-      $grades = DB::select('call getGrades(?, ?)', [
-         $student->id,
-         $course
-      ]);
-      return view('course.grades', compact('grades'));
+         /**
+         * (student_id, course_id)
+         */
+         $grades = DB::select('call getGrades(?, ?)', [
+            $student->id,
+            $course
+         ]);
+         return view('course.grades', compact('grades'));
+      }
+      return back();
    }
 
    /**

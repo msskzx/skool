@@ -1080,7 +1080,7 @@ delimiter ;
 
 delimiter //
 create procedure insertTeacher
-(in first_name varchar(255), in middle_name varchar(255), in last_name varchar(255), in birth_date date, in address varchar(255), in email varchar(255), in gender varchar(255), in years_of_exp int, in phone_number varchar(255), in mobile_number1 varchar(255), in mobile_number2 varchar(255))
+(in first_name varchar(255), in middle_name varchar(255), in last_name varchar(255), in birth_date date, in address varchar(255), in email varchar(255), in gender varchar(255), in years_of_exp int, in phone_number int, in mobile_number1 int, in mobile_number2 int)
 BEGIN
 
 declare id int unsigned;

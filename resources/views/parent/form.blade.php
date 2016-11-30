@@ -61,7 +61,7 @@
       {!! Form::label('username','Username') !!}
     </div>
    <div class = "col-md-10">
-     {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'choose a unique username', 'required']) !!}
+     {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'username', 'required']) !!}
      @if ($errors->has('username'))
          <span class="help-block">
              <strong>{{ $errors->first('username') }}</strong>
@@ -75,10 +75,24 @@
       {!! Form::label('password','Password') !!}
     </div>
    <div class = "col-md-10">
-     {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'choose a strong password', 'required']) !!}
+     {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'password', 'required']) !!}
      @if ($errors->has('password'))
          <span class="help-block">
              <strong>{{ $errors->first('password') }}</strong>
+         </span>
+     @endif
+    </div>
+  </div>
+
+  <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+    <div class = "control-label col-md-2">
+      {!! Form::label('password_confirmation','Confirm password') !!}
+    </div>
+   <div class = "col-md-10">
+     {!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'confirm password', 'required']) !!}
+     @if ($errors->has('password_confirmation'))
+         <span class="help-block">
+             <strong>{{ $errors->first('password_confirmation') }}</strong>
          </span>
      @endif
     </div>

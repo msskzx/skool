@@ -9,7 +9,9 @@
          <h3 class="col-md-10">Course: {{ $course->name }}</h3>
 
          <ul class="list-group col-md-2">
+            @if(strcmp(Auth::user()->role, 'Student')==0)
             <li class="list-group-item"><a href="{{ action('CourseController@getGrades', [$course->id]) }}">Grades</a></li>
+            @endif
             <li class="list-group-item"><a href="{{ action('QuestionController@getQuestionsByOthers', [$course->id]) }}">Questions</a></li>
             <li class="list-group-item"><a href="{{ action('AssignmentController@getCourseAssignments', [$course->id]) }}">Assignments</a></li>
          </ul>

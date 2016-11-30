@@ -19,13 +19,12 @@ class CreateSchoolsTable extends Migration
             $table->mediumtext('vision');
             $table->mediumtext('mission');
             $table->mediumtext('general_info');
-            $table->string('phone_number1')->nullable();
-            $table->string('phone_number2')->nullable();
+            $table->integer('phone_number1')->nullable();
+            $table->integer('phone_number2')->nullable();
             $table->integer('fees');
             $table->string('address');
             $table->string('main_language');
             $table->enum('type', ['National', 'International']);
-            // $table->timestamps();
         });
     }
 

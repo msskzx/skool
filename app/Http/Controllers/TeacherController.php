@@ -30,6 +30,10 @@ class TeacherController extends Controller
     }
 
     public function store(Request $request) {
+      $this->validate($request, [
+        'email' => 'required|unique:employees'
+      ]);
+      
       /**
        * (first_name, middle_name, last_name, birth_date, address, email, gender, years_of_exp, phone_number, mobile_number1, mobile_number2)
        */
@@ -47,7 +51,8 @@ class TeacherController extends Controller
         $request['mobile_number2']
        ]);
 
-       return $this->index();
+       flash()->success('Successful sign up.');
+       return $this->create();
     }
 
     public function edit(Teacher $teacher) {

@@ -50,7 +50,6 @@
 
                       <li><a href="{{ url('/teacher/create') }}"><i class="fa fa-plus" aria-hidden="true"></i>New teacher</a></li>
                       <li><a href="{{ url('/parent/create') }}"><i class="fa fa-plus" aria-hidden="true"></i>New parent</a></li>
-                      <li><a href="{{ url('/student/create') }}"><i class="fa fa-plus" aria-hidden="true"></i>New student</a></li>
                     </ul>
                   </li>
 

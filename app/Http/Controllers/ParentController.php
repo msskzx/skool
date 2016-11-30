@@ -31,8 +31,11 @@ class ParentController extends Controller
 
    public function store(Request $request) {
       $this->validate($request, [
-        'username' => 'required|unique:users'
+        'username' => 'required|unique:users',
+        'email' => 'unique:parents',
+        'password' => 'required|confirmed'
       ]);
+      
       /**
        * (username, password, first_name, middle_name, last_name, email, address, phone_number, mobile_number1, mobile_number2)
        */
@@ -49,7 +52,8 @@ class ParentController extends Controller
          $request['mobile_number2']
       ]);
 
-      return $this->index();
+      flash()->success('Successful sign up.');
+      return $this->create();
    }
 
    public function edit(Parentt $parent) {

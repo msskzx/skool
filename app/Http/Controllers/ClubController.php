@@ -89,10 +89,8 @@ class ClubController extends Controller
             ]);
 
             flash()->success('You will find your name in the member list.');
-            return $this->show($club);
          }
       }
-      flash()->warning('Only high school students can join clubs.');
       return $this->show($club);
     }
 
