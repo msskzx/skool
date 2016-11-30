@@ -38,9 +38,7 @@ class SchoolController extends Controller
 
     public function show($school) {
       $school = School::getSchool($school);
-
       $announcements = DB::select('call getSchoolAnnouncements(?)', [$school->id]);
-
       $teachers = DB::select('call getSchoolTeachers(?)', [$school->id]);
 
       return view('school.show', compact('school', 'announcements', 'teachers'));

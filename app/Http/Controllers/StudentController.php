@@ -100,6 +100,10 @@ class StudentController extends Controller
   }
 
   public function password(Request $request) {
+     $this->validate($request, [
+       'password' => 'required|min:6'
+     ]);
+
      DB::statement('update users set password = ? where username = ?', [
         bcrypt($request['password']),
         Auth::user()->username

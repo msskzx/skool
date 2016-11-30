@@ -19,15 +19,5 @@
 
     </div>
 
-    @unless(count($club->students) === 0)
-      <div class="jumbotron">
-
-         <h3>Members</h3>
-         <hr>
-         @include('student.students', ['students' => $club->students])
-
-      </div>
-    @endunless
-
 </div>
 @endsection

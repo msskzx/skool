@@ -69,8 +69,9 @@ Route::resource('/highlevel', 'HighLevelController');
 | club routes
 |--------------------------------------------------------------------------
 */
-Route::resource('/club', 'ClubController');
+Route::get('club/{club}/members', 'ClubController@members');
 Route::get('/club/{club}/join', 'ClubController@join');
+Route::resource('/club', 'ClubController');
 
 /*
 |--------------------------------------------------------------------------

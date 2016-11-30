@@ -1030,7 +1030,7 @@ select s.grade into grade
 from students s
 where s.id = student_id;
 
-if(grade > 8) then
+if(grade > 7) then
    insert into club_joinedBy_student
    (student_id, club_id)
    values

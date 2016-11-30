@@ -76,21 +76,34 @@ class ClubController extends Controller
     }
 
     public function join($club) {
-      $student = Auth::user()->stu;
-      /**
-       * (student_id, club_id)
-       */
-      DB::statement('call joinClub(?, ?)', [
-         $student->id,
-         $club
-      ]);
+      if(strcmp(Auth::user()->role, 'Student')==0) {
+         $student = Auth::user()->stu;
 
+         if($student->grade > 9) {
+            /**
+            * (student_id, club_id)
+            */
+            DB::statement('call joinClub(?, ?)', [
+               $student->id,
+               $club
+            ]);
+
+            flash()->success('You will find your name in the member list.');
+            return $this->show($club);
+         }
+      }
+      flash()->warning('Only high school students can join clubs.');
       return $this->show($club);
     }
 
     public function getSchoolClubs($school) {
        $clubs = DB::select('call getSchoolClubs(?)', [$school]);
        return view('club.index', compact('clubs'));
+    }
+
+    public function members(Club $club) {
+      $students = $club->students;
+      return view('club.members', compact('students'));
     }
 
 }

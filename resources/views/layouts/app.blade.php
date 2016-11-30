@@ -64,18 +64,17 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                               @if(Auth::check())
-                                 @if(strcmp(Auth::user()->role, 'Student')==0)
-                                    <li><a href="{{ url('/student/profile') }}">My profile</a></li>
-                                    <li><a href="{{ url('/student/school') }}">My School</a></li>
-                                    <li><a href="{{ url('/student/courses') }}">My courses</a></li>
-                                 @endif
-                                 <li role="separator" class="divider"></li>
+                               @if(Auth::check() && strcmp(Auth::user()->role, 'Student')==0)
+                               <li><a href="{{ url('/student/profile') }}">My profile</a></li>
+                               <li><a href="{{ url('/student/school') }}">My School</a></li>
+                               <li><a href="{{ url('/student/courses') }}">My courses</a></li>
 
-                                 <li><a href="{{ url('/question/create') }}">Ask a question</a></li>
-
-                               @endif
                                <li role="separator" class="divider"></li>
+
+                               <li><a href="{{ url('/question/create') }}">Ask a question</a></li>
+
+                               <li role="separator" class="divider"></li>
+                               @endif
 
                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
@@ -101,5 +100,6 @@
 <script src={{ url("js/libs/bootstrap.min.js")}}></script>
 <script src={{ url("js/libs/select2.min.js")}}></script>
 <script src={{ url("js/libs/jquery-ui.js")}}></script>
+<script src={{ url("js/skool.js")}}></script>
 
 </html>

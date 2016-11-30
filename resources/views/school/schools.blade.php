@@ -9,5 +9,12 @@
       <li>Fees: {{ $school -> fees }}</li>
    </ul>
 
+   @if(array_key_exists('supplies', $school))
+      <h4>Supplies</h4>
+      <article>
+         {{ $school->supplies }}
+      </article>
+   @endif
+
 </div>
 @endforeach
