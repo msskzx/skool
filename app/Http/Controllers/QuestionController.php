@@ -34,17 +34,20 @@ class QuestionController extends Controller
    }
 
    public function store(Request $request) {
-      $student = Auth::user()->stu;
+      if(strcmp(Auth::user()->role, 'Student')==0) {
+         $student = Auth::user()->stu;
 
-      /**
-       * (student_id, course_id, title, question)
-       */
-      DB::statement('call insertQuestion(?, ?, ?, ?)', [
-         $student->id,
-         $request['course_id'],
-         $request['title'],
-         $request['question']
-      ]);
+         /**
+         * (student_id, course_id, title, question)
+         */
+         DB::statement('call insertQuestion(?, ?, ?, ?)', [
+            $student->id,
+            $request['course_id'],
+            $request['title'],
+            $request['question']
+         ]);
+
+      }
 
       return $this->index();
    }

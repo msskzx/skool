@@ -113,7 +113,7 @@ class StudentController extends Controller
      if (\Hash::check($request->old_password, $user->password)) {
 
         DB::statement('update users set password = ? where username = ?', [
-           bcrypt($request['password']),
+           bcrypt($request->new_password),
            $user->username
         ]);
 
