@@ -37,6 +37,18 @@ class QuestionController extends Controller
       if(strcmp(Auth::user()->role, 'Student')==0) {
          $student = Auth::user()->stu;
 
+         $xs = DB::select('select id from courses');
+         $idz = "";
+         foreach($xs as $x) {
+            $idz = $idz . $x->id . ',';
+         }
+
+         $this->validate($request, [
+            'title' => 'required',
+            'question' => 'required',
+            'course_id' => 'required|in:'.$idz
+         ]);
+
          /**
          * (student_id, course_id, title, question)
          */
@@ -49,7 +61,8 @@ class QuestionController extends Controller
 
       }
 
-      return $this->index();
+      flash()->success('Question has been posted successfully.');
+      return $this->getQuestionsByOthers($request->course_id);
    }
 
    public function edit(Question $question) {

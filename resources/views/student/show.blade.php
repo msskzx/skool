@@ -5,18 +5,15 @@
 
    <div class="jumbotron" >
       <div class="row">
-         <div class="col-md-10">
+         <div class="col-md-9">
             <h1>{{ $student -> first_name ." ". $student->middle_name ." ". $student->last_name }}</h1>
          </div>
 
          @if(strcmp(Auth::user()->username, $student->username)==0)
-            <div class="col-md-2">
-
-            </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                <ul class="list-group">
-                  <li class="list-group-item"><a href="{{ route('student.edit', $student->id) }}">Edit information</a></li>
-                  <li class="list-group-item"><a href="{{ url('student/edit/password') }}">Edit password</a></li>
+                  <li class="list-group-item"><a href="{{ route('student.edit', $student->id) }}"><i class="fa fa-edit" aria-hidden="true"></i>Edit information</a></li>
+                  <li class="list-group-item"><a href="{{ url('student/edit/password') }}"><i class="fa fa-key" aria-hidden="true"></i>Edit password</a></li>
                </ul>
             </div>
          @endif

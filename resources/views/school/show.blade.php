@@ -8,9 +8,9 @@
 
          <div class="col-md-2">
             <ul class="list-group">
-               <li class="list-group-item"><a href="{{ action('ActivityController@getSchoolActivities', [$school->id]) }}">Activities</a></li>
-               <li class="list-group-item"><a href="{{ action('ClubController@getSchoolClubs', [$school->id]) }}">Clubs</a></li>
-               <li class="list-group-item"><a href="{{ action('SchoolController@reviewIndex', [$school->id]) }}">Reviews</a></li>
+               <li class="list-group-item"><a href="{{ action('ActivityController@getSchoolActivities', [$school->id]) }}"><i class="fa fa-puzzle-piece" aria-hidden="true"></i>Activities</a></li>
+               <li class="list-group-item"><a href="{{ action('ClubController@getSchoolClubs', [$school->id]) }}"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>Clubs</a></li>
+               <li class="list-group-item"><a href="{{ action('SchoolController@reviewIndex', [$school->id]) }}"><i class="fa fa-star-o" aria-hidden="true"></i>Reviews</a></li>
             </ul>
          </div>
 

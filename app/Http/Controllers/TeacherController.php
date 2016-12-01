@@ -31,9 +31,16 @@ class TeacherController extends Controller
 
     public function store(Request $request) {
       $this->validate($request, [
-        'email' => 'required|unique:employees'
+        'email' => 'required|unique:employees',
+        'first_name' => 'required',
+        'middle_name' => 'required',
+        'last_name' => 'required',
+        'address' => 'required',
+        'gender' => 'required',
+        'years_of_exp' => 'required',
+        'birth_date' => 'required'
       ]);
-      
+
       /**
        * (first_name, middle_name, last_name, birth_date, address, email, gender, years_of_exp, phone_number, mobile_number1, mobile_number2)
        */

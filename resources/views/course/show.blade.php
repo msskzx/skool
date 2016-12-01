@@ -10,10 +10,10 @@
 
          <ul class="list-group col-md-2">
             @if(strcmp(Auth::user()->role, 'Student')==0)
-            <li class="list-group-item"><a href="{{ action('CourseController@getGrades', [$course->id]) }}">Grades</a></li>
+            <li class="list-group-item"><a href="{{ action('CourseController@getGrades', [$course->id]) }}"><i class="fa fa-bar-chart-o" aria-hidden="true"></i>Grades</a></li>
+            <li class="list-group-item"><a href="{{ action('QuestionController@getQuestionsByOthers', [$course->id]) }}"><i class="fa fa-question-circle-o" aria-hidden="true"></i>Questions</a></li>
             @endif
-            <li class="list-group-item"><a href="{{ action('QuestionController@getQuestionsByOthers', [$course->id]) }}">Questions</a></li>
-            <li class="list-group-item"><a href="{{ action('AssignmentController@getCourseAssignments', [$course->id]) }}">Assignments</a></li>
+            <li class="list-group-item"><a href="{{ action('AssignmentController@getCourseAssignments', [$course->id]) }}"><i class="fa fa-file-text-o" aria-hidden="true"></i>Assignments</a></li>
          </ul>
       </div>
 
@@ -25,7 +25,7 @@
             </tr>
             <tr>
                <td>Grade</td>
-               <td>{{ $course -> grade }}</td>
+               <td>{{ $course -> grade }}th grade</td>
             </tr>
          </tbody>
       </table>

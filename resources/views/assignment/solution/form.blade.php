@@ -14,7 +14,7 @@
 
      @if ($errors->has('student_id') || $errors->has('assignment_id'))
          <span class="help-block">
-             <strong>You already solved this.</strong>
+             <strong>You can not do this. Maybe this is not the assignment you should be solving.</strong>
          </span>
      @endif
     </div>

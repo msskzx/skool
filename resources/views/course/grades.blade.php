@@ -17,10 +17,19 @@
           </thead>
           <tbody>
             @foreach($grades as $grade)
+               @unless($grade->grade == null)
                <tr>
                  <td>{{ $grade -> name }}</td>
-                 <td>{{ $grade -> grade }}</td>
+                 <td>
+                    <div class="progress">
+                       <div class="progress-bar progress-bar-striped active" role="progressbar"
+                       aria-valuenow="{{ $grade->grade }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ $grade->grade }}%">
+                         {{ $grade->grade }}%
+                       </div>
+                     </div>
+                 </td>
                </tr>
+               @endunless
             @endforeach
           </tbody>
         </table>

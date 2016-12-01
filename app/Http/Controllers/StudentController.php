@@ -35,7 +35,13 @@ class StudentController extends Controller
 
   public function store(Request $request) {
      $this->validate($request, [
-        'SSN' => 'required|unique:students'
+       'first_name' => 'required',
+       'middle_name' => 'required',
+       'last_name' => 'required',
+       'gender' => 'required',
+       'birth_date' => 'required',
+       'email' => 'unique:students',
+       'SSN' => 'required|unique:student'
      ]);
 
      /**
@@ -64,6 +70,11 @@ class StudentController extends Controller
      $student = $x;
 
      $this->validate($request, [
+        'first_name' => 'required',
+        'middle_name' => 'required',
+        'last_name' => 'required',
+        'gender' => 'required',
+        'birth_date' => 'required',
         'email' => 'unique:students,email,'.$student->id,
         'SSN' => 'required|unique:students,SSN,'.$student->id
      ]);

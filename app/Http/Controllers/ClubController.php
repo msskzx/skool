@@ -80,16 +80,24 @@ class ClubController extends Controller
          $student = Auth::user()->stu;
 
          if($student->grade > 9) {
-            /**
-            * (student_id, club_id)
-            */
-            DB::statement('call joinClub(?, ?)', [
-               $student->id,
-               $club
-            ]);
+            $x = DB::select('select count(*) as count from clubs c inner join club_joinedBy_student cs
+                              on c.id = cs.club_id and cs.student_id = ? and c.id = ?', [$student->id, $club])[0];
+            if($x->count == 0) {
+               /**
+               * (student_id, club_id)
+               */
+               DB::statement('call joinClub(?, ?)', [
+                  $student->id,
+                  $club
+               ]);
 
-            flash()->success('You will find your name in the member list.');
+               flash()->success('You will find your name in the member list.');
+            }
+            else {
+               flash()->warning('You are already a member in this club.');
+            }
          }
+
       }
       return $this->show($club);
     }

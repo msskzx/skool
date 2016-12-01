@@ -76,10 +76,6 @@
  * @type
  */
 @media (max-width: 991px) {
-   #welcome {
-      background-color: #333333;
-   }
-
    #welcome-img {
       height: 0;
       width: 0;

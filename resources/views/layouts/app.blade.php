@@ -8,7 +8,7 @@
     <title>Skool</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
 
     <!-- Styles -->
@@ -44,12 +44,12 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                       Links <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="{{ url('/levels') }}">Schools</a></li>
+                      <li><a href="{{ url('/levels') }}"><i class="fa fa-list" aria-hidden="true"></i>Schools</a></li>
 
                       <li role="separator" class="divider"></li>
 
-                      <li><a href="{{ url('/teacher/create') }}"><i class="fa fa-plus" aria-hidden="true"></i>New teacher</a></li>
-                      <li><a href="{{ url('/parent/create') }}"><i class="fa fa-plus" aria-hidden="true"></i>New parent</a></li>
+                      <li><a href="{{ url('/teacher/create') }}"><i class="fa fa-user-plus" aria-hidden="true"></i>New teacher</a></li>
+                      <li><a href="{{ url('/parent/create') }}"><i class="fa fa-user-plus" aria-hidden="true"></i>New parent</a></li>
                     </ul>
                   </li>
 
@@ -64,14 +64,14 @@
 
                             <ul class="dropdown-menu" role="menu">
                                @if(Auth::check() && strcmp(Auth::user()->role, 'Student')==0)
-                               <li><a href="{{ url('/student/profile') }}">My profile</a></li>
-                               <li><a href="{{ url('/student/school') }}">My School</a></li>
-                               <li><a href="{{ url('/student/courses') }}">My courses</a></li>
-                               <li><a href="{{ url('/student/assignments') }}">My assignments</a></li>
+                               <li><a href="{{ url('/student/profile') }}"><i class="fa fa-btn fa-user-o"></i>Profile</a></li>
+                               <li><a href="{{ url('/student/school') }}"><i class="fa fa-btn fa-building-o"></i>My school</a></li>
+                               <li><a href="{{ url('/student/courses') }}"><i class="fa fa-btn fa-files-o"></i>My courses</a></li>
+                               <li><a href="{{ url('/student/assignments') }}"><i class="fa fa-btn fa-file-text-o"></i>My assignments</a></li>
 
                                <li role="separator" class="divider"></li>
 
-                               <li><a href="{{ url('/question/create') }}">Ask a question</a></li>
+                               <li><a href="{{ url('/question/create') }}"><i class="fa fa-btn fa-question-circle-o"></i>Ask a question</a></li>
 
                                <li role="separator" class="divider"></li>
                                @endif

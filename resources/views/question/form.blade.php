@@ -34,7 +34,7 @@
     </div>
     <div class = "col-md-10">
       {!! Form::select('course_id', $courses, null, ['class' => 'form-control', 'placeholder' => 'course...', 'required']) !!}
-      @if ($errors->has('question'))
+      @if ($errors->has('course_id'))
           <span class="help-block">
              <strong>{{ $errors->first('course_id') }}</strong>
           </span>

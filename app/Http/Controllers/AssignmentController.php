@@ -46,9 +46,24 @@ class AssignmentController extends Controller
 
          $request['student_id'] = $student->id;
          $request['assignment_id'] = $assignment;
+
+         $xs = DB::select('call getStudentAssignments(?)', [$student->id]);
+         $idz = "";
+         foreach($xs as $x) {
+            $idz = $idz . $x->id . ',';
+         }
+         
+         /**
+          * Ensure each student can solve the assignment only once.
+          * Ensure the assignment solution is for one of the courses the student has.
+          *
+          * student_id should be unique where assignment_id = assignment_id
+          * assignment_id should be unique where student_id = student_id
+          */
          $this->validate($request, [
             'student_id' => 'unique:assignment_solvedBy_student,student_id,NULL,assignment_id,assignment_id,' . $assignment,
-            'assignment_id' => 'unique:assignment_solvedBy_student,assignment_id,NULL,student_id,student_id,' . $student->id
+            'assignment_id' => 'unique:assignment_solvedBy_student,assignment_id,NULL,student_id,student_id,' . $student->id,
+            'assignment_id' => 'in:'.$idz
          ]);
 
          /**
@@ -62,7 +77,7 @@ class AssignmentController extends Controller
 
          flash()->success('Assignment solution has been submitted successfully.');
       }
-      return $this->index();
+      return $this->getStudentAssignments();
     }
 
     public function getCourseAssignments($course) {
@@ -76,6 +91,6 @@ class AssignmentController extends Controller
          $assignments = DB::select('call getStudentAssignments(?)', [$student->id]);
          return view('assignment.index', compact('assignments'));
       }
-      return back();
+      return redirect('/');
    }
 }

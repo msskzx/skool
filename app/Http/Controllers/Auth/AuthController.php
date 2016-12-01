@@ -55,14 +55,16 @@ class AuthController extends Controller
          'password' => 'required'
       ]);
 
+      // $user = \DB::select('select * from users where username = ?', [$request->username])[0];
+      // if($user!=null && \Hash::check($request->password, $user->password)) {
       $credentials = $request->only('username', 'password');
 
-      if (Auth::attempt($credentials, $request->has('remember'))) {
+      if (Auth::attempt($credentials)) {
          return redirect()->intended($this->redirectPath());
       }
 
       return redirect('login')
-                ->withInput($request->only('username', 'remember'))
+                ->withInput($request->only('username'))
                 ->withErrors(['username' => $this->getFailedLoginMessage()]);
   }
 }

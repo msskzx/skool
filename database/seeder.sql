@@ -177,6 +177,9 @@ call insertAssignment('Assignment 1', '2016-12-12', '2016-12-20', "Problem 1: de
 call insertAssignment('Assignment 1', '2016-12-12', '2016-12-20', "Problem 1: write a program that detect cycles in dps.", 2);
 call insertAssignment('Assignment 1', '2016-11-01', '2016-11-20', "Problem 1: If Jack Sparrow was to shift his career what would he be?", 3);
 call insertAssignment('Assignment 1', '2016-12-12', '2016-12-20', "Is the answer to the universe divisible by 2?", 16);
+call insertAssignment('Assignment 2', '2016-12-12', '2016-12-20', "Is the answer to the universe divisible by 2?", 16);
+call insertAssignment('Assignment 3', '2016-12-12', '2016-12-20', "Is the answer to the universe divisible by 2?", 16);
+call insertAssignment('Assignment 4', '2016-12-12', '2016-12-20', "Is the answer to the universe divisible by 2?", 16);
 
 -- (student_id, assignment_id, solution)
 call insertSolution(1, 1, "Donuts per second ma dear fellow");

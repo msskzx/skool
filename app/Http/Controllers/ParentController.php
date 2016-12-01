@@ -33,9 +33,13 @@ class ParentController extends Controller
       $this->validate($request, [
         'username' => 'required|unique:users',
         'email' => 'unique:parents',
-        'password' => 'required|confirmed'
+        'password' => 'required|confirmed',
+        'first_name' => 'required',
+        'middle_name' => 'required',
+        'last_name' => 'required',
+        'address' => 'required'
       ]);
-      
+
       /**
        * (username, password, first_name, middle_name, last_name, email, address, phone_number, mobile_number1, mobile_number2)
        */

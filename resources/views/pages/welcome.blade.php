@@ -65,8 +65,6 @@
 <!-- JavaScripts -->
 <script src={{ url("js/libs/jquery.min.js")}}></script>
 <script src={{ url("js/libs/bootstrap.min.js")}}></script>
-<script src={{ url("js/libs/select2.min.js")}}></script>
-<script src={{ url("js/libs/jquery-ui.js")}}></script>
 <script src={{ url("js/skool.js")}}></script>
 
 </html>
