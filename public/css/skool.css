@@ -34,7 +34,6 @@
 }
 
 #welcome-text {
-  font-size: 16px;
   color: white;
   text-align: center;
 }
@@ -60,7 +59,7 @@
     #welcome-img {
       z-index: -1;
       position: absolute;
-      opacity: 0.8;
+      opacity: 0.5;
       top: 0;
       bottom: 0;
       left: 0;

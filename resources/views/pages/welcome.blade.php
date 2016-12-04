@@ -37,7 +37,7 @@
 
       <div class="row">
         <div class="col-md-12">
-          <h6 id= "welcome-text">Someone... somewhere... in this universie...<br>is learning... something... somehow...</h6>
+          <h6 id= "welcome-text" class="lead">Someone... somewhere... in this universie...<br>is learning... something... somehow...</h6>
         </div>
       </div>
 
