@@ -40,7 +40,6 @@ class StudentController extends Controller
        'last_name' => 'required',
        'gender' => 'required',
        'birth_date' => 'required',
-       'email' => 'unique:students',
        'SSN' => 'required|unique:student'
      ]);
 

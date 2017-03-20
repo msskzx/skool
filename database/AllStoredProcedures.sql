@@ -1336,7 +1336,22 @@ create procedure getSchoolClubs
 (in school_id int unsigned)
 BEGIN
 
-select c.* from clubs c where c.id = school_id;
+select c.* from clubs c where c.high_level_id = school_id;
+
+end //
+delimiter ;
+
+
+
+delimiter //
+create procedure enrollCourse
+(in student_id int unsigned, in course_id int unsigned)
+BEGIN
+
+insert into course_has_student
+(student_id, course_id)
+values
+(student_id, course_id);
 
 end //
 delimiter ;

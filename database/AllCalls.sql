@@ -346,7 +346,7 @@ call deleteSchool(7);
 -- 1 Sign up by providing my first name, middle name, last name, birthdate, address, email, and gender.
 --
 -- (first_name, middle_name, last_name, birth_date, address, email, gender, years_of_exp, phone_number, mobile_number1, mobile_number2)
-call insertTeacher('Lil', 'Dai', 'The Brave' '1999-12-12', 'the brave st', 'lil@lil.com', 'Female', 2, null, null, null);
+call insertTeacher('Lil', 'Dai', 'The Brave', '1999-12-12', 'the brave st', 'lil@lil.com', 'Female', 2, null, null, null);
 --
 --
 --
@@ -459,4 +459,4 @@ call getSchoolReviews(1);
 call getSchoolTeachers(1);
 --
 --
--- 
+--

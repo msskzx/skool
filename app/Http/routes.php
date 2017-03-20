@@ -39,7 +39,6 @@ Route::get('school/{school}/reviews', 'SchoolController@reviewIndex');
 Route::get('school/{school}/activities', 'ActivityController@getSchoolActivities');
 Route::resource('/school', 'SchoolController');
 Route::get('/school/{school}/clubs', 'ClubController@getSchoolClubs');
-Route::get('/school/{school}/{parent}', 'SchoolController@showReview');
 Route::get('/levels', 'SchoolController@levels');
 
 /*

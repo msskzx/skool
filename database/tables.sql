@@ -22,10 +22,9 @@ create table `parents` (`id` int unsigned not null auto_increment primary key, `
 alter table `parents` add constraint `parents_username_foreign` foreign key (`username`) references `users` (`username`) on delete cascade;
 alter table `parents` add unique `parents_email_unique`(`email`);
 alter table `parents` add unique `parents_username_unique`(`username`);
-create table `students` (`id` int unsigned not null auto_increment primary key, `first_name` varchar(255) not null, `middle_name` varchar(255) not null, `last_name` varchar(255) not null, `email` varchar(255) null, `SSN` int not null, `grade` int null, `gender` enum('Male', 'Female') not null, `birth_date` date not null, `school_id` int unsigned null, `username` varchar(255) null) default character set utf8 collate utf8_unicode_ci;
+create table `students` (`id` int unsigned not null auto_increment primary key, `first_name` varchar(255) not null, `middle_name` varchar(255) not null, `last_name` varchar(255) not null, `SSN` int not null, `grade` int null, `gender` enum('Male', 'Female') not null, `birth_date` date not null, `school_id` int unsigned null, `username` varchar(255) null) default character set utf8 collate utf8_unicode_ci;
 alter table `students` add constraint `students_username_foreign` foreign key (`username`) references `users` (`username`) on delete set null;
 alter table `students` add constraint `students_school_id_foreign` foreign key (`school_id`) references `schools` (`id`) on delete set null;
-alter table `students` add unique `students_email_unique`(`email`);
 alter table `students` add unique `students_ssn_unique`(`SSN`);
 alter table `students` add index `students_school_id_index`(`school_id`);
 alter table `students` add unique `students_username_unique`(`username`);

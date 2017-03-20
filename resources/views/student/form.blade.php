@@ -42,20 +42,6 @@
     </div>
   </div>
 
-  <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-    <div class = "control-label col-md-2">
-      {!! Form::label('email','E-mail') !!}
-    </div>
-   <div class = "col-md-10">
-     {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'optional']) !!}
-     @if ($errors->has('email'))
-         <span class="help-block">
-             <strong>{{ $errors->first('email') }}</strong>
-         </span>
-     @endif
-    </div>
-  </div>
-
   <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
     <div class = "control-label col-md-2">
       {!! Form::label('gender','Gender') !!}

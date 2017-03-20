@@ -55,8 +55,6 @@ class AuthController extends Controller
          'password' => 'required'
       ]);
 
-      // $user = \DB::select('select * from users where username = ?', [$request->username])[0];
-      // if($user!=null && \Hash::check($request->password, $user->password)) {
       $credentials = $request->only('username', 'password');
 
       if (Auth::attempt($credentials)) {
